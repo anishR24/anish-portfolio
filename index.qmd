@@ -15,7 +15,9 @@ about:
           href: https://www.linkedin.com/in/anishrao86
         - icon: file-pdf
           text: View CV
-          href: Anish_Rao_CV.pdf
+          href: /anish-portfolio/Anish_Rao_CV.pdf
+resources:
+  - Anish_Rao_CV.pdf
 ---
 
 Hello! I am a Data-driven Business Analyst with an M.Sc. in Data Analytics and 2.5+ years of experience in Software Engineering. I specialize in bridging the gap between technical code and business strategy, using data storytelling to drive informed decision-making.
