@@ -1,0 +1,31 @@
+---
+title: "Anish Rao"
+image: profile.jpg
+about:
+    template: trestles
+    links:
+        - icon: envelope
+          text: Email
+          href: mailto:anish.rao888@gmail.com
+        - icon: github
+          text: GitHub
+          href: https://github.com/anishR24
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/anishrao86
+        - icon: file-pdf
+          text: View CV
+          href: Anish_Rao_CV.pdf
+---
+
+Hello! I am a Data-driven Business Analyst with an M.Sc. in Data Analytics and 2.5+ years of experience in Software Engineering. I specialize in bridging the gap between technical code and business strategy, using data storytelling to drive informed decision-making.
+
+<!-- [📄 Click here to view my full CV](Anish_Rao_CV.pdf){.btn .btn-primary} -->
+
+## Featured Projects
+
+* **Customer Churn Prediction (Final M.Sc. Project):** An interactive Streamlit application using **Explainable AI (SHAP)** to identify causal drivers of churn in Telecom and Insurance sectors. [View Project](#)
+
+* **FIFA Player Analytics (Data Viz):** A comprehensive **Tableau & Power BI** dashboard suite analyzing global player statistics to identify high-value talent. [View Dashboard](#)`
+
+* **NYC Taxi Operational Intelligence (Data Storage):** A full-scale **Data Warehouse** proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. [View Case Study](#)

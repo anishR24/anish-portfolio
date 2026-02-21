@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anish Rao",
+    "section": "",
+    "text": "Hello! I am a Data-driven Business Analyst with an M.Sc. in Data Analytics and 2.5+ years of experience in Software Engineering. I specialize in bridging the gap between technical code and business strategy, using data storytelling to drive informed decision-making."
+  },
+  {
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "Anish Rao",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\nCustomer Churn Prediction (Final M.Sc. Project): An interactive Streamlit application using Explainable AI (SHAP) to identify causal drivers of churn in Telecom and Insurance sectors. View Project\nFIFA Player Analytics (Data Viz): A comprehensive Tableau & Power BI dashboard suite analyzing global player statistics to identify high-value talent. View Dashboard`\nNYC Taxi Operational Intelligence (Data Storage): A full-scale Data Warehouse proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. View Case Study"
+  }
+]
