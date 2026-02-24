@@ -6,7 +6,7 @@ format:
     toc: true
     code-fold: true
 resources:
-  - B9DA106_CA1_Anish_20066423.pdf
+  - social_progress_analysis.pdf
 ---
 
 ## Project Overview

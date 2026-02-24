@@ -26,8 +26,8 @@ Hello! I am a Data-driven Business Analyst with an M.Sc. in Data Analytics and 2
 
 ## Featured Projects
 
-* **Customer Churn Prediction (Final M.Sc. Project):** An interactive Streamlit application using **Explainable AI (SHAP)** to identify causal drivers of churn in Telecom and Insurance sectors. [View Project](#)
+* **Customer Churn Prediction (Final M.Sc. Project):** An interactive Streamlit application using **Explainable AI (SHAP)** to identify causal drivers of churn in Telecom and Insurance sectors. [View Project](./projects/churn-prediction/churn_index.qmd)
 
-* **FIFA Player Analytics (Data Viz):** A comprehensive **Tableau & Power BI** dashboard suite analyzing global player statistics to identify high-value talent. [View Dashboard](./projects/data-viz/football-recruitment/index.qmd)`
+* **FIFA Player Analytics (Data Viz):** A comprehensive **Tableau & Power BI** dashboard suite analyzing global player statistics to identify high-value talent. [View Dashboard](./projects/data-viz/football-recruitment/football_index.qmd)
 
-* **NYC Taxi Operational Intelligence (Data Storage):** A full-scale **Data Warehouse** proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. [View Case Study](#)
+* **NYC Taxi Operational Intelligence (Data Storage):** A full-scale **Data Warehouse** proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. [View Case Study](./projects/taxi-dw/taxi_index.qmd)

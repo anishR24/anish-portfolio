@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Global Social Progress Analysis – Anish Rao</title>
+<title>Football Recruitment: Tableau vs.&nbsp;Power BI – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -130,11 +101,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="../../../projects/data-viz/index.html">
+    <a class="dropdown-item" href="../../../projects/data-viz/viz_index.html">
  <span class="dropdown-text">Data Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/taxi-dw/index.qmd">
+    <a class="dropdown-item" href="../../../projects/taxi-dw/taxi_index.html">
  <span class="dropdown-text">NYC Taxi Data Warehouse</span></a>
   </li>  
     </ul>
@@ -156,15 +127,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#interactive-dashboard" id="toc-interactive-dashboard" class="nav-link" data-scroll-target="#interactive-dashboard">Interactive Dashboard</a></li>
-  <li><a href="#analytical-strategy-design" id="toc-analytical-strategy-design" class="nav-link" data-scroll-target="#analytical-strategy-design">Analytical Strategy &amp; Design</a></li>
-  <li><a href="#key-business-social-insights" id="toc-key-business-social-insights" class="nav-link" data-scroll-target="#key-business-social-insights">Key Business &amp; Social Insights</a>
+  <li><a href="#the-dashboards" id="toc-the-dashboards" class="nav-link" data-scroll-target="#the-dashboards">The Dashboards</a>
   <ul class="collapse">
-  <li><a href="#the-inclusion-barrier" id="toc-the-inclusion-barrier" class="nav-link" data-scroll-target="#the-inclusion-barrier">1. The “Inclusion” Barrier</a></li>
-  <li><a href="#the-environment-vs.-development-paradox" id="toc-the-environment-vs.-development-paradox" class="nav-link" data-scroll-target="#the-environment-vs.-development-paradox">2. The Environment vs.&nbsp;Development Paradox</a></li>
-  <li><a href="#the-african-context" id="toc-the-african-context" class="nav-link" data-scroll-target="#the-african-context">3. The African Context</a></li>
+  <li><a href="#tableau-implementation" id="toc-tableau-implementation" class="nav-link" data-scroll-target="#tableau-implementation">Tableau Implementation</a></li>
+  <li><a href="#power-bi-implementation" id="toc-power-bi-implementation" class="nav-link" data-scroll-target="#power-bi-implementation">Power BI Implementation</a></li>
   </ul></li>
-  <li><a href="#technical-skills-demonstrated" id="toc-technical-skills-demonstrated" class="nav-link" data-scroll-target="#technical-skills-demonstrated">Technical Skills Demonstrated</a></li>
+  <li><a href="#technical-implementation-evaluation" id="toc-technical-implementation-evaluation" class="nav-link" data-scroll-target="#technical-implementation-evaluation">Technical Implementation &amp; Evaluation</a></li>
   </ul>
 </nav>
     </div>
@@ -173,8 +141,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Global Social Progress Analysis</h1>
-<p class="subtitle lead">Moving Beyond GDP to Measure Quality of Life</p>
+<h1 class="title">Football Recruitment: Tableau vs.&nbsp;Power BI</h1>
+<p class="subtitle lead">A Comparative Analysis of Business Intelligence Platforms</p>
 </div>
 
 
@@ -193,77 +161,101 @@ window.Quarto = {
 
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This analysis explores the <strong>Social Progress Index (SPI)</strong>, evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world’s most struggling nations.</p>
+<p>This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both <strong>Tableau</strong> and <strong>Power BI</strong>. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.</p>
 </section>
-<section id="interactive-dashboard" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="interactive-dashboard">Interactive Dashboard</h2>
-<p>Explore the global patterns directly below. Use the “Bottom N” filter to adjust the focal point of the analysis.</p>
+<section id="the-dashboards" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-dashboards">The Dashboards</h2>
+<section id="tableau-implementation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="tableau-implementation">Tableau Implementation</h3>
+<p>Tableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.</p>
 <div class="column-page">
-<div id="viz1771936843172" class="tableauPlaceholder" style="position: relative">
-<p><noscript> <a href="#"> <img alt="Final Dashboard " src="https://public.tableau.com/static/images/B9/B9DA106_CA1_Anish_20066423/FinalDashboard/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="B9DA106_CA1_Anish_20066423/FinalDashboard"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/B9/B9DA106_CA1_Anish_20066423/FinalDashboard/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object></p>
+<div id="viz1771937537024" class="tableauPlaceholder" style="position: relative">
+<p><noscript> <a href="#"> <img alt="Final Dashboard " src="https://public.tableau.com/static/images/Fi/Final_Draft_CA1/FinalDashboard/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="Final_Draft_CA1/FinalDashboard"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Fi/Final_Draft_CA1/FinalDashboard/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object></p>
 </div>
 <script type="text/javascript">                    
-  var divElement = document.getElementById('viz1771936843172');                    
+  var divElement = document.getElementById('viz1771937537024');                    
   var vizElement = divElement.getElementsByTagName('object')[0];                    
   if ( divElement.offsetWidth > 800 ) { 
     vizElement.style.width='100%';vizElement.style.height='850px';
   } else if ( divElement.offsetWidth > 500 ) { 
     vizElement.style.width='100%';vizElement.style.height='850px';
   } else { 
-    vizElement.style.width='100%';vizElement.style.height='1677px';
+    vizElement.style.width='100%';vizElement.style.height='2227px';
   }                     
   var scriptElement = document.createElement('script');                    
   scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
   vizElement.parentNode.insertBefore(scriptElement, vizElement);                
 </script>
 </div>
+<p>&nbsp; &nbsp;</p>
+<p><strong>Feature Spotlight: Player Profiling Radar Charts</strong> Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized <strong>Radar Chart</strong> profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.</p>
+<div class="quarto-layout-panel" style="margin: auto; width: 50%;" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Radar.png" class="border shadow rounded img-fluid figure-img"></p>
+<figcaption>Tableau Radar Chart Extension - Player Profiling</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="analytical-strategy-design" class="level2">
-<h2 class="anchored" data-anchor-id="analytical-strategy-design">Analytical Strategy &amp; Design</h2>
-<p>To ensure an unbiased and professional delivery, I implemented several specific design choices:</p>
+<section id="power-bi-implementation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="power-bi-implementation">Power BI Implementation</h3>
+<p>Power BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.</p>
+<p><em>Note: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="PowerBI.png" class="border shadow img-fluid figure-img"></p>
+<figcaption>Football Recruitment Dashboard - Power BI Interface</figcaption>
+</figure>
+</div>
+<div class="column-page">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Click to expand Live Interactive Dashboard
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><em>Note: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page.</em></p>
+<iframe title="Football Recruitment" width="100%" height="600px" src="https://app.powerbi.com/reportEmbed?reportId=6c45ced1-6473-4af4-b49a-9a8b1ef412ab&amp;autoAuth=true&amp;ctid=5d0aa6ea-6620-4863-9e21-9ecb140222bc" frameborder="0" allowfullscreen="true">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="technical-implementation-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-implementation-evaluation">Technical Implementation &amp; Evaluation</h2>
+<p>During development, several key differences between the platforms were identified:</p>
 <ul>
-<li><strong>Intentional Narration Arc:</strong> The dashboard moves from broad global patterns (Distribution Analysis) to specific causal issues (Weakest Components).</li>
-<li><strong>Monochromatic Palette:</strong> I chose shades of green to suggest “growth potential” and avoid the judgmental “red equals bad” bias often found in development reports.</li>
-<li><strong>Bottom N Parameter:</strong> Added interactivity allowing users to toggle between the bottom 10 to 30 countries to identify regional patterns.</li>
+<li><strong>Data Transformation:</strong> Power BI’s <strong>Power Query</strong> (M Language) provided more robust data cleaning options, while Tableau’s <strong>in-context calculations</strong> (SPLIT functions) were faster for quick field creation.</li>
+<li><strong>Visual Flexibility:</strong> Tableau allowed for more precise label positioning and custom “workarounds” for complex chart types.</li>
+<li><strong>Radar Chart Challenge:</strong> Implementing a Radar Chart for player profiling required an external extension in Tableau but was supported via native custom visuals in Power BI.</li>
 </ul>
-</section>
-<section id="key-business-social-insights" class="level2">
-<h2 class="anchored" data-anchor-id="key-business-social-insights">Key Business &amp; Social Insights</h2>
-<section id="the-inclusion-barrier" class="level3">
-<h3 class="anchored" data-anchor-id="the-inclusion-barrier">1. The “Inclusion” Barrier</h3>
-<p>Surprisingly, for 50% of the bottom 10 countries, the primary weakness was not food or water, but <strong>Social Inclusion</strong>. This suggests that conflict and lack of social acceptance (regardless of gender or religion) are as detrimental to progress as resource scarcity.</p>
-</section>
-<section id="the-environment-vs.-development-paradox" class="level3">
-<h3 class="anchored" data-anchor-id="the-environment-vs.-development-paradox">2. The Environment vs.&nbsp;Development Paradox</h3>
-<p>8 out of the bottom 10 countries actually score <em>higher</em> in environmental quality than in basic human needs. This isn’t necessarily a policy choice, but a result of a lack of industrialization; these nations have not yet “developed enough to pollute”.</p>
-</section>
-<section id="the-african-context" class="level3">
-<h3 class="anchored" data-anchor-id="the-african-context">3. The African Context</h3>
-<p>The analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan African. Interestingly, despite high poverty levels, no South Asian countries appeared in the bottom 10, suggesting that social progress is driven by factors beyond just income.</p>
-</section>
-</section>
-<section id="technical-skills-demonstrated" class="level2">
-<h2 class="anchored" data-anchor-id="technical-skills-demonstrated">Technical Skills Demonstrated</h2>
-<ul>
-<li><strong>Tool:</strong> Tableau.</li>
-<li><strong>Visualizations:</strong> Box Plots (for spread and outliers), Scatter Plots (correlation analysis), and Dual-Axis charts.</li>
-<li><strong>Calculations:</strong> <span class="math inline">\(R^{2}\)</span> correlation analysis to confirm the link between basic needs and opportunity.</li>
-</ul>
-<hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Full Report &amp; Source Files
+<span class="screen-reader-only">Tip</span>Comparative Analysis &amp; Project Files
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.</p>
+<p>This project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.</p>
 </div>
 </div>
-<p><a href="social_progress_analysis.pdf" class="btn btn-outline-primary rounded-pill px-4">📄 Download Full Analysis Report (PDF)</a> <a href="social_progress_analysis.twbx" class="btn btn-outline-primary rounded-pill px-4">📥 Download Tableau Workbook (.twbx)</a></p>
+<p><a href="football_scouting.pdf" class="btn btn-outline-primary rounded-pill px-4">📄 Download Comparative Report (PDF)</a> <a href="football_scouting.twbx" class="btn btn-outline-primary rounded-pill px-4">📥 Download Tableau (.twbx)</a> <a href="football_scouting.pbix" class="btn btn-outline-primary rounded-pill px-4">📥 Download Power BI (.pbix)</a></p>
 
 
 </section>

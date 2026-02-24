@@ -11,7 +11,7 @@ subtitle: "Evidence-based storytelling using Tableau and Power BI"
 * **Key Insight:** Tableau offered superior customization for "pixel-perfect" needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.
 * **Tech used:** Tableau Public, Power BI Desktop, DAX, Power Query.
 
-[View Case Study & Comparison](./football-recruitment/index.qmd){.btn .btn-outline-primary .btn-sm}
+[View Case Study & Comparison](./football-recruitment/football_index.qmd){.btn .btn-outline-primary .btn-sm}
 
 ---
 
@@ -22,4 +22,4 @@ subtitle: "Evidence-based storytelling using Tableau and Power BI"
 * **Design Choice:** Utilized a "monochromatic green" palette to focus on growth potential and avoid the judgmental bias of "red = bad".
 * **Tech used:** Tableau, Box Plots, Scatter Plot Distributions.
 
-[View Deep Dive](./social-progress/index.qmd){.btn .btn-outline-primary .btn-sm}
+[View Deep Dive](./social-progress/social_index.qmd){.btn .btn-outline-primary .btn-sm}

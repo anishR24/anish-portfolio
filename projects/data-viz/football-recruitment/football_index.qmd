@@ -5,7 +5,7 @@ format:
   html:
     toc: true
 resources:
-  - B9DA106_CA2_Report_20066423.pdf
+  - football_scouting.pdf
   - football_scouting.twbx
   - football_scouting.pbix
 ---

@@ -11,7 +11,7 @@
     "href": "index.html#featured-projects",
     "title": "Anish Rao",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\nCustomer Churn Prediction (Final M.Sc. Project): An interactive Streamlit application using Explainable AI (SHAP) to identify causal drivers of churn in Telecom and Insurance sectors. View Project\nFIFA Player Analytics (Data Viz): A comprehensive Tableau & Power BI dashboard suite analyzing global player statistics to identify high-value talent. View Dashboard`\nNYC Taxi Operational Intelligence (Data Storage): A full-scale Data Warehouse proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. View Case Study"
+    "text": "Featured Projects\n\nCustomer Churn Prediction (Final M.Sc. Project): An interactive Streamlit application using Explainable AI (SHAP) to identify causal drivers of churn in Telecom and Insurance sectors. View Project\nFIFA Player Analytics (Data Viz): A comprehensive Tableau & Power BI dashboard suite analyzing global player statistics to identify high-value talent. View Dashboard\nNYC Taxi Operational Intelligence (Data Storage): A full-scale Data Warehouse proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. View Case Study"
   },
   {
     "objectID": "projects/data-viz/index.html",
@@ -28,115 +28,136 @@
     "text": "The Challenge: Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.\n\nKey Insight: Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.\nTech used: Tableau Public, Power BI Desktop, DAX, Power Query.\n\nView Case Study & Comparison\n\n\n\n\nThe Challenge: Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.\n\nKey Insight: Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.\nDesign Choice: Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.\nTech used: Tableau, Box Plots, Scatter Plot Distributions.\n\nView Deep Dive"
   },
   {
-    "objectID": "projects/data-viz/social-progress/index.html",
-    "href": "projects/data-viz/social-progress/index.html",
+    "objectID": "projects/data-viz/social-progress/social_index.html",
+    "href": "projects/data-viz/social-progress/social_index.html",
     "title": "Global Social Progress Analysis",
     "section": "",
     "text": "This analysis explores the Social Progress Index (SPI), evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world’s most struggling nations."
   },
   {
-    "objectID": "projects/data-viz/social-progress/index.html#project-overview",
-    "href": "projects/data-viz/social-progress/index.html#project-overview",
+    "objectID": "projects/data-viz/social-progress/social_index.html#project-overview",
+    "href": "projects/data-viz/social-progress/social_index.html#project-overview",
     "title": "Global Social Progress Analysis",
     "section": "",
     "text": "This analysis explores the Social Progress Index (SPI), evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world’s most struggling nations."
   },
   {
-    "objectID": "projects/data-viz/social-progress/index.html#analytical-strategy-design",
-    "href": "projects/data-viz/social-progress/index.html#analytical-strategy-design",
-    "title": "Global Social Progress Analysis",
-    "section": "Analytical Strategy & Design",
-    "text": "Analytical Strategy & Design\nTo ensure an unbiased and professional delivery, I implemented several specific design choices:\n\nIntentional Narration Arc: The dashboard moves from broad global patterns (Distribution Analysis) to specific causal issues (Weakest Components).\nMonochromatic Palette: I chose shades of green to suggest “growth potential” and avoid the judgmental “red equals bad” bias often found in development reports.\nBottom N Parameter: Added interactivity allowing users to toggle between the bottom 10 to 30 countries to identify regional patterns."
-  },
-  {
-    "objectID": "projects/data-viz/social-progress/index.html#key-business-social-insights",
-    "href": "projects/data-viz/social-progress/index.html#key-business-social-insights",
-    "title": "Global Social Progress Analysis",
-    "section": "Key Business & Social Insights",
-    "text": "Key Business & Social Insights\n\n1. The “Inclusion” Barrier\nSurprisingly, for 50% of the bottom 10 countries, the primary weakness was not food or water, but Social Inclusion. This suggests that conflict and lack of social acceptance (regardless of gender or religion) are as detrimental to progress as resource scarcity.\n\n\n2. The Environment vs. Development Paradox\n8 out of the bottom 10 countries actually score higher in environmental quality than in basic human needs. This isn’t necessarily a policy choice, but a result of a lack of industrialization; these nations have not yet “developed enough to pollute”.\n\n\n3. The African Context\nThe analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan African. Interestingly, despite high poverty levels, no South Asian countries appeared in the bottom 10, suggesting that social progress is driven by factors beyond just income."
-  },
-  {
-    "objectID": "projects/data-viz/social-progress/index.html#technical-skills-demonstrated",
-    "href": "projects/data-viz/social-progress/index.html#technical-skills-demonstrated",
-    "title": "Global Social Progress Analysis",
-    "section": "Technical Skills Demonstrated",
-    "text": "Technical Skills Demonstrated\n\nTool: Tableau.\nVisualizations: Box Plots (for spread and outliers), Scatter Plots (correlation analysis), and Dual-Axis charts.\nCalculations: \\(R^{2}\\) correlation analysis to confirm the link between basic needs and opportunity.\n\n\n\n\n\n\n\n\nTipFull Report & Source Files\n\n\n\nFor a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.\n\n\n📄 Download Full Analysis Report (PDF) 📥 Download Tableau Workbook (.twbx)"
-  },
-  {
-    "objectID": "projects/data-viz/social-progress/index.html#interactive-dashboard",
-    "href": "projects/data-viz/social-progress/index.html#interactive-dashboard",
+    "objectID": "projects/data-viz/social-progress/social_index.html#interactive-dashboard",
+    "href": "projects/data-viz/social-progress/social_index.html#interactive-dashboard",
     "title": "Global Social Progress Analysis",
     "section": "Interactive Dashboard",
     "text": "Interactive Dashboard\nExplore the global patterns directly below. Use the “Bottom N” filter to adjust the focal point of the analysis."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html",
-    "href": "projects/data-viz/football-recruitment/index.html",
+    "objectID": "projects/data-viz/social-progress/social_index.html#analytical-strategy-design",
+    "href": "projects/data-viz/social-progress/social_index.html#analytical-strategy-design",
+    "title": "Global Social Progress Analysis",
+    "section": "Analytical Strategy & Design",
+    "text": "Analytical Strategy & Design\nTo ensure an unbiased and professional delivery, I implemented several specific design choices:\n\nIntentional Narration Arc: The dashboard moves from broad global patterns (Distribution Analysis) to specific causal issues (Weakest Components).\nMonochromatic Palette: I chose shades of green to suggest “growth potential” and avoid the judgmental “red equals bad” bias often found in development reports.\nBottom N Parameter: Added interactivity allowing users to toggle between the bottom 10 to 30 countries to identify regional patterns."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/social_index.html#key-business-social-insights",
+    "href": "projects/data-viz/social-progress/social_index.html#key-business-social-insights",
+    "title": "Global Social Progress Analysis",
+    "section": "Key Business & Social Insights",
+    "text": "Key Business & Social Insights\n\n1. The “Inclusion” Barrier\nSurprisingly, for 50% of the bottom 10 countries, the primary weakness was not food or water, but Social Inclusion. This suggests that conflict and lack of social acceptance (regardless of gender or religion) are as detrimental to progress as resource scarcity.\n\n\n2. The Environment vs. Development Paradox\n8 out of the bottom 10 countries actually score higher in environmental quality than in basic human needs. This isn’t necessarily a policy choice, but a result of a lack of industrialization; these nations have not yet “developed enough to pollute”.\n\n\n3. The African Context\nThe analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan African. Interestingly, despite high poverty levels, no South Asian countries appeared in the bottom 10, suggesting that social progress is driven by factors beyond just income."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/social_index.html#technical-skills-demonstrated",
+    "href": "projects/data-viz/social-progress/social_index.html#technical-skills-demonstrated",
+    "title": "Global Social Progress Analysis",
+    "section": "Technical Skills Demonstrated",
+    "text": "Technical Skills Demonstrated\n\nTool: Tableau.\nVisualizations: Box Plots (for spread and outliers), Scatter Plots (correlation analysis), and Dual-Axis charts.\nCalculations: \\(R^{2}\\) correlation analysis to confirm the link between basic needs and opportunity.\n\n\n\n\n\n\n\n\nTipFull Report & Source Files\n\n\n\nFor a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.\n\n\n📄 Download Full Analysis Report (PDF) 📥 Download Tableau Workbook (.twbx)"
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/football_index.html",
+    "href": "projects/data-viz/football-recruitment/football_index.html",
     "title": "Football Recruitment: Tableau vs. Power BI",
     "section": "",
     "text": "This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#project-overview",
-    "href": "projects/data-viz/football-recruitment/index.html#project-overview",
+    "objectID": "projects/data-viz/football-recruitment/football_index.html#project-overview",
+    "href": "projects/data-viz/football-recruitment/football_index.html#project-overview",
     "title": "Football Recruitment: Tableau vs. Power BI",
     "section": "",
     "text": "This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#the-dashboards",
-    "href": "projects/data-viz/football-recruitment/index.html#the-dashboards",
+    "objectID": "projects/data-viz/football-recruitment/football_index.html#the-dashboards",
+    "href": "projects/data-viz/football-recruitment/football_index.html#the-dashboards",
     "title": "Football Recruitment: Tableau vs. Power BI",
     "section": "The Dashboards",
     "text": "The Dashboards\n\nTableau Implementation\nTableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.\n\n\n                   \n\n\n\n   \nFeature Spotlight: Player Profiling Radar Charts Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized Radar Chart profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.\n\n\n\n\n\n\nTableau Radar Chart Extension - Player Profiling\n\n\n\n\n\n\n\nPower BI Implementation\nPower BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.\nNote: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.\n\n\n\nFootball Recruitment Dashboard - Power BI Interface\n\n\n\n\n\n\n\n\n\nImportantClick to expand Live Interactive Dashboard\n\n\n\n\n\nNote: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#critical-tool-reflection",
-    "href": "projects/data-viz/football-recruitment/index.html#critical-tool-reflection",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "Critical Tool Reflection",
-    "text": "Critical Tool Reflection\nBased on the development of these identical dashboards, here is my professional evaluation of both platforms:\n\n\n\n\n\n\n\n\nFeature\nTableau\nPower BI\n\n\n\n\nData Transformation\nQuick in-context calcs (SPLIT)\nRobust Power Query (M Language)\n\n\nVisual Flexibility\nHigh (Precise label positioning)\nMedium (Standardized grid)\n\n\nSpecialized Visuals\nRequires Extensions (e.g., Radar)\nNative Support (Custom Visuals)\n\n\nUser Experience\nSuperior Interactivity\nSuperior Data Modeling\n\n\n\nThe Verdict: Tableau is the winner for high-impact, creative storytelling where design is paramount. Power BI is the more efficient choice for enterprise-level data processing and rapid deployment."
-  },
-  {
-    "objectID": "projects/data-viz/football-recruitment/index.html#technical-challenges-the-radar-chart",
-    "href": "projects/data-viz/football-recruitment/index.html#technical-challenges-the-radar-chart",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "Technical Challenges: The Radar Chart",
-    "text": "Technical Challenges: The Radar Chart\nOne significant challenge was implementing a Radar Chart to compare player profiles (e.g., Casemiro vs. J. Kimmich). * In Tableau, this required an external extension, which provided high visual fidelity but limited portability on Tableau Public. * In Power BI, this was handled via a native custom visual, allowing for a more stable deployment.\n\n📄 Download Comparative Report (PDF)"
-  },
-  {
-    "objectID": "projects/data-viz/football-recruitment/index.html#download-project-files",
-    "href": "projects/data-viz/football-recruitment/index.html#download-project-files",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "Download Project Files",
-    "text": "Download Project Files\nIf you have Tableau Desktop or Power BI Desktop installed, you can download the source files below to explore the data models, DAX measures, and calculated fields.\n\n\n\nFile Type\nTool\nDownload Link\n\n\n\n\nTableau Packaged Workbook\nTableau\n📥 Download .twbx\n\n\nPower BI Project\nPower BI\n📥 Download .pbix\n\n\nFull Comparative Report\nPDF\n📄 Download PDF"
-  },
-  {
-    "objectID": "projects/data-viz/football-recruitment/index.html#technical-implementation-evaluation",
-    "href": "projects/data-viz/football-recruitment/index.html#technical-implementation-evaluation",
+    "objectID": "projects/data-viz/football-recruitment/football_index.html#technical-implementation-evaluation",
+    "href": "projects/data-viz/football-recruitment/football_index.html#technical-implementation-evaluation",
     "title": "Football Recruitment: Tableau vs. Power BI",
     "section": "Technical Implementation & Evaluation",
     "text": "Technical Implementation & Evaluation\nDuring development, several key differences between the platforms were identified:\n\nData Transformation: Power BI’s Power Query (M Language) provided more robust data cleaning options, while Tableau’s in-context calculations (SPLIT functions) were faster for quick field creation.\nVisual Flexibility: Tableau allowed for more precise label positioning and custom “workarounds” for complex chart types.\nRadar Chart Challenge: Implementing a Radar Chart for player profiling required an external extension in Tableau but was supported via native custom visuals in Power BI.\n\n\n\n\n\n\n\nTipComparative Analysis & Project Files\n\n\n\nThis project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.\n\n\n📄 Download Comparative Report (PDF) 📥 Download Tableau (.twbx) 📥 Download Power BI (.pbix)"
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#yaml",
-    "href": "projects/data-viz/football-recruitment/index.html#yaml",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "YAML",
-    "text": "YAML\ntitle: “Football Recruitment: Tableau vs. Power BI” subtitle: “A Comparative Analysis of Business Intelligence Platforms” format: html: toc: true resources: - B9DA106_CA2_Report_20066423.pdf - football_scouting.twbx - football_scouting.pbix —"
+    "objectID": "projects/taxi-dw/taxi_index.html",
+    "href": "projects/taxi-dw/taxi_index.html",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "",
+    "text": "This project demonstrates the full Business Intelligence lifecycle, transforming 2.8 million raw taxi records into an optimized Data Warehouse. The goal was to provide a “Director of Recruitment” with actionable insights into driver performance and geographic demand using a robust SQL Server foundation."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#project-overview-1",
-    "href": "projects/data-viz/football-recruitment/index.html#project-overview-1",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "Project Overview",
-    "text": "Project Overview\nThis project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity."
+    "objectID": "projects/taxi-dw/taxi_index.html#project-overview",
+    "href": "projects/taxi-dw/taxi_index.html#project-overview",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "",
+    "text": "This project demonstrates the full Business Intelligence lifecycle, transforming 2.8 million raw taxi records into an optimized Data Warehouse. The goal was to provide a “Director of Recruitment” with actionable insights into driver performance and geographic demand using a robust SQL Server foundation."
   },
   {
-    "objectID": "projects/data-viz/football-recruitment/index.html#the-dashboards-1",
-    "href": "projects/data-viz/football-recruitment/index.html#the-dashboards-1",
-    "title": "Football Recruitment: Tableau vs. Power BI",
-    "section": "The Dashboards",
-    "text": "The Dashboards\n\nTableau Implementation\nTableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.\nFeature Spotlight: Player Profiling Radar Charts Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized Radar Chart profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.\n\n\n\nTableau Radar Chart Extension - Player Profiling\n\n\n\n\n                   \n\n\n\n\n\nPower BI Implementation\nPower BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.\nNote: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.\n\n\n\nFootball Recruitment Dashboard - Power BI Interface\n\n\n\n\n\n\n\n\nImportantClick to expand Live Interactive Dashboard\n\n\n\n\n\nNote: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page."
+    "objectID": "projects/taxi-dw/taxi_index.html#phase-1-dimensional-modeling-ssms",
+    "href": "projects/taxi-dw/taxi_index.html#phase-1-dimensional-modeling-ssms",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "Phase 1: Dimensional Modeling (SSMS)",
+    "text": "Phase 1: Dimensional Modeling (SSMS)\nThe core of this solution is a Star Schema implemented within a custom taxi schema in SQL Server. By moving away from a flat-file structure, we optimized the database for analytical speed and enforced strict referential integrity.\n\nThe Architectural Blueprint\nI designed a central Fact Table (FactTaxiTrip) connected to four specialized Dimensions. This structure allows stakeholders to filter millions of rows by Vendor, Location, Payment Type, or Date in milliseconds.\n\n\n\nNYC Taxi Star Schema - Database Diagram\n\n\n\n\nSQL Implementation: Schema & Tables\nBelow is the core DDL (Data Definition Language) used to establish the warehouse structure.\n// 1. Database and Schema Setup\nCREATE DATABASE NYC_Taxi_DW;\nGO\nUSE NYC_Taxi_DW;\nGO\nCREATE SCHEMA taxi;\nGO\n\n// 2. Creating the Dimension for Service Locations\nCREATE TABLE taxi.FactTaxiTrip (\n    TripID BIGINT IDENTITY(1,1) PRIMARY KEY,\n    DateID INT NOT NULL,\n    VendorID INT NOT NULL,\n    PickupLocationID INT NOT NULL,\n    DropoffLocationID INT NOT NULL,\n    PaymentTypeID INT NOT NULL,\n\n    PickupDateTime DATETIME2 NOT NULL,\n    DropoffDateTime DATETIME2 NOT NULL,\n    PickupHour AS (DATEPART(HOUR, PickupDateTime)) PERSISTED,\n\n    TripDistance DECIMAL(8,2),\n    TipAmount DECIMAL(10,2),\n    TotalAmount DECIMAL(10,2),\n\n    CONSTRAINT FK_Fact_Date FOREIGN KEY (DateID) REFERENCES taxi.DimDate(DateID),\n    CONSTRAINT FK_Fact_Vendor FOREIGN KEY (VendorID) REFERENCES taxi.DimVendor(VendorID),\n    CONSTRAINT FK_Fact_PickupLocation FOREIGN KEY (PickupLocationID) REFERENCES taxi.DimLocation(LocationID),\n    CONSTRAINT FK_Fact_DropoffLocation FOREIGN KEY (DropoffLocationID) REFERENCES taxi.DimLocation(LocationID),\n    CONSTRAINT FK_Fact_Payment FOREIGN KEY (PaymentTypeID) REFERENCES taxi.DimPaymentType(PaymentTypeID)\n);\n\n\n\n\n\n\nNoteView Dimension Table Setup (DDL)\n\n\n\n\n\nThese scripts establish the lookup tables for Dates, Vendors, Locations, and Payment Types.\nCREATE TABLE taxi.DimDate (\n    DateID INT PRIMARY KEY,\n    Date DATE NOT NULL,\n    Year INT NOT NULL,\n    Month INT NOT NULL,\n    DayOfWeek INT NOT NULL,\n    DayName VARCHAR(10) NOT NULL,\n    Quarter INT NOT NULL,\n    IsWeekend BIT NOT NULL\n);\n\nCREATE TABLE taxi.DimVendor (\n    VendorID INT PRIMARY KEY,\n    VendorName VARCHAR(100) NOT NULL,\n    VendorCode VARCHAR(10) NOT NULL,\n    IsActive BIT NOT NULL DEFAULT 1\n);\n\nCREATE TABLE taxi.DimLocation (\n    LocationID INT PRIMARY KEY,\n    Zone VARCHAR(100) NOT NULL,\n    Borough VARCHAR(50) NOT NULL,\n    ServiceZone VARCHAR(50) NOT NULL,\n    IsAirport BIT NOT NULL DEFAULT 0,\n    TrafficDensity VARCHAR(20) NOT NULL DEFAULT 'Medium'\n);\n\nCREATE TABLE taxi.DimPaymentType (\n    PaymentTypeID INT PRIMARY KEY,\n    PaymentMethod VARCHAR(50) NOT NULL,\n    PaymentCategory VARCHAR(30) NOT NULL,\n    RequiresProcessing BIT NOT NULL DEFAULT 0\n);\n\n\n\n\n\nPerformance Optimization: Indexing Strategy\nTo handle the scale of 2.8 million records, I implemented a non-clustered indexing strategy. This specifically targets the “hot” columns used in our SSRS and Tableau reports, such as DateID and PickupHour.\nCREATE NONCLUSTERED INDEX IX_Fact_DateID \nON taxi.FactTaxiTrip(DateID) \nINCLUDE (TotalAmount, TripDistance);\n\nCREATE NONCLUSTERED INDEX IX_Fact_VendorID \nON taxi.FactTaxiTrip(VendorID, DateID) \nINCLUDE (TotalAmount);\n\nCREATE NONCLUSTERED INDEX IX_Fact_PickupHour \nON taxi.FactTaxiTrip(PickupHour) \nINCLUDE (TotalAmount, TripDistance);\n\nCREATE NONCLUSTERED INDEX IX_Fact_Locations \nON taxi.FactTaxiTrip(PickupLocationID, DropoffLocationID) \nINCLUDE (TotalAmount, TripDistance);\n\n\n\n\n\n\nTipPhase 1 Downloads\n\n\n\nThe technical architecture and full SQL scripts are available below.\n\n\n📥 Download SQL Scripts (.sql)"
+  },
+  {
+    "objectID": "projects/data-viz/viz_index.html",
+    "href": "projects/data-viz/viz_index.html",
+    "title": "Data Visualization & Business Intelligence",
+    "section": "",
+    "text": "The Challenge: Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.\n\nKey Insight: Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.\nTech used: Tableau Public, Power BI Desktop, DAX, Power Query.\n\nView Case Study & Comparison\n\n\n\n\nThe Challenge: Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.\n\nKey Insight: Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.\nDesign Choice: Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.\nTech used: Tableau, Box Plots, Scatter Plot Distributions.\n\nView Deep Dive"
+  },
+  {
+    "objectID": "projects/data-viz/viz_index.html#featured-projects",
+    "href": "projects/data-viz/viz_index.html#featured-projects",
+    "title": "Data Visualization & Business Intelligence",
+    "section": "",
+    "text": "The Challenge: Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.\n\nKey Insight: Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.\nTech used: Tableau Public, Power BI Desktop, DAX, Power Query.\n\nView Case Study & Comparison\n\n\n\n\nThe Challenge: Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.\n\nKey Insight: Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.\nDesign Choice: Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.\nTech used: Tableau, Box Plots, Scatter Plot Distributions.\n\nView Deep Dive"
+  },
+  {
+    "objectID": "projects/taxi-dw/taxi_index.html#phase-2-automated-etl-pipeline-ssis",
+    "href": "projects/taxi-dw/taxi_index.html#phase-2-automated-etl-pipeline-ssis",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "Phase 2: Automated ETL Pipeline (SSIS)",
+    "text": "Phase 2: Automated ETL Pipeline (SSIS)\nWith the Data Warehouse structure ready, I developed an automated Extraction, Transformation, and Loading (ETL) process using SQL Server Integration Services (SSIS). This pipeline ensures that raw, messy taxi data is cleaned and standardized before hitting the production tables. The process involves extracting data from flat files, performing lookups to match dimension keys, and handling data quality issues in real-time.\n\n1. Control Flow Overview\nThe Control Flow serves as the orchestrator of the entire process. It handles environment cleanup (truncating old data) and ensures that Dimensions are fully populated before the Fact table begins its load to maintain referential integrity.\n\n\n\nSSIS Control Flow - Automated Pipeline\n\n\n\n\n\n\n\n\nNoteView Execute SQL Tasks (Cleanup & Seed Data)\n\n\n\n\n\nThese scripts run at the start of the pipeline to truncate staging tables and populate static dimension members (Date, Vendor, Payment Type) via Execute SQL Tasks.\n// Clear All Tables (Cleanup for running multiple times)\nTRUNCATE TABLE taxi.FactTaxiTrip;\nDELETE FROM taxi.DimLocation WHERE LocationID != 999;\nDELETE FROM taxi.DimPaymentType;\nDELETE FROM taxi.DimVendor;\nDELETE FROM taxi.DimDate;\n// Populate Payment & Vendor Tables (Values from NYC Taxi website data guide)\nINSERT INTO taxi.DimPaymentType (PaymentTypeID, PaymentMethod, PaymentCategory, RequiresProcessing) VALUES\n(0, 'Flex Fare trip', 'Variable', 1),\n(1, 'Credit card', 'Electronic', 1),\n(2, 'Cash', 'Physical', 0),\n(3, 'No charge', 'Comp', 0),\n(4, 'Dispute', 'Issue', 1),\n(5, 'Unknown', 'Other', 0),\n(6, 'Voided trip', 'Cancelled', 0),\n(99, 'Missing/Error', 'Error', 0);\n\nINSERT INTO taxi.DimVendor (VendorID, VendorName, VendorCode, IsActive) VALUES\n(1, 'Creative Mobile Technologies, LLC', 'CMT', 1),\n(2, 'Curb Mobility, LLC', 'CURB', 1), \n(6, 'Myle Technologies Inc', 'MYLE', 1),\n(7, 'Helix', 'HELIX', 1),\n(99, 'Unknown/Missing', 'UNK', 0);\n// Populate Date Table (Dates from 1-31 Jan and 31Dec, 2Feb)\nDECLARE @StartDate DATE = '2024-01-01';\nDECLARE @EndDate DATE = '2024-01-31';\n\nWHILE @StartDate &lt;= @EndDate\nBEGIN\n    INSERT INTO taxi.DimDate VALUES (\n        CAST(CONVERT(VARCHAR(8), @StartDate, 112) AS INT),\n        @StartDate,\n        YEAR(@StartDate),\n        MONTH(@StartDate),\n        DATEPART(WEEKDAY, @StartDate),\n        DATENAME(WEEKDAY, @StartDate),\n        DATEPART(QUARTER, @StartDate),\n        CASE WHEN DATENAME(WEEKDAY, @StartDate) IN ('Saturday', 'Sunday') THEN 1 ELSE 0 END\n    );\n    SET @StartDate = DATEADD(DAY, 1, @StartDate);\nEND\n\nINSERT INTO taxi.DimDate (DateID, Date, Year, Month, DayOfWeek, DayName, Quarter, IsWeekend)\nVALUES (20231231, '2023-12-31', 2023, 12,1, 'Sunday', 4, 1),\nVALUES (20240201, '2024-02-01', 2024, 2, 5, 'Thursday', 1, 0);\n\n\n\n\n\n2. Data Flow: Location Dimension\n\n\n\nLocation Table Dataflow\n\n\nTransformation Logic:\n\nDerived Column (CleanBorough): Used to remove unwanted characters from raw strings.\nDerived Column (Feature Engineering): Created logic to flag airport zones and categorize traffic density based on borough location.\n\n// DerivedColumn1 (remove quotes for parsing) -\nCleanBorough =&gt; REPLACE([\"Borough\"],\"\\\"\",\"\")\n\n// DerivedColumn2 -\nIsAirport =&gt; FINDSTRING([\"Zone\"],\"Airport\",1) &gt; 0 ? (DT_BOOL)1 : (DT_BOOL)0\nTrafficDensity =&gt; (DT_STR,20,1252)(CleanBorough == \"Manhattan\" ? \"High\" : (CleanBorough == \"Brooklyn\" || CleanBorough == \"Queens\" || CleanBorough == \"Bronx\" ? \"Medium\" : \"Low\"))\n\n\n3. Data Flow: Fact Table\nThe Fact table’s Data Flow is the most complex, involving multiple transformations to ensure data quality and consistency. \nTransformation Logic:\n\nDerived Column: Standardizes null strings into “Unknown” keys (99/999) and converts date strings into DateID integers.\nConditional Split: Filters the dataset to only include the specific scouting window requested.\nData Conversion: Explicitly casts types to match the SQL Warehouse schema.\n\nDateID (new column) =&gt; (DT_I4)REPLACE(SUBSTRING([\"tpep_pickup_datetime\"],1,10),\"-\",\"\")\nPickupDateTime (new column) =&gt; (DT_DBTIMESTAMP2,0)[\"tpep_pickup_datetime\"]\nDropOffDateTime (new column) =&gt; (DT_DBTIMESTAMP2,0)[\"tpep_dropoff_datetime\"]\nCleanVendorID(new column) =&gt; [\"VendorID\"] == \"\\N\" ? \"99\" : [\"VendorID\"]\nCleanPaymentType (new column) =&gt; [\"payment_type\"] == \"\\N\" ? \"99\" : [\"payment_type\"]\nCleanLocationPickup (new column) =&gt; [\"PULocationID\"] == \"\\N\" ? \"999\" : [\"PULocationID\"]\nCleanLocationDropoff (new column) =&gt; [\"DOLocationID\"] == \"\\N\" ? \"999\" : [\"DOLocationID\"]\nCleanTripDistance (new column) =&gt; [\"trip_distance\"] == \"\\N\" ? \"0\" : [\"trip_distance\"]\nCleanTipAmount (new column) =&gt; [\"tip_amount\"] == \"\\N\" ? \"0\" : [\"tip_amount\"]\nCleanTotalAmount (new column) =&gt; [\"total_amount\"] == \"\\N\" ? \"0\" : [\"total_amount\"]\n\n// ConditionalSplit (include only values in range)-\nDateID &gt;= 20231231 && DateID &lt;= 20240201\n\n// DataConversion -\nCleanVendorID, CleanPaymentType, CleanLocationPickup, CleanLocationDropoff =&gt; four-byte signed integer [DT_I4]\nCleanTripDistance, CleanTipAmount, CleanTotalAmount =&gt; numeric [DT_NUMERIC]\n\n\n\n\n\n\n\nTipPhase 2 Technical Assets\n\n\n\nThe complete ETL logic, including the SSIS packages and supporting SQL initialization scripts, is available in the unified project archive below.\n\n\n\n\n\n📥 Download SSIS Project Archive (.zip)"
+  },
+  {
+    "objectID": "projects/taxi-dw/taxi_index.html#phase-3-operational-reporting-ssrs",
+    "href": "projects/taxi-dw/taxi_index.html#phase-3-operational-reporting-ssrs",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "Phase 3: Operational Reporting (SSRS)",
+    "text": "Phase 3: Operational Reporting (SSRS)"
+  },
+  {
+    "objectID": "projects/taxi-dw/taxi_index.html#phase-4-visual-analytics-tableau",
+    "href": "projects/taxi-dw/taxi_index.html#phase-4-visual-analytics-tableau",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "Phase 4: Visual Analytics (Tableau)",
+    "text": "Phase 4: Visual Analytics (Tableau)"
+  },
+  {
+    "objectID": "projects/taxi-dw/taxi_index.html#project-roadmap",
+    "href": "projects/taxi-dw/taxi_index.html#project-roadmap",
+    "title": "NYC Taxi Operational Intelligence",
+    "section": "Project Roadmap",
+    "text": "Project Roadmap\n\nPhase 1: Modeling Phase 2: ETL Pipeline Phase 3: SSRS Reports Phase 4: Tableau Dashboard"
   }
 ]

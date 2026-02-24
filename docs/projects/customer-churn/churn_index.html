@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Football Recruitment: Tableau vs.&nbsp;Power BI – Anish Rao</title>
+<title>Customer Churn Prediction – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../favicon.png" rel="icon" type="image/png">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Anish Rao</span>
     </a>
   </div>
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -101,11 +101,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="../../../projects/data-viz/index.html">
+    <a class="dropdown-item" href="../../projects/data-viz/viz_index.qmd">
  <span class="dropdown-text">Data Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/taxi-dw/index.qmd">
+    <a class="dropdown-item" href="../../projects/taxi-dw/taxi_index.html">
  <span class="dropdown-text">NYC Taxi Data Warehouse</span></a>
   </li>  
     </ul>
@@ -121,28 +121,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#the-dashboards" id="toc-the-dashboards" class="nav-link" data-scroll-target="#the-dashboards">The Dashboards</a>
-  <ul class="collapse">
-  <li><a href="#tableau-implementation" id="toc-tableau-implementation" class="nav-link" data-scroll-target="#tableau-implementation">Tableau Implementation</a></li>
-  <li><a href="#power-bi-implementation" id="toc-power-bi-implementation" class="nav-link" data-scroll-target="#power-bi-implementation">Power BI Implementation</a></li>
-  </ul></li>
-  <li><a href="#technical-implementation-evaluation" id="toc-technical-implementation-evaluation" class="nav-link" data-scroll-target="#technical-implementation-evaluation">Technical Implementation &amp; Evaluation</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Football Recruitment: Tableau vs.&nbsp;Power BI</h1>
-<p class="subtitle lead">A Comparative Analysis of Business Intelligence Platforms</p>
+<h1 class="title">Customer Churn Prediction</h1>
+<p class="subtitle lead">WORK IN PROGRESS</p>
 </div>
 
 
@@ -159,106 +147,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both <strong>Tableau</strong> and <strong>Power BI</strong>. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.</p>
-</section>
-<section id="the-dashboards" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="the-dashboards">The Dashboards</h2>
-<section id="tableau-implementation" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="tableau-implementation">Tableau Implementation</h3>
-<p>Tableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.</p>
-<div class="column-page">
-<div id="viz1771937537024" class="tableauPlaceholder" style="position: relative">
-<p><noscript> <a href="#"> <img alt="Final Dashboard " src="https://public.tableau.com/static/images/Fi/Final_Draft_CA1/FinalDashboard/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="Final_Draft_CA1/FinalDashboard"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Fi/Final_Draft_CA1/FinalDashboard/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object></p>
-</div>
-<script type="text/javascript">                    
-  var divElement = document.getElementById('viz1771937537024');                    
-  var vizElement = divElement.getElementsByTagName('object')[0];                    
-  if ( divElement.offsetWidth > 800 ) { 
-    vizElement.style.width='100%';vizElement.style.height='850px';
-  } else if ( divElement.offsetWidth > 500 ) { 
-    vizElement.style.width='100%';vizElement.style.height='850px';
-  } else { 
-    vizElement.style.width='100%';vizElement.style.height='2227px';
-  }                     
-  var scriptElement = document.createElement('script');                    
-  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-  vizElement.parentNode.insertBefore(scriptElement, vizElement);                
-</script>
-</div>
-<p>&nbsp; &nbsp;</p>
-<p><strong>Feature Spotlight: Player Profiling Radar Charts</strong> Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized <strong>Radar Chart</strong> profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.</p>
-<div class="quarto-layout-panel" style="margin: auto; width: 50%;" data-layout-ncol="1">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Radar.png" class="border shadow rounded img-fluid figure-img"></p>
-<figcaption>Tableau Radar Chart Extension - Player Profiling</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="power-bi-implementation" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="power-bi-implementation">Power BI Implementation</h3>
-<p>Power BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.</p>
-<p><em>Note: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="PowerBI.png" class="border shadow img-fluid figure-img"></p>
-<figcaption>Football Recruitment Dashboard - Power BI Interface</figcaption>
-</figure>
-</div>
-<div class="column-page">
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Click to expand Live Interactive Dashboard
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><em>Note: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page.</em></p>
-<iframe title="Football Recruitment" width="100%" height="600px" src="https://app.powerbi.com/reportEmbed?reportId=6c45ced1-6473-4af4-b49a-9a8b1ef412ab&amp;autoAuth=true&amp;ctid=5d0aa6ea-6620-4863-9e21-9ecb140222bc" frameborder="0" allowfullscreen="true">
-</iframe>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="technical-implementation-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="technical-implementation-evaluation">Technical Implementation &amp; Evaluation</h2>
-<p>During development, several key differences between the platforms were identified:</p>
-<ul>
-<li><strong>Data Transformation:</strong> Power BI’s <strong>Power Query</strong> (M Language) provided more robust data cleaning options, while Tableau’s <strong>in-context calculations</strong> (SPLIT functions) were faster for quick field creation.</li>
-<li><strong>Visual Flexibility:</strong> Tableau allowed for more precise label positioning and custom “workarounds” for complex chart types.</li>
-<li><strong>Radar Chart Challenge:</strong> Implementing a Radar Chart for player profiling required an external extension in Tableau but was supported via native custom visuals in Power BI.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Comparative Analysis &amp; Project Files
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.</p>
-</div>
-</div>
-<p><a href="football_scouting.pdf" class="btn btn-outline-primary rounded-pill px-4">📄 Download Comparative Report (PDF)</a> <a href="football_scouting.twbx" class="btn btn-outline-primary rounded-pill px-4">📥 Download Tableau (.twbx)</a> <a href="football_scouting.pbix" class="btn btn-outline-primary rounded-pill px-4">📥 Download Power BI (.pbix)</a></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

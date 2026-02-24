@@ -11,10 +11,12 @@ website:
         text: Home
       - text: Projects
         menu:
-          - href: projects/data-viz/index.qmd
+          - href: projects/data-viz/viz_index.qmd
             text: Data Visualization
-          - href: projects/taxi-dw/index.qmd
+          - href: projects/taxi-dw/taxi_index.qmd
             text: NYC Taxi Data Warehouse
+          - href: projects/churn-prediction/churn_index.qmd
+            text: Customer Churn Prediction
 
 format:
   html:
