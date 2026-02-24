@@ -1,0 +1,90 @@
+---
+title: "Global Social Progress Analysis"
+subtitle: "Moving Beyond GDP to Measure Quality of Life"
+format:
+  html:
+    toc: true
+    code-fold: true
+resources:
+  - B9DA106_CA1_Anish_20066423.pdf
+---
+
+## Project Overview
+This analysis explores the **Social Progress Index (SPI)**, evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world's most struggling nations.
+
+## Interactive Dashboard
+Explore the global patterns directly below. Use the "Bottom N" filter to adjust the focal point of the analysis.
+
+::: {.column-page}
+<div class='tableauPlaceholder' id='viz1771936843172' style='position: relative'>
+  <noscript>
+    <a href='#'>
+      <img alt='Final Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;B9&#47;B9DA106_CA1_Anish_20066423&#47;FinalDashboard&#47;1_rss.png' style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz' style='display:none;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+    <param name='embed_code_version' value='3' /> 
+    <param name='site_root' value='' />
+    <param name='name' value='B9DA106_CA1_Anish_20066423&#47;FinalDashboard' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;B9&#47;B9DA106_CA1_Anish_20066423&#47;FinalDashboard&#47;1.png' /> 
+    <param name='animate_transition' value='yes' />
+    <param name='display_static_image' value='yes' />
+    <param name='display_spinner' value='yes' />
+    <param name='display_overlay' value='yes' />
+    <param name='display_count' value='yes' />
+    <param name='language' value='en-US' />
+  </object>
+</div>                
+<script type='text/javascript'>                    
+  var divElement = document.getElementById('viz1771936843172');                    
+  var vizElement = divElement.getElementsByTagName('object')[0];                    
+  if ( divElement.offsetWidth > 800 ) { 
+    vizElement.style.width='100%';vizElement.style.height='850px';
+  } else if ( divElement.offsetWidth > 500 ) { 
+    vizElement.style.width='100%';vizElement.style.height='850px';
+  } else { 
+    vizElement.style.width='100%';vizElement.style.height='1677px';
+  }                     
+  var scriptElement = document.createElement('script');                    
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+</script>
+:::
+
+## Analytical Strategy & Design
+To ensure an unbiased and professional delivery, I implemented several specific design choices:
+
+* **Intentional Narration Arc:** The dashboard moves from broad global patterns (Distribution Analysis) to specific causal issues (Weakest Components).
+* **Monochromatic Palette:** I chose shades of green to suggest "growth potential" and avoid the judgmental "red equals bad" bias often found in development reports.
+* **Bottom N Parameter:** Added interactivity allowing users to toggle between the bottom 10 to 30 countries to identify regional patterns.
+
+## Key Business & Social Insights
+
+### 1. The "Inclusion" Barrier
+Surprisingly, for 50% of the bottom 10 countries, the primary weakness was not food or water, but **Social Inclusion**. This suggests that conflict and lack of social acceptance (regardless of gender or religion) are as detrimental to progress as resource scarcity.
+
+### 2. The Environment vs. Development Paradox
+8 out of the bottom 10 countries actually score *higher* in environmental quality than in basic human needs. This isn't necessarily a policy choice, but a result of a lack of industrialization; these nations have not yet "developed enough to pollute".
+
+### 3. The African Context
+The analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan African. Interestingly, despite high poverty levels, no South Asian countries appeared in the bottom 10, suggesting that social progress is driven by factors beyond just income.
+
+
+
+## Technical Skills Demonstrated
+* **Tool:** Tableau.
+* **Visualizations:** Box Plots (for spread and outliers), Scatter Plots (correlation analysis), and Dual-Axis charts.
+* **Calculations:** $R^{2}$ correlation analysis to confirm the link between basic needs and opportunity.
+
+---
+
+::: {.callout-tip}
+## Full Report & Source Files
+For a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.
+:::
+
+[📄 Download Full Analysis Report (PDF)](social_progress_analysis.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau Workbook (.twbx)](social_progress_analysis.twbx){.btn .btn-outline-primary .rounded-pill .px-4}

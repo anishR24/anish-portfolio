@@ -1,0 +1,25 @@
+---
+title: "Data Visualization & Business Intelligence"
+subtitle: "Evidence-based storytelling using Tableau and Power BI"
+---
+
+## Featured Projects
+
+### Football Recruitment: Tableau vs. Power BI
+**The Challenge:** Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.
+
+* **Key Insight:** Tableau offered superior customization for "pixel-perfect" needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.
+* **Tech used:** Tableau Public, Power BI Desktop, DAX, Power Query.
+
+[View Case Study & Comparison](./football-recruitment/index.qmd){.btn .btn-outline-primary .btn-sm}
+
+---
+
+### Global Social Progress Analysis
+**The Challenge:** Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world's most struggling nations.
+
+* **Key Insight:** Analysis revealed that "Social Inclusion" (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.
+* **Design Choice:** Utilized a "monochromatic green" palette to focus on growth potential and avoid the judgmental bias of "red = bad".
+* **Tech used:** Tableau, Box Plots, Scatter Plot Distributions.
+
+[View Deep Dive](./social-progress/index.qmd){.btn .btn-outline-primary .btn-sm}

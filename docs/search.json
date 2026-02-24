@@ -12,5 +12,131 @@
     "title": "Anish Rao",
     "section": "Featured Projects",
     "text": "Featured Projects\n\nCustomer Churn Prediction (Final M.Sc. Project): An interactive Streamlit application using Explainable AI (SHAP) to identify causal drivers of churn in Telecom and Insurance sectors. View Project\nFIFA Player Analytics (Data Viz): A comprehensive Tableau & Power BI dashboard suite analyzing global player statistics to identify high-value talent. View Dashboard`\nNYC Taxi Operational Intelligence (Data Storage): A full-scale Data Warehouse proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. View Case Study"
+  },
+  {
+    "objectID": "projects/data-viz/index.html",
+    "href": "projects/data-viz/index.html",
+    "title": "Data Visualization & Business Intelligence",
+    "section": "",
+    "text": "The Challenge: Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.\n\nKey Insight: Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.\nTech used: Tableau Public, Power BI Desktop, DAX, Power Query.\n\nView Case Study & Comparison\n\n\n\n\nThe Challenge: Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.\n\nKey Insight: Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.\nDesign Choice: Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.\nTech used: Tableau, Box Plots, Scatter Plot Distributions.\n\nView Deep Dive"
+  },
+  {
+    "objectID": "projects/data-viz/index.html#featured-projects",
+    "href": "projects/data-viz/index.html#featured-projects",
+    "title": "Data Visualization & Business Intelligence",
+    "section": "",
+    "text": "The Challenge: Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.\n\nKey Insight: Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.\nTech used: Tableau Public, Power BI Desktop, DAX, Power Query.\n\nView Case Study & Comparison\n\n\n\n\nThe Challenge: Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.\n\nKey Insight: Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.\nDesign Choice: Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.\nTech used: Tableau, Box Plots, Scatter Plot Distributions.\n\nView Deep Dive"
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html",
+    "href": "projects/data-viz/social-progress/index.html",
+    "title": "Global Social Progress Analysis",
+    "section": "",
+    "text": "This analysis explores the Social Progress Index (SPI), evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world’s most struggling nations."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html#project-overview",
+    "href": "projects/data-viz/social-progress/index.html#project-overview",
+    "title": "Global Social Progress Analysis",
+    "section": "",
+    "text": "This analysis explores the Social Progress Index (SPI), evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world’s most struggling nations."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html#analytical-strategy-design",
+    "href": "projects/data-viz/social-progress/index.html#analytical-strategy-design",
+    "title": "Global Social Progress Analysis",
+    "section": "Analytical Strategy & Design",
+    "text": "Analytical Strategy & Design\nTo ensure an unbiased and professional delivery, I implemented several specific design choices:\n\nIntentional Narration Arc: The dashboard moves from broad global patterns (Distribution Analysis) to specific causal issues (Weakest Components).\nMonochromatic Palette: I chose shades of green to suggest “growth potential” and avoid the judgmental “red equals bad” bias often found in development reports.\nBottom N Parameter: Added interactivity allowing users to toggle between the bottom 10 to 30 countries to identify regional patterns."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html#key-business-social-insights",
+    "href": "projects/data-viz/social-progress/index.html#key-business-social-insights",
+    "title": "Global Social Progress Analysis",
+    "section": "Key Business & Social Insights",
+    "text": "Key Business & Social Insights\n\n1. The “Inclusion” Barrier\nSurprisingly, for 50% of the bottom 10 countries, the primary weakness was not food or water, but Social Inclusion. This suggests that conflict and lack of social acceptance (regardless of gender or religion) are as detrimental to progress as resource scarcity.\n\n\n2. The Environment vs. Development Paradox\n8 out of the bottom 10 countries actually score higher in environmental quality than in basic human needs. This isn’t necessarily a policy choice, but a result of a lack of industrialization; these nations have not yet “developed enough to pollute”.\n\n\n3. The African Context\nThe analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan African. Interestingly, despite high poverty levels, no South Asian countries appeared in the bottom 10, suggesting that social progress is driven by factors beyond just income."
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html#technical-skills-demonstrated",
+    "href": "projects/data-viz/social-progress/index.html#technical-skills-demonstrated",
+    "title": "Global Social Progress Analysis",
+    "section": "Technical Skills Demonstrated",
+    "text": "Technical Skills Demonstrated\n\nTool: Tableau.\nVisualizations: Box Plots (for spread and outliers), Scatter Plots (correlation analysis), and Dual-Axis charts.\nCalculations: \\(R^{2}\\) correlation analysis to confirm the link between basic needs and opportunity.\n\n\n\n\n\n\n\n\nTipFull Report & Source Files\n\n\n\nFor a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.\n\n\n📄 Download Full Analysis Report (PDF) 📥 Download Tableau Workbook (.twbx)"
+  },
+  {
+    "objectID": "projects/data-viz/social-progress/index.html#interactive-dashboard",
+    "href": "projects/data-viz/social-progress/index.html#interactive-dashboard",
+    "title": "Global Social Progress Analysis",
+    "section": "Interactive Dashboard",
+    "text": "Interactive Dashboard\nExplore the global patterns directly below. Use the “Bottom N” filter to adjust the focal point of the analysis."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html",
+    "href": "projects/data-viz/football-recruitment/index.html",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "",
+    "text": "This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#project-overview",
+    "href": "projects/data-viz/football-recruitment/index.html#project-overview",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "",
+    "text": "This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#the-dashboards",
+    "href": "projects/data-viz/football-recruitment/index.html#the-dashboards",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "The Dashboards",
+    "text": "The Dashboards\n\nTableau Implementation\nTableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.\n\n\n                   \n\n\n\n   \nFeature Spotlight: Player Profiling Radar Charts Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized Radar Chart profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.\n\n\n\n\n\n\nTableau Radar Chart Extension - Player Profiling\n\n\n\n\n\n\n\nPower BI Implementation\nPower BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.\nNote: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.\n\n\n\nFootball Recruitment Dashboard - Power BI Interface\n\n\n\n\n\n\n\n\n\nImportantClick to expand Live Interactive Dashboard\n\n\n\n\n\nNote: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#critical-tool-reflection",
+    "href": "projects/data-viz/football-recruitment/index.html#critical-tool-reflection",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "Critical Tool Reflection",
+    "text": "Critical Tool Reflection\nBased on the development of these identical dashboards, here is my professional evaluation of both platforms:\n\n\n\n\n\n\n\n\nFeature\nTableau\nPower BI\n\n\n\n\nData Transformation\nQuick in-context calcs (SPLIT)\nRobust Power Query (M Language)\n\n\nVisual Flexibility\nHigh (Precise label positioning)\nMedium (Standardized grid)\n\n\nSpecialized Visuals\nRequires Extensions (e.g., Radar)\nNative Support (Custom Visuals)\n\n\nUser Experience\nSuperior Interactivity\nSuperior Data Modeling\n\n\n\nThe Verdict: Tableau is the winner for high-impact, creative storytelling where design is paramount. Power BI is the more efficient choice for enterprise-level data processing and rapid deployment."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#technical-challenges-the-radar-chart",
+    "href": "projects/data-viz/football-recruitment/index.html#technical-challenges-the-radar-chart",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "Technical Challenges: The Radar Chart",
+    "text": "Technical Challenges: The Radar Chart\nOne significant challenge was implementing a Radar Chart to compare player profiles (e.g., Casemiro vs. J. Kimmich). * In Tableau, this required an external extension, which provided high visual fidelity but limited portability on Tableau Public. * In Power BI, this was handled via a native custom visual, allowing for a more stable deployment.\n\n📄 Download Comparative Report (PDF)"
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#download-project-files",
+    "href": "projects/data-viz/football-recruitment/index.html#download-project-files",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "Download Project Files",
+    "text": "Download Project Files\nIf you have Tableau Desktop or Power BI Desktop installed, you can download the source files below to explore the data models, DAX measures, and calculated fields.\n\n\n\nFile Type\nTool\nDownload Link\n\n\n\n\nTableau Packaged Workbook\nTableau\n📥 Download .twbx\n\n\nPower BI Project\nPower BI\n📥 Download .pbix\n\n\nFull Comparative Report\nPDF\n📄 Download PDF"
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#technical-implementation-evaluation",
+    "href": "projects/data-viz/football-recruitment/index.html#technical-implementation-evaluation",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "Technical Implementation & Evaluation",
+    "text": "Technical Implementation & Evaluation\nDuring development, several key differences between the platforms were identified:\n\nData Transformation: Power BI’s Power Query (M Language) provided more robust data cleaning options, while Tableau’s in-context calculations (SPLIT functions) were faster for quick field creation.\nVisual Flexibility: Tableau allowed for more precise label positioning and custom “workarounds” for complex chart types.\nRadar Chart Challenge: Implementing a Radar Chart for player profiling required an external extension in Tableau but was supported via native custom visuals in Power BI.\n\n\n\n\n\n\n\nTipComparative Analysis & Project Files\n\n\n\nThis project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.\n\n\n📄 Download Comparative Report (PDF) 📥 Download Tableau (.twbx) 📥 Download Power BI (.pbix)"
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#yaml",
+    "href": "projects/data-viz/football-recruitment/index.html#yaml",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "YAML",
+    "text": "YAML\ntitle: “Football Recruitment: Tableau vs. Power BI” subtitle: “A Comparative Analysis of Business Intelligence Platforms” format: html: toc: true resources: - B9DA106_CA2_Report_20066423.pdf - football_scouting.twbx - football_scouting.pbix —"
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#project-overview-1",
+    "href": "projects/data-viz/football-recruitment/index.html#project-overview-1",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "Project Overview",
+    "text": "Project Overview\nThis project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both Tableau and Power BI. The goal was to conduct a “head-to-head” comparison of how each tool handles complex data modeling, custom extensions, and user interactivity."
+  },
+  {
+    "objectID": "projects/data-viz/football-recruitment/index.html#the-dashboards-1",
+    "href": "projects/data-viz/football-recruitment/index.html#the-dashboards-1",
+    "title": "Football Recruitment: Tableau vs. Power BI",
+    "section": "The Dashboards",
+    "text": "The Dashboards\n\nTableau Implementation\nTableau was utilized for its superior customization and “pixel-perfect” design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.\nFeature Spotlight: Player Profiling Radar Charts Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized Radar Chart profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.\n\n\n\nTableau Radar Chart Extension - Player Profiling\n\n\n\n\n                   \n\n\n\n\n\nPower BI Implementation\nPower BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.\nNote: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.\n\n\n\nFootball Recruitment Dashboard - Power BI Interface\n\n\n\n\n\n\n\n\nImportantClick to expand Live Interactive Dashboard\n\n\n\n\n\nNote: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page."
   }
 ]

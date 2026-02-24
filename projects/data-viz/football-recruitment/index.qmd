@@ -1,0 +1,103 @@
+---
+title: "Football Recruitment: Tableau vs. Power BI"
+subtitle: "A Comparative Analysis of Business Intelligence Platforms"
+format:
+  html:
+    toc: true
+resources:
+  - B9DA106_CA2_Report_20066423.pdf
+  - football_scouting.twbx
+  - football_scouting.pbix
+---
+
+## Project Overview
+This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both **Tableau** and **Power BI**. The goal was to conduct a "head-to-head" comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.
+
+## The Dashboards
+
+### Tableau Implementation
+Tableau was utilized for its superior customization and "pixel-perfect" design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.
+
+::: {.column-page}
+<div class='tableauPlaceholder' id='viz1771937537024' style='position: relative'>
+  <noscript>
+    <a href='#'>
+      <img alt='Final Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;Final_Draft_CA1&#47;FinalDashboard&#47;1_rss.png' style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz' style='display:none;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+    <param name='embed_code_version' value='3' /> 
+    <param name='site_root' value='' />
+    <param name='name' value='Final_Draft_CA1&#47;FinalDashboard' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;Final_Draft_CA1&#47;FinalDashboard&#47;1.png' /> 
+    <param name='animate_transition' value='yes' />
+    <param name='display_static_image' value='yes' />
+    <param name='display_spinner' value='yes' />
+    <param name='display_overlay' value='yes' />
+    <param name='display_count' value='yes' />
+    <param name='language' value='en-US' />
+  </object>
+</div>                
+<script type='text/javascript'>                    
+  var divElement = document.getElementById('viz1771937537024');                    
+  var vizElement = divElement.getElementsByTagName('object')[0];                    
+  if ( divElement.offsetWidth > 800 ) { 
+    vizElement.style.width='100%';vizElement.style.height='850px';
+  } else if ( divElement.offsetWidth > 500 ) { 
+    vizElement.style.width='100%';vizElement.style.height='850px';
+  } else { 
+    vizElement.style.width='100%';vizElement.style.height='2227px';
+  }                     
+  var scriptElement = document.createElement('script');                    
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+</script>
+:::
+
+&nbsp;
+&nbsp;
+
+**Feature Spotlight: Player Profiling Radar Charts**
+Because Tableau Public does not support third-party extensions, I have provided a screenshot of the specialized **Radar Chart** profiling tool below. This allows for direct athletic comparison between players like Casemiro and Joshua Kimmich.
+
+::: {layout-ncol=1 style="margin: auto; width: 50%;"}
+![Tableau Radar Chart Extension - Player Profiling](Radar.png){.border .shadow .rounded}
+:::
+
+### Power BI Implementation
+Power BI excelled in data transformation and structured modeling. Using Power Query, I efficiently handled complex player position delimiters and utilized native custom visuals for the player profiling radar charts.
+
+*Note: Due to organizational security settings, the live preview below may require a login. If the preview does not load, please use the download option in the resources section below to view the file in Power BI Desktop.*
+
+![Football Recruitment Dashboard - Power BI Interface](PowerBI.png){.border .shadow}
+
+::: {.column-page}
+::: {.callout-important collapse="true"}
+## Click to expand Live Interactive Dashboard
+*Note: Due to organizational security settings, the live preview below may require a login. If it does not load, please use the download button at the bottom of the page.*
+
+<iframe title="Football Recruitment" width="100%" height="600px" src="https://app.powerbi.com/reportEmbed?reportId=6c45ced1-6473-4af4-b49a-9a8b1ef412ab&autoAuth=true&ctid=5d0aa6ea-6620-4863-9e21-9ecb140222bc" frameborder="0" allowFullScreen="true"></iframe>
+:::
+:::
+
+## Technical Implementation & Evaluation
+
+During development, several key differences between the platforms were identified:
+
+* **Data Transformation:** Power BI's **Power Query** (M Language) provided more robust data cleaning options, while Tableau's **in-context calculations** (SPLIT functions) were faster for quick field creation.
+* **Visual Flexibility:** Tableau allowed for more precise label positioning and custom "workarounds" for complex chart types.
+* **Radar Chart Challenge:** Implementing a Radar Chart for player profiling required an external extension in Tableau but was supported via native custom visuals in Power BI.
+
+
+
+::: {.callout-tip}
+## Comparative Analysis & Project Files
+This project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.
+:::
+
+[📄 Download Comparative Report (PDF)](football_scouting.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau (.twbx)](football_scouting.twbx){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Power BI (.pbix)](football_scouting.pbix){.btn .btn-outline-primary .rounded-pill .px-4}

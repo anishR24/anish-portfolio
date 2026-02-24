@@ -9,6 +9,12 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: Projects
+        menu:
+          - href: projects/data-viz/index.qmd
+            text: Data Visualization
+          - href: projects/taxi-dw/index.qmd
+            text: NYC Taxi Data Warehouse
 
 format:
   html:
