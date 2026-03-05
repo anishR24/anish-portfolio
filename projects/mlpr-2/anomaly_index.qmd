@@ -1,0 +1,140 @@
+---
+title: "Time-Series Forecasting"
+subtitle: "Conformal LSTM for Anomaly Detection in Julia"
+format:
+  html:
+    toc: true
+---
+
+## Project Overview
+
+This project implements a high-performance **LSTM (Long Short-Term Memory)** network in **Julia** to detect anomalies in streaming time-series data. Utilizing the **Numenta Anomaly Benchmark (NAB)**, I developed a system that doesn't just predict values, but provides a statistically sound "safety margin" using **Conformal Prediction**.
+
+[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1E4ATUk2mBCizDGUXYAOVS_rvqgPPxbFe?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset](https://github.com/numenta/NAB){target="_blank" .btn .btn-outline-info .btn-sm}
+
+---
+
+## Methodology
+
+### 1. High-Performance Modeling (Julia & Flux)
+Leveraging the **Julia** programming language for its C-like speed, I implemented the LSTM architecture using the `Flux.jl` library. This allows for rapid training and inference on large-scale AWS Cloudwatch and traffic datasets.
+
+
+
+### 2. Conformal Prediction Framework
+Most AI models give a "guess." This project uses **Conformal Prediction** to generate a dynamic threshold based on historical error distribution. If a new data point falls outside this mathematically rigorous interval, it is flagged as an anomaly with a specific confidence level (e.g., 95%).
+
+### 3. Supervised vs. Unsupervised Pipelines
+* **Supervised:** Trained on known anomaly patterns to recognize specific signatures.
+* **Unsupervised:** A forecasting-based approach that identifies "surprises" in data it has never seen before.
+
+---
+
+## Evaluation Results
+
+The model was evaluated against the **Numenta Anomaly Benchmark (NAB)**. Below are the top-performing categories for both the supervised and unsupervised pipelines.
+
+::: {.panel-tabset}
+
+### Supervised
+```{ojs}
+//| echo: false
+data_sup = FileAttachment("supervised_metrics.csv").csv({ typed: true })
+
+data_sup_top = data_sup
+  .slice()
+  .sort((a, b) => b["F1 Score (%)"] - a["F1 Score (%)"])
+  .slice(0, 5)
+
+Inputs.table(data_sup_top, {
+  layout: "auto",
+  columns: [
+    "filename", "Precision (%)", "Recall (%)", "F1 Score (%)"
+  ],
+  width: {
+    filename: 280,
+    "Precision (%)": 100,
+    "Recall (%)": 100,
+    "F1 Score (%)": 100
+  },
+  header: {
+    filename: "Dataset"
+  }
+})
+```
+
+### Unsupervised
+```{ojs}
+//| echo: false
+data_unsup = FileAttachment("unsupervised_metrics.csv").csv({ typed: true })
+
+data_unsup_top = data_unsup
+  .slice()
+  .sort((a, b) => b["F1 Score (%)"] - a["F1 Score (%)"])
+  .slice(0, 5)
+
+Inputs.table(data_unsup_top, {
+  layout: "auto",
+  columns: [
+    "filename", "Precision (%)", "Recall (%)", "F1 Score (%)"
+  ],
+  width: {
+    filename: 280,
+    "Precision (%)": 100,
+    "Recall (%)": 100,
+    "F1 Score (%)": 100
+  },
+  header: {
+    filename: "Dataset"
+  }
+})
+```
+
+
+:::
+
+### Full Experimental Results
+*The sections below contain the complete results.*
+
+::: {.panel-tabset}
+
+### Supervised Full Data
+<div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+
+```{ojs}
+//| echo: false
+Inputs.table(data_sup, {
+  required: false,
+  rows: 10,
+  sort: "F1 Score (%)", 
+  reverse: true,
+  layout: "auto"
+})
+```
+</div>
+
+### Unsupervised Full Data
+<div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+
+```{ojs}
+//| echo: false
+Inputs.table(data_unsup, {
+  required: false,
+  rows: 10,
+  sort: "F1 Score (%)", 
+  reverse: true,
+  layout: "auto"
+})
+```
+</div>
+
+:::
+
+---
+
+## Complete Analysis Notebook
+To view the full Julia implementation, mathematical derivations for the conformal thresholds, and performance logs, please visit the technical notebook page.
+
+::: {.d-grid .gap-2}
+[<i class="bi bi-code-square"></i> View Technical Implementation - Julia Notebook](anomaly_code.ipynb){.btn .btn-outline-primary .btn-lg role="button"}
+:::

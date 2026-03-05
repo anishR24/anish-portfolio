@@ -1,0 +1,57 @@
+---
+title: "Medical Named Entity Recognition (NER)"
+subtitle: "Applied NLP using spaCy & Active Learning"
+format:
+  html:
+    toc: true
+    
+---
+
+## Project Overview
+
+This project focuses on identifying complex biomedical entities—specifically **Chemicals** and **Diseases**—from the BioCreative-V CDR Corpus. Using **spaCy**, I developed a pipeline that combines rule-based matching with statistical model training to automate the extraction of life-science insights from unstructured text.
+
+[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1jZwS7BOgqTvIzTqZh6f3x4iyR4-mKNLQ?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset](https://github.com/JHnlp/BioCreative-V-CDR-Corpus){target="_blank" .btn .btn-outline-info .btn-sm}
+
+---
+
+## Methodology
+
+The project was executed in four critical phases:
+
+### 1. Data Preparation
+Parsed the **PubTator** format, merging training and development sets to create a robust foundation for the model.
+
+### 2. Rule-Based Matching (Weak Labeling)
+Before training, I implemented a collection of patterns to identify entities through exact matches and regex. This served as a "weak supervision" layer to bootstrap the learning process.
+
+### 3. Active Learning Loop
+One of the most advanced features of this project is the **Active Learning Loop**. By iteratively training the model and querying uncertain samples, we optimized the labeling process, significantly reducing the amount of manual annotation required.
+
+
+### 4. Model Training & Optimization
+The model was built using spaCy's transition-based NER parser. I utilized `en_core_web_sm` as a base and fine-tuned it on the specialized medical corpus.
+
+---
+
+## Performance Results
+
+The model was evaluated using a strict token-level matching criteria.
+
+| Metric | Score |
+|:---|:---|
+| **Precision** | **0.5819** |
+| **Recall** | **0.3580** |
+| **F1-Score** | **0.4433** |
+
+*Note: While the recall is conservative, the precision indicates that the model is highly reliable when it does identify an entity—a crucial requirement in medical diagnostics.*
+
+
+---
+
+## Complete Analysis Notebook
+To view the full Python implementation, data parsing logic, and execution logs, please visit the technical notebook page.
+
+::: {.d-grid .gap-2}
+[<i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook](ner_code.ipynb){.btn .btn-outline-primary .btn-lg role="button"}
+:::

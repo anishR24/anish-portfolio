@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Medical Named Entity Recognition (NER) – Anish Rao</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Anish Rao</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li class="dropdown-header">— Business Intelligence —</li>
+        <li>
+    <a class="dropdown-item" href="../../projects/data-viz/viz_index.html">
+ <span class="dropdown-text">BI &amp; Data Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/taxi-dw/taxi_index.html">
+ <span class="dropdown-text">NYC Taxi Data Warehouse</span></a>
+  </li>  
+        <li class="dropdown-header">— Machine Learning &amp; AI —</li>
+        <li>
+    <a class="dropdown-item" href="../../projects/churn-prediction/churn_index.html">
+ <span class="dropdown-text">Customer Churn (Explainable AI)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-1/ner_index.html">
+ <span class="dropdown-text">Medical Named Entity Recognition</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-2/anomaly_index.html">
+ <span class="dropdown-text">Anomaly Detection in Time Series</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#importing-libraries-initializing-spacy-model" id="toc-importing-libraries-initializing-spacy-model" class="nav-link active" data-scroll-target="#importing-libraries-initializing-spacy-model"><strong>Importing Libraries &amp; Initializing spaCy Model</strong></a></li>
+  <li><a href="#loading-parsing-pubtator-data" id="toc-loading-parsing-pubtator-data" class="nav-link" data-scroll-target="#loading-parsing-pubtator-data"><strong>Loading &amp; Parsing PubTator Data</strong></a></li>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda"><strong>Exploratory Data Analysis (EDA)</strong></a></li>
+  <li><a href="#rule-based-matching-for-entity-annotation" id="toc-rule-based-matching-for-entity-annotation" class="nav-link" data-scroll-target="#rule-based-matching-for-entity-annotation"><strong>Rule-Based Matching for Entity Annotation</strong></a></li>
+  <li><a href="#ner-model-training-method" id="toc-ner-model-training-method" class="nav-link" data-scroll-target="#ner-model-training-method"><strong>NER Model training method</strong></a></li>
+  <li><a href="#active-learning-with-uncertainty-sampling" id="toc-active-learning-with-uncertainty-sampling" class="nav-link" data-scroll-target="#active-learning-with-uncertainty-sampling"><strong>Active Learning with Uncertainty Sampling</strong></a>
+  <ul class="collapse">
+  <li><a href="#executing-active-learning-training" id="toc-executing-active-learning-training" class="nav-link" data-scroll-target="#executing-active-learning-training"><strong>Executing Active Learning Training</strong></a></li>
+  </ul></li>
+  <li><a href="#evaluating-the-ner-model-performance" id="toc-evaluating-the-ner-model-performance" class="nav-link" data-scroll-target="#evaluating-the-ner-model-performance"><strong>Evaluating the NER Model Performance</strong></a></li>
+  <li><a href="#execution" id="toc-execution" class="nav-link" data-scroll-target="#execution">Execution</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Medical Named Entity Recognition (NER)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../projects/mlpr-1/ner_index.html" class="btn btn-outline-secondary btn-sm" role="button"><i class="bi bi-arrow-left"></i> Back to Project Summary</a></p>
+<p><a href="#top" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; 
+          padding: 8px 15px; background: rgba(52, 58, 64, 0.8); 
+          color: white; border-radius: 4px; text-align: center; 
+          font-size: 13px; font-weight: bold; z-index: 1000; 
+          text-decoration: none; transition: 0.3s; border: 1px solid #495057;"> BACK TO TOP ↑ </a></p>
+<hr>
+<section id="importing-libraries-initializing-spacy-model" class="level1">
+<h1><strong>Importing Libraries &amp; Initializing spaCy Model</strong></h1>
+<div id="cell-2" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install -U spacy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cell-3" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> spacy.matcher <span class="im">import</span> Matcher</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> spacy.training <span class="im">import</span> Example</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy.util</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_fscore_support</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># load blank spacy model</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>nlp <span class="op">=</span> spacy.blank(<span class="st">"en"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="loading-parsing-pubtator-data" class="level1">
+<h1><strong>Loading &amp; Parsing PubTator Data</strong></h1>
+<div id="cell-5" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_data(file_path, remove_gold<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Parses a PubTator file to extract the combined text (title + abstract)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Optionally, the entity annotations.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        file_path (str): Path to the PubTator file.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">        remove_gold (bool): If True, ignore entity annotations</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">                            If False, keep entity annotations</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">        list: A list of dictionaries, each containing:</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">              -&gt; "text": The combined document text.</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">              -&gt; "entities": A list of tuples (start, end, label)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">                            if remove_gold is False, otherwise an empty list.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> f.read()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    docs <span class="op">=</span> []</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> {<span class="st">"text"</span>: <span class="st">""</span>, <span class="st">"entities"</span>: []}</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> data.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>):</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line.startswith(<span class="st">"#####"</span>):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"|t|"</span> <span class="kw">in</span> line:</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Title</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            current[<span class="st">"text"</span>] <span class="op">=</span> line.split(<span class="st">"|t|"</span>)[<span class="op">-</span><span class="dv">1</span>].strip()</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="st">"|a|"</span> <span class="kw">in</span> line:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Append Abstract</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            current[<span class="st">"text"</span>] <span class="op">+=</span> <span class="st">" "</span> <span class="op">+</span> line.split(<span class="st">"|a|"</span>)[<span class="op">-</span><span class="dv">1</span>].strip()</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="kw">in</span> line <span class="kw">and</span> <span class="kw">not</span> remove_gold:</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Parse annotations only for Test set.</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            parts <span class="op">=</span> line.split(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(parts) <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                    start, end, label <span class="op">=</span> <span class="bu">int</span>(parts[<span class="dv">1</span>]), <span class="bu">int</span>(parts[<span class="dv">2</span>]), parts[<span class="dv">4</span>]</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                current[<span class="st">"entities"</span>].append((start, end, label))</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> line.strip() <span class="op">==</span> <span class="st">""</span> <span class="kw">and</span> current[<span class="st">"text"</span>]:</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>            <span class="co"># End of a document; add it to our list.</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            docs.append(current)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> {<span class="st">"text"</span>: <span class="st">""</span>, <span class="st">"entities"</span>: []}</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current[<span class="st">"text"</span>]:</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        docs.append(current)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> docs</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>train_path <span class="op">=</span> <span class="st">"CDR_TrainingSet.PubTator.txt"</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>dev_path   <span class="op">=</span> <span class="st">"CDR_DevelopmentSet.PubTator.txt"</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>test_path  <span class="op">=</span> <span class="st">"CDR_TestSet.PubTator.txt"</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse the files:</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> parse_data(train_path, remove_gold<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>dev <span class="op">=</span> parse_data(dev_path, remove_gold<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> parse_data(test_path, remove_gold<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>train_dev <span class="op">=</span> train <span class="op">+</span> dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d73cb1b8-dc92-4add-f68c-0eaba526179f">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test prints: print a sample from the parsed datasets.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Combined Train+Dev Sample:"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> train_dev:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(train_dev[<span class="dv">0</span>])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No documents found."</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test Set Sample (with gold annotations):"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> test:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(test[<span class="dv">0</span>])</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No documents found."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Combined Train+Dev Sample:
+{'text': 'Naloxone reverses the antihypertensive effect of clonidine. In unanesthetized, spontaneously hypertensive rats the decrease in blood pressure and heart rate produced by intravenous clonidine, 5 to 20 micrograms/kg, was inhibited or reversed by nalozone, 0.2 to 2 mg/kg. The hypotensive effect of 100 mg/kg alpha-methyldopa was also partially reversed by naloxone. Naloxone alone did not affect either blood pressure or heart rate. In brain membranes from spontaneously hypertensive rats clonidine, 10(-8) to 10(-5) M, did not influence stereoselective binding of [3H]-naloxone (8 nM), and naloxone, 10(-8) to 10(-4) M, did not influence clonidine-suppressible binding of [3H]-dihydroergocryptine (1 nM). These findings indicate that in spontaneously hypertensive rats the effects of central alpha-adrenoceptor stimulation involve activation of opiate receptors. As naloxone and clonidine do not appear to interact with the same receptor site, the observed functional antagonism suggests the release of an endogenous opiate by clonidine or alpha-methyldopa and the possible role of the opiate in the central control of sympathetic tone.', 'entities': []}
+========================================
+Test Set Sample (with gold annotations):
+{'text': 'Famotidine-associated delirium. A series of six cases. Famotidine is a histamine H2-receptor antagonist used in inpatient settings for prevention of stress ulcers and is showing increasing popularity because of its low cost. Although all of the currently available H2-receptor antagonists have shown the propensity to cause delirium, only two previously reported cases have been associated with famotidine. The authors report on six cases of famotidine-associated delirium in hospitalized patients who cleared completely upon removal of famotidine. The pharmacokinetics of famotidine are reviewed, with no change in its metabolism in the elderly population seen. The implications of using famotidine in elderly persons are discussed.', 'entities': [(0, 10, 'Chemical'), (22, 30, 'Disease'), (55, 65, 'Chemical'), (156, 162, 'Disease'), (324, 332, 'Disease'), (395, 405, 'Chemical'), (442, 452, 'Chemical'), (464, 472, 'Disease'), (537, 547, 'Chemical'), (573, 583, 'Chemical'), (689, 699, 'Chemical')]}</code></pre>
+</div>
+</div>
+</section>
+<section id="exploratory-data-analysis-eda" class="level1">
+<h1><strong>Exploratory Data Analysis (EDA)</strong></h1>
+<p>for Train + Dev sets</p>
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="170e2407-6718-4a61-9419-7fdb56f15ea9" data-execution_count="10">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_eda <span class="op">=</span> parse_data(train_path, remove_gold<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dev_eda <span class="op">=</span> parse_data(dev_path, remove_gold<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>combined_eda_set <span class="op">=</span> train_eda <span class="op">+</span> dev_eda</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>num_docs <span class="op">=</span> <span class="bu">len</span>(combined_eda_set)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total number of documents:"</span>, num_docs)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of characters per document</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>doc_lengths <span class="op">=</span> [<span class="bu">len</span>(doc[<span class="st">"text"</span>]) <span class="cf">for</span> doc <span class="kw">in</span> combined_eda_set]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>avg_length <span class="op">=</span> <span class="bu">sum</span>(doc_lengths) <span class="op">/</span> num_docs</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average document length (characters):"</span>, <span class="bu">round</span>(avg_length, <span class="dv">2</span>))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># unique labels and their counts</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>label_counter <span class="op">=</span> Counter(entity[<span class="dv">2</span>] <span class="cf">for</span> doc <span class="kw">in</span> combined_eda_set <span class="cf">for</span> entity <span class="kw">in</span> doc[<span class="st">"entities"</span>])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique Entity Labels and Their Counts:"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, count <span class="kw">in</span> label_counter.items():</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of entities per document</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>num_entities <span class="op">=</span> [<span class="bu">len</span>(doc[<span class="st">"entities"</span>]) <span class="cf">for</span> doc <span class="kw">in</span> combined_eda_set]</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>avg_entities <span class="op">=</span> <span class="bu">sum</span>(num_entities) <span class="op">/</span> num_docs</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average number of entities per document:"</span>, <span class="bu">round</span>(avg_entities, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total number of documents: 1000
+Average document length (characters): 1299.7
+Unique Entity Labels and Their Counts:
+Chemical: 10550
+Disease: 8426
+Average number of entities per document: 18.98</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="042c379b-b2ab-4993-d3d6-5f691b563038" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution of entities per document</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(num_entities, bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Entities per Document"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Entities per Document"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart for entity label frequencies</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>label_counts <span class="op">=</span> {}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> doc <span class="kw">in</span> combined_eda_set:</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ent <span class="kw">in</span> doc[<span class="st">"entities"</span>]:</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> ent[<span class="dv">2</span>]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        label_counts[label] <span class="op">=</span> label_counts.get(label, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> <span class="bu">list</span>(label_counts.keys())</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> <span class="bu">list</span>(label_counts.values())</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>labels, y<span class="op">=</span>counts, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Entity Label"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency Distribution of Entity Labels"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ner_code_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ner_code_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rule-based-matching-for-entity-annotation" class="level1">
+<h1><strong>Rule-Based Matching for Entity Annotation</strong></h1>
+<div id="cell-11" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>matcher <span class="op">=</span> Matcher(nlp.vocab)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>chem_patterns <span class="op">=</span> [</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z0-9-]+(ol|ine|ide|one|ate|amine|azole|vir|dopa|mab|statin|pril|sartan|rin)$"</span>}}],</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(?:cyclo|benz|ethyl|methyl|hydro)[a-z0-9-]*$"</span>}}],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"IN"</span>: [<span class="st">"insulin"</span>, <span class="st">"penicillin"</span>]}}],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z0-9-]+$"</span>}, <span class="st">"OP"</span>: <span class="st">"+"</span>},</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: <span class="st">"acid"</span>}</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z0-9-]+$"</span>}},</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(chloride|sulfate|sulphate|oxide|nitrate)$"</span>}}</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z0-9-]+$"</span>}, <span class="st">"OP"</span>: <span class="st">"+"</span>},</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(inhibitor|inhibitors|blocker|blockers|antagonist|agonist)$"</span>}}</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>disease_patterns <span class="op">=</span> [</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z]+(itis|osis|emia|pathy|oma|algia|penia|dystrophy|sclerosis|necrosis|lepsy)$"</span>}}],</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"IN"</span>: [</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hypertensive"</span>, <span class="st">"hypotensive"</span>, <span class="st">"cancer"</span>, <span class="st">"tumor"</span>, <span class="st">"tumour"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"diabetes"</span>, <span class="st">"malaria"</span>, <span class="st">"syndrome"</span>, <span class="st">"delirium"</span>, <span class="st">"migraine"</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    ]}}],</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">".*opathy$"</span>}}],</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z]+$"</span>}, <span class="st">"OP"</span>: <span class="st">"+"</span>},</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(disease|syndrome|cancer|tumor|tumour)$"</span>}}</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^[a-z]+$"</span>}},</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: <span class="st">"'s"</span>, <span class="st">"OP"</span>: <span class="st">"?"</span>},</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(disease|syndrome)$"</span>}}</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^cardiac$"</span>}}, {<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(arrest|asystole)$"</span>}}],</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^heart$"</span>}}, {<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^attack$"</span>}}],</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^myocardial$"</span>}}, {<span class="st">"TEXT"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^infarction$"</span>}}],</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"IN"</span>: [</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">"dystonia"</span>, <span class="st">"dyskinesia"</span>, <span class="st">"neuropathy"</span>, <span class="st">"fasciculation"</span>, <span class="st">"fasciculations"</span>,</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hypertension"</span>, <span class="st">"myocardial infarction"</span>, <span class="st">"chronic renal failure"</span>, <span class="st">"crohn's disease"</span>,</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">"infection"</span>, <span class="st">"fever"</span>, <span class="st">"headache"</span>, <span class="st">"inflammation"</span>, <span class="st">"stroke"</span>, <span class="st">"sepsis"</span>, <span class="st">"anemia"</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    ]}}],</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(acute|chronic|severe|idiopathic)$"</span>}, <span class="st">"OP"</span>: <span class="st">"?"</span>},</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"IN"</span>: [<span class="st">"renal"</span>, <span class="st">"cardiac"</span>, <span class="st">"pulmonary"</span>, <span class="st">"neuromuscular"</span>, <span class="st">"auditory"</span>, <span class="st">"visual"</span>]}, <span class="st">"OP"</span>: <span class="st">"?"</span>},</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"LOWER"</span>: {<span class="st">"IN"</span>: [<span class="st">"failure"</span>, <span class="st">"injury"</span>, <span class="st">"deficiency"</span>, <span class="st">"dysfunction"</span>, <span class="st">"toxicity"</span>, <span class="st">"hypertension"</span>, <span class="st">"hypotension"</span>, <span class="st">"dystonia"</span>, <span class="st">"dyskinesia"</span>, <span class="st">"disorder"</span>]}}</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    [{<span class="st">"LOWER"</span>: {<span class="st">"REGEX"</span>: <span class="st">"^(neuro|cardio|hepato|nephro|pneumo|encephal)[a-z]+$"</span>}}],</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>matcher.add(<span class="st">"DISEASE"</span>, disease_patterns)</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>matcher.add(<span class="st">"CHEMICAL"</span>, chem_patterns)</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> annotate_docs_with_rules(docs):</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co">    Applies our rule-based matcher to each document to generate weak labels</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="co">        docs (list): List of document dictionaries</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="co">        list: List of document dictionaries with an added key [auto_entities]</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="co">              with a list of weak entity annotations as tuples (start, end, label).</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>    annotated_docs <span class="op">=</span> []</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc <span class="kw">in</span> docs:</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> doc[<span class="st">"text"</span>]</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>        spacy_doc <span class="op">=</span> nlp(text)</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        matches <span class="op">=</span> matcher(spacy_doc)</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>        auto_entities <span class="op">=</span> []</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> match_id, start, end <span class="kw">in</span> matches:</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>            span <span class="op">=</span> spacy_doc[start:end]</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> nlp.vocab.strings[match_id].title()</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>            auto_entities.append((span.start_char, span.end_char, label))</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>        new_doc <span class="op">=</span> doc.copy()</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>        new_doc[<span class="st">"auto_entities"</span>] <span class="op">=</span> auto_entities</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>        annotated_docs.append(new_doc)</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> annotated_docs</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="co"># We use a subset of the total data</span></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>seed_size <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.7</span> <span class="op">*</span> <span class="bu">len</span>(train_dev))</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>seed_docs <span class="op">=</span> train_dev[:seed_size]</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the rule-based matcher</span></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>annotated_seed_docs <span class="op">=</span> annotate_docs_with_rules(seed_docs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="42562a87-0bcc-4dfb-c7fc-7ec992a9d324">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test print: print sample annotated documents.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Sample Annotated Documents from Seed Set:"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>num_samples <span class="op">=</span> <span class="bu">min</span>(<span class="dv">2</span>, <span class="bu">len</span>(annotated_seed_docs))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_samples):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> annotated_seed_docs[i]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Document </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Text:"</span>, sample[<span class="st">"text"</span>])</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Auto Entities:"</span>, sample.get(<span class="st">"auto_entities"</span>, []))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Sample Annotated Documents from Seed Set:
+========================================
+Document 1:
+Text: Naloxone reverses the antihypertensive effect of clonidine. In unanesthetized, spontaneously hypertensive rats the decrease in blood pressure and heart rate produced by intravenous clonidine, 5 to 20 micrograms/kg, was inhibited or reversed by nalozone, 0.2 to 2 mg/kg. The hypotensive effect of 100 mg/kg alpha-methyldopa was also partially reversed by naloxone. Naloxone alone did not affect either blood pressure or heart rate. In brain membranes from spontaneously hypertensive rats clonidine, 10(-8) to 10(-5) M, did not influence stereoselective binding of [3H]-naloxone (8 nM), and naloxone, 10(-8) to 10(-4) M, did not influence clonidine-suppressible binding of [3H]-dihydroergocryptine (1 nM). These findings indicate that in spontaneously hypertensive rats the effects of central alpha-adrenoceptor stimulation involve activation of opiate receptors. As naloxone and clonidine do not appear to interact with the same receptor site, the observed functional antagonism suggests the release of an endogenous opiate by clonidine or alpha-methyldopa and the possible role of the opiate in the central control of sympathetic tone.
+Auto Entities: [(0, 8, 'Chemical'), (49, 58, 'Chemical'), (93, 105, 'Disease'), (152, 156, 'Chemical'), (181, 190, 'Chemical'), (244, 252, 'Chemical'), (274, 285, 'Disease'), (312, 322, 'Chemical'), (354, 362, 'Chemical'), (364, 372, 'Chemical'), (373, 378, 'Chemical'), (425, 429, 'Chemical'), (469, 481, 'Disease'), (487, 496, 'Chemical'), (589, 597, 'Chemical'), (637, 646, 'Chemical'), (719, 727, 'Chemical'), (750, 762, 'Disease'), (844, 850, 'Chemical'), (865, 873, 'Chemical'), (878, 887, 'Chemical'), (1016, 1022, 'Chemical'), (1026, 1035, 'Chemical'), (1045, 1055, 'Chemical'), (1085, 1091, 'Chemical'), (1107, 1114, 'Chemical'), (1130, 1134, 'Chemical')]
+========================================
+Document 2:
+Text: Lidocaine-induced cardiac asystole. Intravenous administration of a single 50-mg bolus of lidocaine in a 67-year-old man resulted in profound depression of the activity of the sinoatrial and atrioventricular nodal pacemakers. The patient had no apparent associated conditions which might have predisposed him to the development of bradyarrhythmias; and, thus, this probably represented a true idiosyncrasy to lidocaine.
+Auto Entities: [(0, 9, 'Chemical'), (18, 34, 'Disease'), (90, 99, 'Chemical'), (409, 418, 'Chemical')]</code></pre>
+</div>
+</div>
+</section>
+<section id="ner-model-training-method" class="level1">
+<h1><strong>NER Model training method</strong></h1>
+<div id="cell-14" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_ner_model(model, data, n_iter):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Trains a blank NER model using spaCy with the given data.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">        model: The blank spaCy model.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">        data: List of training examples (dictionaries with "text" and "auto_entities").</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">        n_iter: Number of training iterations/Epochs.</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">        None</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add NER component if not present.</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"ner"</span> <span class="kw">not</span> <span class="kw">in</span> model.pipe_names:</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        ner <span class="op">=</span> model.add_pipe(<span class="st">"ner"</span>, last<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        ner <span class="op">=</span> model.get_pipe(<span class="st">"ner"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add weak labels from the training data.</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc_data <span class="kw">in</span> data:</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        ents <span class="op">=</span> doc_data.get(<span class="st">"auto_entities"</span>, [])</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ent <span class="kw">in</span> ents:</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> ent[<span class="dv">2</span>]</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                ner.add_label(label)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prepare training examples.</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    training_examples <span class="op">=</span> []</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc_data <span class="kw">in</span> data:</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> doc_data[<span class="st">"text"</span>]</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        raw_ents <span class="op">=</span> doc_data.get(<span class="st">"auto_entities"</span>, [])</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> model.make_doc(text)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>        spans <span class="op">=</span> []</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert entities to Span objects.</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ent <span class="kw">in</span> raw_ents:</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>            span <span class="op">=</span> doc.char_span(ent[<span class="dv">0</span>], ent[<span class="dv">1</span>], label<span class="op">=</span>ent[<span class="dv">2</span>])</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> span <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                spans.append(span)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        <span class="co">#remove overlapping spans.</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        filtered_spans <span class="op">=</span> spacy.util.filter_spans(spans)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert filtered spans back to the (start, end, label) format.</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        annotations <span class="op">=</span> {<span class="st">"entities"</span>: [(span.start_char, span.end_char, span.label_) <span class="cf">for</span> span <span class="kw">in</span> filtered_spans]}</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Only add example if there's at least one entity.</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> annotations[<span class="st">"entities"</span>]:</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>            example <span class="op">=</span> Example.from_dict(doc, annotations)</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>            training_examples.append(example)</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize optimizer.</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> model.begin_training()</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> itn <span class="kw">in</span> <span class="bu">range</span>(n_iter):</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        random.shuffle(training_examples)</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        losses <span class="op">=</span> {}</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        batches <span class="op">=</span> spacy.util.minibatch(training_examples, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> batch <span class="kw">in</span> batches:</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>            model.update(batch, drop<span class="op">=</span><span class="fl">0.2</span>, sgd<span class="op">=</span>optimizer, losses<span class="op">=</span>losses)</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Iteration </span><span class="sc">{</span>itn<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: Loss = </span><span class="sc">{</span>losses<span class="sc">.</span>get(<span class="st">'ner'</span>, <span class="dv">0</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">==Model Training Completed=="</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="active-learning-with-uncertainty-sampling" class="level1">
+<h1><strong>Active Learning with Uncertainty Sampling</strong></h1>
+<div id="cell-16" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uncertainty_sampling(model, docs, n_samples, length_constant<span class="op">=</span><span class="dv">200</span>):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Selects n_samples documents based on model uncertainty.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">        model: The spaCy model.</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">        docs: List of document dictionaries (each with a 'text' key).</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">        n_samples: Number of documents to select.</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">        length_constant: Constant to scale uncertainty based on document length.</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">        List of document texts with the highest uncertainty.</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> []</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc <span class="kw">in</span> docs:</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> doc[<span class="st">"text"</span>]</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        spacy_doc <span class="op">=</span> model(text)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        confidences <span class="op">=</span> [ent._.confidence <span class="cf">for</span> ent <span class="kw">in</span> spacy_doc.ents</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">if</span> <span class="bu">hasattr</span>(ent._, <span class="st">"confidence"</span>)]</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> confidences:</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>            uncertainty <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="bu">max</span>(confidences)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>            uncertainty <span class="op">=</span> <span class="bu">len</span>(text) <span class="op">/</span> (<span class="bu">len</span>(text) <span class="op">+</span> length_constant)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        scores.append(uncertainty)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.argsort(scores)[<span class="op">-</span>n_samples:]</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [docs[i][<span class="st">"text"</span>] <span class="cf">for</span> i <span class="kw">in</span> indices]</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> manual_annotation(text):</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">    Simulates manual annotation by reapplying the rule-based matcher.</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co">        text: The input text.</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co">        list: List of dictionaries with "start", "end", "label".</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    doc <span class="op">=</span> nlp(text)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    matches <span class="op">=</span> matcher(doc)</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    ann <span class="op">=</span> []</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> match_id, start, end <span class="kw">in</span> matches:</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>        span <span class="op">=</span> doc[start:end]</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> nlp.vocab.strings[match_id].title()</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>        ann.append({<span class="st">"start"</span>: span.start_char, <span class="st">"end"</span>: span.end_char, <span class="st">"label"</span>: label})</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ann</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> active_learning_loop(model, labeled_data, full_data, iterations<span class="op">=</span><span class="dv">3</span>, n_samples<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co">    Simple active learning loop to iteratively update the labeled dataset</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co">    and retrain the model.</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="co">        model: The spaCy model.</span></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co">        labeled_data: The initial labeled set</span></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co">        full_data: The complete set of documents</span></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co">        optimizer: The optimizer.</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co">        iterations: Number of active learning iterations.</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a><span class="co">        n_samples: Number of uncertain samples to select per iteration.</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="co">        None</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">=== Active Learning Iteration </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> ==="</span>)</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Exclude documents already in labeled_data.</span></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>        already_labeled <span class="op">=</span> {doc[<span class="st">"text"</span>] <span class="cf">for</span> doc <span class="kw">in</span> labeled_data}</span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>        candidates <span class="op">=</span> [doc <span class="cf">for</span> doc <span class="kw">in</span> full_data <span class="cf">if</span> doc[<span class="st">"text"</span>] <span class="kw">not</span> <span class="kw">in</span> already_labeled]</span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Use uncertainty sampling on remaining candidates.</span></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>        <span class="co"># selected_texts = uncertainty_sampling(model, candidates, n_samples)</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>        selected_texts <span class="op">=</span> uncertainty_sampling(model, candidates, n_samples)</span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Selected uncertain samples for annotation:"</span>)</span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> text <span class="kw">in</span> selected_texts:</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"  -"</span>, text[:<span class="dv">100</span>] <span class="op">+</span> <span class="st">"..."</span>)</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>        <span class="co"># manual annotation on selected samples.</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>        new_annotations <span class="op">=</span> []</span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> doc <span class="kw">in</span> candidates:</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> doc[<span class="st">"text"</span>] <span class="kw">in</span> selected_texts:</span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>                anns <span class="op">=</span> manual_annotation(doc[<span class="st">"text"</span>])</span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>                new_annotations.append({</span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"text"</span>: doc[<span class="st">"text"</span>],</span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"entities"</span>: [(ann[<span class="st">"start"</span>], ann[<span class="st">"end"</span>], ann[<span class="st">"label"</span>]) <span class="cf">for</span> ann <span class="kw">in</span> anns]</span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add the newly annotated examples to the labeled set.</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a>        labeled_data.extend(new_annotations)</span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"New annotations added. Total labeled data size: </span><span class="sc">{</span><span class="bu">len</span>(labeled_data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Retrain the model on the updated labeled set.</span></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>        train_ner_model(model, labeled_data, n_iter<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>        model.to_disk(<span class="ss">f"model_iter_</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Finished Active Learning Iteration </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Active Learning Loop Completed"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="executing-active-learning-training" class="level2">
+<h2 class="anchored" data-anchor-id="executing-active-learning-training"><strong>Executing Active Learning Training</strong></h2>
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ec192e79-a059-44df-afba-0f21f0cbe2bc">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nlp.initialize()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>active_learning_loop(nlp, annotated_seed_docs, train_dev, iterations<span class="op">=</span><span class="dv">7</span>, n_samples<span class="op">=</span><span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+=== Active Learning Iteration 1 ===
+Selected uncertain samples for annotation:
+  - Association of nitric oxide production and apoptosis in a model of experimental nephropathy. BACKGRO...
+  - Absence of acute cerebral vasoconstriction after cocaine-associated subarachnoid hemorrhage. INTRODU...
+  - Chemotherapy of advanced inoperable non-small cell lung cancer with paclitaxel: a phase II trial. Pa...
+  - Reduced cardiotoxicity and preserved antitumor efficacy of liposome-encapsulated doxorubicin and cyc...
+  - Neuroactive steroids protect against pilocarpine- and kainic acid-induced limbic seizures and status...
+  - Longitudinal assessment of air conduction audiograms in a phase III clinical trial of difluoromethyl...
+  - Steroid structure and pharmacological properties determine the anti-amnesic effects of pregnenolone ...
+  - Dexrazoxane protects against myelosuppression from the DNA cleavage-enhancing drugs etoposide and da...
+  - Iatrogenic risks of endometrial carcinoma after treatment for breast cancer in a large French case-c...
+  - Effects of acute steroid administration on ventilatory and peripheral muscles in rats. Occasional ca...
+  - Delayed-onset heparin-induced thrombocytopenia. BACKGROUND: Heparin-induced thrombocytopenia present...
+  - Increased expression and apical targeting of renal ENaC subunits in puromycin aminonucleoside-induce...
+  - A cross-sectional evaluation of the effect of risperidone and selective serotonin reuptake inhibitor...
+  - Effects of verapamil on atrial fibrillation and its electrophysiological determinants in dogs. BACKG...
+  - Comparison of aqueous and gellan ophthalmic timolol with placebo on the 24-hour heart rate response ...
+  - Probing peripheral and central cholinergic system responses. OBJECTIVE: The pharmacological response...
+  - Prednisolone-induced muscle dysfunction is caused more by atrophy than by altered acetylcholine rece...
+  - Dexamethasone-induced ocular hypertension in perfusion-cultured human eyes. PURPOSE: Glucocorticoid ...
+  - Cyclophosphamide-induced cystitis in freely-moving conscious rats: behavioral approach to a new mode...
+  - Nephrotoxic effects in high-risk patients undergoing angiography. BACKGROUND: The use of iodinated c...
+  - Impact of alcohol exposure after pregnancy recognition on ultrasonographic fetal growth measures. BA...
+  - Results of a comparative, phase III, 12-week, multicenter, prospective, randomized, double-blind ass...
+  - Orthostatic hypotension occurs following alpha 2-adrenoceptor blockade in chronic prazosin-pretreate...
+  - 22-oxacalcitriol suppresses secondary hyperparathyroidism without inducing low bone turnover in dogs...
+  - Comparison of developmental toxicology of aspirin (acetylsalicylic acid) in rats using selected dosi...
+New annotations added. Total labeled data size: 725
+Iteration 1: Loss = 32064.9459
+Iteration 2: Loss = 6796.3936
+Iteration 3: Loss = 3814.2383
+Iteration 4: Loss = 3046.2015
+Iteration 5: Loss = 2681.5259
+Iteration 6: Loss = 2237.3136
+Iteration 7: Loss = 2133.3297
+Iteration 8: Loss = 2110.4924
+Iteration 9: Loss = 2347.1513
+Iteration 10: Loss = 1996.7340
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 1
+
+=== Active Learning Iteration 2 ===
+Selected uncertain samples for annotation:
+  - Effect of lithium maintenance therapy on thyroid and parathyroid function. OBJECTIVES: To assess cha...
+  - Phase I trial of 13-cis-retinoic acid in children with neuroblastoma following bone marrow transplan...
+  - Force overflow and levodopa-induced dyskinesias in Parkinson's disease. We assessed force coordinati...
+  - Hepatotoxicity associated with sulfasalazine in inflammatory arthritis: A case series from a local s...
+  - Preliminary efficacy assessment of intrathecal injection of an American formulation of adenosine in ...
+  - Effect of glyceryl trinitrate on the sphincter of Oddi spasm evoked by prostigmine-morphine administ...
+  - Recent preclinical and clinical studies with the thymidylate synthase inhibitor N10-propargyl-5,8-di...
+  - Does supplemental vitamin C increase cardiovascular disease risk in women with diabetes? BACKGROUND:...
+  - Acute blood pressure elevations with caffeine in men with borderline systemic hypertension. Whether ...
+  - Factors associated with nephrotoxicity and clinical outcome in patients receiving amikacin. Data fro...
+  - Enhanced stimulus-induced neurotransmitter overflow in epinephrine-induced hypertensive rats is not ...
+  - The attenuating effect of carteolol hydrochloride, a beta-adrenoceptor antagonist, on neuroleptic-in...
+  - Nitric oxide synthase expression in the course of lead-induced hypertension. We recently showed elev...
+  - Prenatal exposure to fluoxetine induces fetal pulmonary hypertension in the rat. RATIONALE: Fluoxeti...
+  - Cholesteryl hemisuccinate treatment protects rodents from the toxic effects of acetaminophen, adriam...
+  - Exaggerated expression of inflammatory mediators in vasoactive intestinal polypeptide knockout (VIP-...
+  - Plasma and urinary lipids and lipoproteins during the development of nephrotic syndrome induced in t...
+  - Detection of abnormal cardiac adrenergic neuron activity in adriamycin-induced cardiomyopathy with i...
+  - Valsartan, a new angiotensin II antagonist for the treatment of essential hypertension: a comparativ...
+  - Effects of the novel compound aniracetam (Ro 13-5057) upon impaired learning and memory in rodents. ...
+  - Efficacy and tolerability of lovastatin in 3390 women with moderate hypercholesterolemia. OBJECTIVE:...
+  - Effect of lindane on hepatic and brain cytochrome P450s and influence of P450 modulation in lindane ...
+  - The protective role of Nrf2 in streptozotocin-induced diabetic nephropathy. OBJECTIVE: Diabetic neph...
+  - Behavioral effects of MK-801 on reserpine-treated mice. The effects of dizocilpine (MK-801), a nonco...
+  - Memory function and serotonin transporter promoter gene polymorphism in ecstasy (MDMA) users. Althou...
+New annotations added. Total labeled data size: 750
+Iteration 1: Loss = 32389.4196
+Iteration 2: Loss = 6335.6187
+Iteration 3: Loss = 4307.7131
+Iteration 4: Loss = 3164.1299
+Iteration 5: Loss = 2605.5714
+Iteration 6: Loss = 2338.5201
+Iteration 7: Loss = 2092.5640
+Iteration 8: Loss = 2192.7153
+Iteration 9: Loss = 3445.8335
+Iteration 10: Loss = 1998.2879
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 2
+
+=== Active Learning Iteration 3 ===
+Selected uncertain samples for annotation:
+  - Tolerability of nimesulide and paracetamol in patients with NSAID-induced urticaria/angioedema. Prev...
+  - Delayed institution of hypertension during focal cerebral ischemia: effect on brain edema. The effec...
+  - Carboplatin toxic effects on the peripheral nervous system of the rat. BACKGROUND: The most striking...
+  - The safety and efficacy of combination N-butyl-deoxynojirimycin (SC-48334) and zidovudine in patient...
+  - Phlorizin-induced glycosuria does not prevent gentamicin nephrotoxicity in rats. Because rats with s...
+  - Reduction of pain during induction with target-controlled propofol and remifentanil. BACKGROUND: Pai...
+  - Sensitivity of erythroid progenitor colonies to erythropoietin in azidothymidine treated immunodefic...
+  - Effects of nonsteroidal anti-inflammatory drugs on hemostasis in patients with aneurysmal subarachno...
+  - A novel animal model to evaluate the ability of a drug delivery system to promote the passage throug...
+  - Neural correlates of S-ketamine induced psychosis during overt continuous verbal fluency. The glutam...
+  - Preservation of renal blood flow during hypotension induced with fenoldopam in dogs. The introductio...
+  - High-dose tranexamic Acid is associated with nonischemic clinical seizures in cardiac surgical patie...
+  - Ocular manifestations of juvenile rheumatoid arthritis. We followed 210 cases of juvenile rheumatoid...
+  - Serotonin syndrome from venlafaxine-tranylcypromine interaction. Excessive stimulation of serotonin ...
+  - Treatment of ifosfamide-induced urothelial toxicity by oral administration of sodium 2-mercaptoethan...
+  - Effects of active constituents of Crocus sativus L., crocin on streptozocin-induced model of sporadi...
+  - Increased mental slowing associated with the APOE epsilon4 allele after trihexyphenidyl oral anticho...
+  - Behavioral effects of pubertal anabolic androgenic steroid exposure in male rats with low serotonin....
+  - Influence of diet free of NAD-precursors on acetaminophen hepatotoxicity in mice. Recently, we demon...
+  - Syncope and QT prolongation among patients treated with methadone for heroin dependence in the city ...
+  - Postoperative myalgia after succinylcholine: no evidence for an inflammatory origin. A common side e...
+  - Nature, time course and dose dependence of zidovudine-related side effects: results from the Multice...
+  - Adequate timing of ribavirin reduction in patients with hemolysis during combination therapy of inte...
+  - Debrisoquine phenotype and the pharmacokinetics and beta-2 receptor pharmacodynamics of metoprolol a...
+  - Dexmedetomidine, acting through central alpha-2 adrenoceptors, prevents opiate-induced muscle rigidi...
+New annotations added. Total labeled data size: 775
+Iteration 1: Loss = 31571.6488
+Iteration 2: Loss = 6079.0688
+Iteration 3: Loss = 3551.6659
+Iteration 4: Loss = 2928.1465
+Iteration 5: Loss = 2375.2515
+Iteration 6: Loss = 2306.8876
+Iteration 7: Loss = 2099.5200
+Iteration 8: Loss = 1919.7334
+Iteration 9: Loss = 1714.6274
+Iteration 10: Loss = 1664.6518
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 3
+
+=== Active Learning Iteration 4 ===
+Selected uncertain samples for annotation:
+  - Electrocardiographic changes and cardiac arrhythmias in patients receiving psychotropic drugs. Eight...
+  - A murine model of adenomyosis: the effects of hyperprolactinemia induced by fluoxetine hydrochloride...
+  - Halogenated anesthetics form liver adducts and antigens that cross-react with halothane-induced anti...
+  - Lifetime treatment of mice with azidothymidine (AZT) produces myelodysplasia. AZT has induced a macr...
+  - Urinary enzymes and protein patterns as indicators of injury to different regions of the kidney. Acu...
+  - Rapid reversal of anticoagulation reduces hemorrhage volume in a mouse model of warfarin-associated ...
+  - Initial potassium loss and hypokalaemia during chlorthalidone administration in patients with essent...
+  - The epidemiology of the acute flank pain syndrome from suprofen. Suprofen, a new nonsteroidal anti-i...
+  - Fluconazole-induced torsade de pointes. OBJECTIVE: To present a case of fluconazole-associated torsa...
+  - Progestational agents and blood coagulation. VII. Thromboembolic and other complications of oral con...
+  - A phase I clinical study of the antipurine antifolate lometrexol (DDATHF) given with oral folic acid...
+  - Dextran-etodolac conjugates: synthesis, in vitro and in vivo evaluation. Etodolac (E), is a non-narc...
+  - Systemic toxicity and resuscitation in bupivacaine-, levobupivacaine-, or ropivacaine-infused rats. ...
+  - Long-term efficacy and toxicity of high-dose amiodarone therapy for ventricular tachycardia or ventr...
+  - Continuous ambulatory ECG monitoring during fluorouracil therapy: a prospective study. Although ther...
+  - Mice lacking mPGES-1 are resistant to lithium-induced polyuria. Cyclooxygenase-2 activity is require...
+  - Activation of poly(ADP-ribose) polymerase contributes to development of doxorubicin-induced heart fa...
+  - 5 flourouracil-induced apical ballooning syndrome: a case report. The apical ballooning syndrome (AB...
+  - Ketamine in war/tropical surgery (a final tribute to the racemic mixture). A technique of continuous...
+  - Apomorphine: an underutilized therapy for Parkinson's disease. Apomorphine was the first dopaminergi...
+  - Ifosfamide continuous infusion without mesna. A phase I trial of a 14-day cycle. Twenty patients rec...
+  - Time dependence of plasma malondialdehyde, oxypurines, and nucleosides during incomplete cerebral is...
+  - Effects of the hippocampal deep brain stimulation on cortical epileptic discharges in penicillin - i...
+  - Effect of intravenous metoprolol or intravenous metoprolol plus glucagon on dobutamine-induced myoca...
+  - Absence of effect of sertraline on time-based sensitization of cognitive impairment with haloperidol...
+New annotations added. Total labeled data size: 800
+Iteration 1: Loss = 29131.9785
+Iteration 2: Loss = 6041.0953
+Iteration 3: Loss = 4417.9898
+Iteration 4: Loss = 3447.1339
+Iteration 5: Loss = 2650.4808
+Iteration 6: Loss = 2371.8506
+Iteration 7: Loss = 2282.8954
+Iteration 8: Loss = 1978.7595
+Iteration 9: Loss = 1826.7254
+Iteration 10: Loss = 1805.1435
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 4
+
+=== Active Learning Iteration 5 ===
+Selected uncertain samples for annotation:
+  - A prospective study on the dose dependency of cardiotoxicity induced by mitomycin C. Since 1975 mito...
+  - The hemodynamics of oxytocin and other vasoactive agents during neuraxial anesthesia for cesarean de...
+  - Acute renal toxicity of doxorubicin (adriamycin)-loaded cyanoacrylate nanoparticles. Acute doxorubic...
+  - Chronic carbamazepine inhibits the development of local anesthetic seizures kindled by cocaine and l...
+  - Use of dexamethasone with mesna for the prevention of ifosfamide-induced hemorrhagic cystitis. AIM: ...
+  - Nerve growth factor and prostaglandins in the urine of female patients with overactive bladder. PURP...
+  - Serotonergic drugs, benzodiazepines and baclofen block muscimol-induced myoclonic jerks in a strain ...
+  - Effects of deliberate hypotension induced by labetalol with isoflurane on neuropsychological functio...
+  - Antiarrhythmic effects of optical isomers of cibenzoline on canine ventricular arrhythmias. Antiarrh...
+  - Intraocular pressure in patients with uveitis treated with fluocinolone acetonide implants. OBJECTIV...
+  - Protective effect of a specific platelet-activating factor antagonist, BN 52021, on bupivacaine-indu...
+  - Systemic toxicity following administration of sirolimus (formerly rapamycin) for psoriasis: associat...
+  - Myocardial infarction in pregnancy associated with clomiphene citrate for ovulation induction: a cas...
+  - A phase II study of thalidomide in advanced metastatic renal cell carcinoma. OBJECTIVES: To evaluate...
+  - Value of methylprednisolone in prevention of the arthralgia-myalgia syndrome associated with the tot...
+  - Anti-carcinogenic action of phenobarbital given simultaneously with diethylnitrosamine in the rat. T...
+  - Transient contralateral rotation following unilateral substantia nigra lesion reflects susceptibilit...
+  - An evaluation of amikacin nephrotoxicity in the hematology/oncology population. Amikacin is an amino...
+  - Fear-potentiated startle, but not light-enhanced startle, is enhanced by anxiogenic drugs. RATIONALE...
+  - Myocardial ischemia due to coronary artery spasm during dobutamine stress echocardiography. Dobutami...
+  - Benzylacyclouridine reverses azidothymidine-induced marrow suppression without impairment of anti-hu...
+  - Effect of calcium chloride and 4-aminopyridine therapy on desipramine toxicity in rats. BACKGROUND: ...
+  - Sustained clinical improvement of a patient with decompensated hepatitis B virus-related cirrhosis a...
+  - Erythropoietin restores the anemia-induced reduction in cyclophosphamide cytotoxicity in rat tumors....
+  - Risk for valvular heart disease among users of fenfluramine and dexfenfluramine who underwent echoca...
+New annotations added. Total labeled data size: 825
+Iteration 1: Loss = 28639.6726
+Iteration 2: Loss = 6148.5212
+Iteration 3: Loss = 3933.0343
+Iteration 4: Loss = 3422.4377
+Iteration 5: Loss = 2606.6425
+Iteration 6: Loss = 2441.4287
+Iteration 7: Loss = 2378.1606
+Iteration 8: Loss = 1959.0116
+Iteration 9: Loss = 1995.1075
+Iteration 10: Loss = 1896.8607
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 5
+
+=== Active Learning Iteration 6 ===
+Selected uncertain samples for annotation:
+  - Type B hepatitis after needle-stick exposure: prevention with hepatitis B immune globulin. Final rep...
+  - Absolute and attributable risk of venous thromboembolism in women on combined cyproterone acetate an...
+  - Effect of calcium chloride on gross behavioural changes produced by carbachol and eserine in cats. T...
+  - Effect of alpha-tocopherol and deferoxamine on methamphetamine-induced neurotoxicity. Methamphetamin...
+  - Does hormone therapy for the treatment of breast cancer have a detrimental effect on memory and cogn...
+  - Proteinase 3-antineutrophil cytoplasmic antibody-(PR3-ANCA) positive necrotizing glomerulonephritis ...
+  - A dystonia-like syndrome after neuropeptide (MSH/ACTH) stimulation of the rat locus ceruleus. The mo...
+  - Induction by paracetamol of bladder and liver tumours in the rat. Effects on hepatocyte fine structu...
+  - The ability of insulin treatment to reverse or prevent the changes in urinary bladder function cause...
+  - Dopamine is not essential for the development of methamphetamine-induced neurotoxicity. It is widely...
+  - Neutrophil superoxide and hydrogen peroxide production in patients with acute liver failure. Defects...
+  - Long-term effects of vincristine on the peripheral nervous system. Forty patients with Non-Hodgkin's...
+  - Doxorubicin cardiomyopathy-induced inflammation and apoptosis are attenuated by gene deletion of the...
+  - DSMM XI study: dose definition for intravenous cyclophosphamide in combination with bortezomib/dexam...
+  - Subjective assessment of sexual dysfunction of patients on long-term administration of digoxin. Vari...
+  - Effects of UMB24 and (+/-)-SM 21, putative sigma2-preferring antagonists, on behavioral toxic and st...
+  - Intracavitary chemotherapy (paclitaxel/carboplatin liquid crystalline cubic phases) for recurrent gl...
+  - Peripheral neuropathy caused by high-dose cytosine arabinoside treatment in a patient with acute mye...
+  - Hallucinations and ifosfamide-induced neurotoxicity. BACKGROUND: Hallucinations as a symptom of cent...
+  - Experimental cranial pain elicited by capsaicin: a PET study. Using a positron emission tomography (...
+  - Dynamic response of blood vessel in acute renal failure. In this study we postulated that during acu...
+  - Calcitonin gene-related peptide levels during nitric oxide-induced headache in patients with chronic...
+  - Urinary symptoms and quality of life changes in Thai women with overactive bladder after tolterodine...
+  - Pallidal stimulation: an alternative to pallidotomy? A resurgence of interest in the surgical treatm...
+  - Contribution of the glycine site of NMDA receptors in rostral and intermediate-caudal parts of the s...
+New annotations added. Total labeled data size: 850
+Iteration 1: Loss = 30135.7382
+Iteration 2: Loss = 6874.4394
+Iteration 3: Loss = 4352.2478
+Iteration 4: Loss = 3395.9670
+Iteration 5: Loss = 3296.2578
+Iteration 6: Loss = 3237.6462
+Iteration 7: Loss = 2231.6151
+Iteration 8: Loss = 2028.7244
+Iteration 9: Loss = 1865.7431
+Iteration 10: Loss = 1855.4139
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 6
+
+=== Active Learning Iteration 7 ===
+Selected uncertain samples for annotation:
+  - Long-term lithium treatment and the kidney. Interim report on fifty patients. This is a report on th...
+  - Severe congestive heart failure patient on amiodarone presenting with myxedemic coma: a case report....
+  - Cognitive deterioration from long-term abuse of dextromethorphan: a case report. Dextromethorphan (D...
+  - Involvement of the mu-opiate receptor in peripheral analgesia. The intradermal injection of mu (morp...
+  - Atorvastatin prevented and reversed dexamethasone-induced hypertension in the rat. To assess the ant...
+  - Auditory disturbance associated with interscalene brachial plexus block. We performed an audiometric...
+  - The striatum as a target for anti-rigor effects of an antagonist of mGluR1, but not an agonist of gr...
+  - Hepatonecrosis and cholangitis related to long-term phenobarbital therapy: an autopsy report of two ...
+  - Diazepam facilitates reflex bradycardia in conscious rats. The effects of diazepam on cardiovascular...
+  - Cutaneous leucocytoclastic vasculitis associated with oxacillin. A 67-year-old man who was treated w...
+  - Water intoxication associated with oxytocin administration during saline-induced abortion. Four case...
+  - Renal function and hemodynamics during prolonged isoflurane-induced hypotension in humans. The effec...
+  - Amisulpride related tic-like symptoms in an adolescent schizophrenic. Tic disorders can be effective...
+  - Fatal excited delirium following cocaine use: epidemiologic findings provide new evidence for mechan...
+  - Cortical motor overactivation in parkinsonian patients with L-dopa-induced peak-dose dyskinesia. We ...
+  - Cardiac transplantation: improved quality of survival with a modified immunosuppressive protocol. Th...
+  - Changes in peroxisomes in preneoplastic liver and hepatoma of mice induced by alpha-benzene hexachlo...
+  - Hypotension, bradycardia, and asystole after high-dose intravenous methylprednisolone in a monitored...
+  - D-penicillamine in the treatment of localized scleroderma. Localized scleroderma has no recognized i...
+  - Antiarrhythmic plasma concentrations of cibenzoline on canine ventricular arrhythmias. Using two-sta...
+  - Effects of NIK-247 on cholinesterase and scopolamine-induced amnesia. The effects of NIK-247 on chol...
+  - The antiarrhythmic effect and possible ionic mechanisms of pilocarpine on animal models. This study ...
+  - CCNU (lomustine) toxicity in dogs: a retrospective study (2002-07). OBJECTIVE: To describe the incid...
+  - Ethambutol-associated optic neuropathy. INTRODUCTION: Ethambutol is used in the treatment of tubercu...
+  - Effect of Hibiscus rosa sinensis on reserpine-induced neurobehavioral and biochemical alterations in...
+New annotations added. Total labeled data size: 875
+Iteration 1: Loss = 29325.4387
+Iteration 2: Loss = 6075.2924
+Iteration 3: Loss = 4061.1718
+Iteration 4: Loss = 3148.4050
+Iteration 5: Loss = 2492.6187
+Iteration 6: Loss = 2405.9461
+Iteration 7: Loss = 2746.3982
+Iteration 8: Loss = 2031.7188
+Iteration 9: Loss = 2006.7719
+Iteration 10: Loss = 1809.7285
+
+==Model Training Completed==
+
+Finished Active Learning Iteration 7
+
+Active Learning Loop Completed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="evaluating-the-ner-model-performance" class="level1">
+<h1><strong>Evaluating the NER Model Performance</strong></h1>
+<div id="cell-20" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate_model(model, test_data):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Evaluates the trained NER model on test data using micro-averaged metrics.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">        model: The trained spaCy model.</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">        test_data: List of test document dictionaries with "text" and "entities".</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">        tuple: (Precision, Recall, F1-score)</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    y_true, y_pred <span class="op">=</span> [], []</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc_data <span class="kw">in</span> test_data:</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> doc_data[<span class="st">"text"</span>]</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        gold <span class="op">=</span> <span class="bu">set</span>(doc_data[<span class="st">"entities"</span>])</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> model(text)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> <span class="bu">set</span>([(ent.start_char, ent.end_char, ent.label_) <span class="cf">for</span> ent <span class="kw">in</span> doc.ents])</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        all_labels <span class="op">=</span> <span class="bu">set</span>([e[<span class="dv">2</span>] <span class="cf">for</span> e <span class="kw">in</span> gold]).union(<span class="bu">set</span>([e[<span class="dv">2</span>] <span class="cf">for</span> e <span class="kw">in</span> pred]))</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> label <span class="kw">in</span> all_labels:</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>            tp <span class="op">=</span> <span class="bu">len</span>([e <span class="cf">for</span> e <span class="kw">in</span> gold <span class="cf">if</span> e <span class="kw">in</span> pred <span class="kw">and</span> e[<span class="dv">2</span>] <span class="op">==</span> label])</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>            fp <span class="op">=</span> <span class="bu">len</span>([e <span class="cf">for</span> e <span class="kw">in</span> pred <span class="cf">if</span> e <span class="kw">not</span> <span class="kw">in</span> gold <span class="kw">and</span> e[<span class="dv">2</span>] <span class="op">==</span> label])</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>            fn <span class="op">=</span> <span class="bu">len</span>([e <span class="cf">for</span> e <span class="kw">in</span> gold <span class="cf">if</span> e <span class="kw">not</span> <span class="kw">in</span> pred <span class="kw">and</span> e[<span class="dv">2</span>] <span class="op">==</span> label])</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>            y_true.extend([label] <span class="op">*</span> tp)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            y_pred.extend([label] <span class="op">*</span> tp)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>            y_true.extend([label] <span class="op">*</span> fn)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>            y_pred.extend([<span class="st">"O"</span>] <span class="op">*</span> fn)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>            y_true.extend([<span class="st">"O"</span>] <span class="op">*</span> fp)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>            y_pred.extend([label] <span class="op">*</span> fp)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    precision, recall, f1, _ <span class="op">=</span> precision_recall_fscore_support(</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>        y_true, y_pred, average<span class="op">=</span><span class="st">"micro"</span>, labels<span class="op">=</span><span class="bu">list</span>(<span class="bu">set</span>(y_true) <span class="op">-</span> {<span class="st">"O"</span>})</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">=== Evaluation on Test Set ==="</span>)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">, Recall: </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">, F1-Score: </span><span class="sc">{</span>f1<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision, recall, f1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="execution" class="level1">
+<h1>Execution</h1>
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="33d86885-5057-4ebb-ba1b-b79384793517">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare test data.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>TEST_DATA <span class="op">=</span> [{<span class="st">"text"</span>: doc[<span class="st">"text"</span>], <span class="st">"entities"</span>: doc[<span class="st">"entities"</span>]} <span class="cf">for</span> doc <span class="kw">in</span> test]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>evaluate_model(nlp, TEST_DATA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+=== Evaluation on Test Set ===
+Precision: 0.5819, Recall: 0.3580, F1-Score: 0.4433</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>(0.5819386909693455, 0.35803853603833213, 0.4433223933350164)</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

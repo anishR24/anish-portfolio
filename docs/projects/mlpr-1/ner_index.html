@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Visualization &amp; Business Intelligence – Anish Rao</title>
+<title>Medical Named Entity Recognition (NER) – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -100,13 +100,27 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li class="dropdown-header">— Business Intelligence —</li>
         <li>
-    <a class="dropdown-item" href="../../projects/data-viz/viz_index.qmd">
- <span class="dropdown-text">Data Visualization</span></a>
+    <a class="dropdown-item" href="../../projects/data-viz/viz_index.html">
+ <span class="dropdown-text">BI &amp; Data Visualization</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../projects/taxi-dw/taxi_index.html">
  <span class="dropdown-text">NYC Taxi Data Warehouse</span></a>
+  </li>  
+        <li class="dropdown-header">— Machine Learning &amp; AI —</li>
+        <li>
+    <a class="dropdown-item" href="../../projects/churn-prediction/churn_index.html">
+ <span class="dropdown-text">Customer Churn (Explainable AI)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-1/ner_index.html">
+ <span class="dropdown-text">Medical Named Entity Recognition</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-2/anomaly_index.html">
+ <span class="dropdown-text">Anomaly Detection in Time Series</span></a>
   </li>  
     </ul>
   </li>
@@ -121,14 +135,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">1. Data Preparation</a></li>
+  <li><a href="#rule-based-matching-weak-labeling" id="toc-rule-based-matching-weak-labeling" class="nav-link" data-scroll-target="#rule-based-matching-weak-labeling">2. Rule-Based Matching (Weak Labeling)</a></li>
+  <li><a href="#active-learning-loop" id="toc-active-learning-loop" class="nav-link" data-scroll-target="#active-learning-loop">3. Active Learning Loop</a></li>
+  <li><a href="#model-training-optimization" id="toc-model-training-optimization" class="nav-link" data-scroll-target="#model-training-optimization">4. Model Training &amp; Optimization</a></li>
+  </ul></li>
+  <li><a href="#performance-results" id="toc-performance-results" class="nav-link" data-scroll-target="#performance-results">Performance Results</a></li>
+  <li><a href="#complete-analysis-notebook" id="toc-complete-analysis-notebook" class="nav-link" data-scroll-target="#complete-analysis-notebook">Complete Analysis Notebook</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Visualization &amp; Business Intelligence</h1>
-<p class="subtitle lead">Evidence-based storytelling using Tableau and Power BI</p>
+<h1 class="title">Medical Named Entity Recognition (NER)</h1>
+<p class="subtitle lead">Applied NLP using spaCy &amp; Active Learning</p>
 </div>
 
 
@@ -145,30 +176,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="featured-projects" class="level2">
-<h2 class="anchored" data-anchor-id="featured-projects">Featured Projects</h2>
-<section id="football-recruitment-tableau-vs.-power-bi" class="level3">
-<h3 class="anchored" data-anchor-id="football-recruitment-tableau-vs.-power-bi">Football Recruitment: Tableau vs.&nbsp;Power BI</h3>
-<p><strong>The Challenge:</strong> Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.</p>
-<ul>
-<li><strong>Key Insight:</strong> Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.</li>
-<li><strong>Tech used:</strong> Tableau Public, Power BI Desktop, DAX, Power Query.</li>
-</ul>
-<p><a href="../../projects/data-viz/football-recruitment/football_index.html" class="btn btn-outline-primary btn-sm">View Case Study &amp; Comparison</a></p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>This project focuses on identifying complex biomedical entities—specifically <strong>Chemicals</strong> and <strong>Diseases</strong>—from the BioCreative-V CDR Corpus. Using <strong>spaCy</strong>, I developed a pipeline that combines rule-based matching with statistical model training to automate the extraction of life-science insights from unstructured text.</p>
+<p><a href="https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA1" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View on GitHub</a> <a href="https://colab.research.google.com/drive/1jZwS7BOgqTvIzTqZh6f3x4iyR4-mKNLQ?usp=sharing" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-google"></i> Open in Colab</a> <a href="https://github.com/JHnlp/BioCreative-V-CDR-Corpus" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset</a></p>
 <hr>
 </section>
-<section id="global-social-progress-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="global-social-progress-analysis">Global Social Progress Analysis</h3>
-<p><strong>The Challenge:</strong> Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.</p>
-<ul>
-<li><strong>Key Insight:</strong> Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.</li>
-<li><strong>Design Choice:</strong> Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.</li>
-<li><strong>Tech used:</strong> Tableau, Box Plots, Scatter Plot Distributions.</li>
-</ul>
-<p><a href="../../projects/data-viz/social-progress/social_index.html" class="btn btn-outline-primary btn-sm">View Deep Dive</a></p>
-
-
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<p>The project was executed in four critical phases:</p>
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">1. Data Preparation</h3>
+<p>Parsed the <strong>PubTator</strong> format, merging training and development sets to create a robust foundation for the model.</p>
 </section>
+<section id="rule-based-matching-weak-labeling" class="level3">
+<h3 class="anchored" data-anchor-id="rule-based-matching-weak-labeling">2. Rule-Based Matching (Weak Labeling)</h3>
+<p>Before training, I implemented a collection of patterns to identify entities through exact matches and regex. This served as a “weak supervision” layer to bootstrap the learning process.</p>
+</section>
+<section id="active-learning-loop" class="level3">
+<h3 class="anchored" data-anchor-id="active-learning-loop">3. Active Learning Loop</h3>
+<p>One of the most advanced features of this project is the <strong>Active Learning Loop</strong>. By iteratively training the model and querying uncertain samples, we optimized the labeling process, significantly reducing the amount of manual annotation required.</p>
+</section>
+<section id="model-training-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="model-training-optimization">4. Model Training &amp; Optimization</h3>
+<p>The model was built using spaCy’s transition-based NER parser. I utilized <code>en_core_web_sm</code> as a base and fine-tuned it on the specialized medical corpus.</p>
+<hr>
+</section>
+</section>
+<section id="performance-results" class="level2">
+<h2 class="anchored" data-anchor-id="performance-results">Performance Results</h2>
+<p>The model was evaluated using a strict token-level matching criteria.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Precision</strong></td>
+<td style="text-align: left;"><strong>0.5819</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Recall</strong></td>
+<td style="text-align: left;"><strong>0.3580</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>F1-Score</strong></td>
+<td style="text-align: left;"><strong>0.4433</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: While the recall is conservative, the precision indicates that the model is highly reliable when it does identify an entity—a crucial requirement in medical diagnostics.</em></p>
+<hr>
+</section>
+<section id="complete-analysis-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="complete-analysis-notebook">Complete Analysis Notebook</h2>
+<p>To view the full Python implementation, data parsing logic, and execution logs, please visit the technical notebook page.</p>
+<div class="d-grid gap-2">
+<p><a href="../../projects/mlpr-1/ner_code.html" class="btn btn-outline-primary btn-lg" role="button"><i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook</a></p>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -10,6 +10,10 @@ resources:
   - football_scouting.pbix
 ---
 
+[<i class="bi bi-arrow-left"></i> Back to Visualisation Overview](../viz_index.qmd){.btn .btn-outline-secondary .btn-sm role="button"}
+
+---
+
 ## Project Overview
 This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both **Tableau** and **Power BI**. The goal was to conduct a "head-to-head" comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.
 
