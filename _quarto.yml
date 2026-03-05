@@ -11,14 +11,29 @@ website:
         text: Home
       - text: Projects
         menu:
+          - text: "--- Business Intelligence ---"
           - href: projects/data-viz/viz_index.qmd
-            text: Data Visualization
+            text: BI & Data Visualization
           - href: projects/taxi-dw/taxi_index.qmd
             text: NYC Taxi Data Warehouse
+          - text: "--- Machine Learning & AI ---"
           - href: projects/churn-prediction/churn_index.qmd
-            text: Customer Churn Prediction
+            text: Customer Churn (Explainable AI)
+          - href: projects/mlpr-1/mlpr1_index.qmd
+            text: MLPR Project 1
+          - href: projects/mlpr-2/mlpr2_index.qmd
+            text: MLPR Project 2
+          - text: "--- Data Science & Mining ---"
+          - href: projects/python-notebook/python_index.qmd
+            text: Python Analysis Lab
+          - href: projects/data-mining/mining_index.qmd
+            text: Data & Network Mining
+          - text: "--- Others ---"
+          - href: projects/statistics/stats_index.qmd
+            text: Statistical Analysis Q&A
 
 format:
   html:
     theme: cosmo
     css: styles.css
+    toc: true

@@ -12,6 +12,9 @@ resources:
 ## Project Overview
 This analysis explores the **Social Progress Index (SPI)**, evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world's most struggling nations.
 
+## Dashboard Preview
+![Social Progress Index Analysis Dashboard](Dashboard.png){.border .shadow .rounded}
+
 ## Interactive Dashboard
 Explore the global patterns directly below. Use the "Bottom N" filter to adjust the focal point of the analysis.
 

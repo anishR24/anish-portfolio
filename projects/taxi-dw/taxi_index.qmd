@@ -8,6 +8,8 @@ format:
 resources:
   - nyc_taxi_dw.pdf
   - nyc_taxi_dw.sql
+  - nyc_taxi_ssis.zip
+  - nyc_taxi_ssrs.zip
 ---
 
 ## Project Overview
@@ -132,7 +134,9 @@ INCLUDE (TotalAmount, TripDistance);
 ## Phase 1 Downloads
 The technical architecture and full SQL scripts are available below.
 :::
+::: {layout-ncol=1}
 [📥 Download SQL Scripts (.sql)](nyc_taxi_dw.sql){.btn .btn-outline-primary .rounded-pill .px-4}
+:::
 
 ## Phase 2: Automated ETL Pipeline (SSIS)
 
@@ -263,6 +267,125 @@ The complete ETL logic, including the SSIS packages and supporting SQL initializ
 
 ## Phase 3: Operational Reporting (SSRS)
 
+With the Data Warehouse populated, I developed a comprehensive suite of operational reports using **SQL Server Reporting Services (SSRS)**. This layer transforms complex data into interactive tools for the "Director of Recruitment," focusing on usability and data accessibility across 2.8 million records.
+
+### 1. Interactive Drill-Down Reports
+I designed a 3-level hierarchical reporting system. This allows stakeholders to start with a high-level executive summary and navigate deep into specific performance metrics without leaving the report interface.
+
+::: {layout-ncol=3}
+![**Level 1:** Executive Summary](DrillDownReport-Level1.JPG){.border .shadow}
+
+![**Level 2:** Daily Breakdown](DrillDownReport-Level2.JPG){.border .shadow}
+
+![**Level 3:** Hourly Detail](DrillDownReport-Level3.JPG){.border .shadow}
+:::
+
+### 2. Parameterized Filtering
+To make the reports truly dynamic, I implemented advanced **Parameters**. Users can filter the entire dataset by Vendor, Date, or Location, ensuring they only see the data relevant to their specific query.
+
+::: {layout-ncol=3}
+![Dynamic Report Output 1](Parameter1.JPG){.border .shadow}
+
+![Dynamic Report Output 2](Parameter2.JPG){.border .shadow}
+
+![Parameter Options](Parameter-Options.JPG){.border .shadow}
+:::
+
+### 3. Specialized Analytical Views
+Beyond standard tables, I utilized different SSRS data regions (Matrix and Sub-reports) to provide diverse perspectives on the taxi operations:
+
+::: {layout-ncol=3}
+![Matrix Analysis View](MatrixReport.JPG){.border .shadow}
+
+![Sub-Report Integration](SubReport1.JPG){.border .shadow}
+
+![Tabular Detailed View](TabularReport.JPG){.border .shadow}
+:::
+
+---
+
+::: {.callout-tip}
+## Phase 3 Reporting Assets
+The complete SSRS solution—including the report definitions (.rdl), shared data source (.rds), and the project solution (.sln)—is available in the project archive below.
+:::
+
+::: {layout-ncol=1}
+[📥 Download SSRS Project Archive (.zip)](nyc_taxi_ssrs.zip){.btn .btn-outline-primary .rounded-pill .px-4}
+:::
+
+---
 
 
 ## Phase 4: Visual Analytics (Tableau)
+
+The final phase transforms the data warehouse into a strategic asset. While SSRS provided operational detail, this Tableau dashboard reveals geographic trends and demand cycles that inform long-term recruitment strategy.
+
+### Dashboard Preview
+![NYC Taxi Strategic Analytics Dashboard](Dashboard.JPG){.border .shadow .rounded}
+
+### Interactive Dashboard
+Explore the NYC taxi patterns directly below. Use the interactive filters to analyze specific borough performance and vendor trends.
+
+::: {.column-page .border .shadow .rounded .p-3}
+<div class='tableauPlaceholder' id='viz1772716550272' style='position: relative'>
+  <noscript>
+    <a href='#'>
+      <img alt='NYC Dashboard' src='https://public.tableau.com/static/images/NY/NYC_Taxi_CA1/NYCDashboard/1_rss.png' style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz' style='display:none;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+    <param name='embed_code_version' value='3' />
+    <param name='site_root' value='' />
+    <param name='name' value='NYC_Taxi_CA1/NYCDashboard' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+    <param name='static_image' value='https://public.tableau.com/static/images/NY/NYC_Taxi_CA1/NYCDashboard/1.png' />
+    <param name='animate_transition' value='yes' />
+    <param name='display_static_image' value='yes' />
+    <param name='display_spinner' value='yes' />
+    <param name='display_overlay' value='yes' />
+    <param name='display_count' value='yes' />
+    <param name='language' value='en-US' />
+  </object>
+</div>
+<script type='text/javascript'>
+  var divElement = document.getElementById('viz1772716550272');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) {
+    vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+  } else if (divElement.offsetWidth > 500) {
+    vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+  } else {
+    vizElement.style.width = '100%'; vizElement.style.height = '1427px';
+  }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+:::
+
+### Analytical Strategy & Design
+* **Geographic Heat-mapping:** Visualizing trip density to identify high-volume pickup zones, specifically highlighting airport activity.
+* **Temporal Patterns:** Analyzing demand by hour and day of the week to optimize driver shift scheduling.
+* **Financial Distribution:** Correlating trip distance with total fare to identify the most profitable routes.
+
+### Key Insights
+* **Peak Demand:** Data confirms a 15% spike in demand during evening rush hours in Manhattan, suggesting a critical need for driver availability.
+* **Airport Dynamics:** JFK and LaGuardia represent the highest "Tip-to-Fare" ratios, making them primary recruitment targets for premium drivers.
+* **Volume vs. Value:** While Brooklyn shows high trip counts, Manhattan remains the revenue leader due to shorter, more frequent turnarounds.
+
+### Technical Skills Demonstrated
+* **Tool:** Tableau.
+* **Visualizations:** Dual-Axis Maps, Tree Maps, and Scatter Plots.
+* **Calculations:** Used $R^{2}$ and trend lines to validate the correlation between trip duration and tip percentage.
+
+---
+
+::: {.callout-tip}
+### Phase 4 Source Files & Full Report
+For a deep dive into the methodology, business requirements, and full technical specifications, you can download the project files below.
+:::
+
+[📄 Download Analysis Report (PDF)](nyc_taxi_dw.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau Workbook (.twbx)](nyc_taxi_analytics.twbx){.btn .btn-outline-primary .rounded-pill .px-4}

@@ -105,6 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -135,17 +164,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li class="dropdown-header">— Business Intelligence —</li>
         <li>
     <a class="dropdown-item" href="../../projects/data-viz/viz_index.html">
- <span class="dropdown-text">Data Visualization</span></a>
+ <span class="dropdown-text">BI &amp; Data Visualization</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../projects/taxi-dw/taxi_index.html">
  <span class="dropdown-text">NYC Taxi Data Warehouse</span></a>
   </li>  
+        <li class="dropdown-header">— Machine Learning &amp; AI —</li>
         <li>
     <a class="dropdown-item" href="../../projects/churn-prediction/churn_index.html">
- <span class="dropdown-text">Customer Churn Prediction</span></a>
+ <span class="dropdown-text">Customer Churn (Explainable AI)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-1/mlpr1_index.qmd">
+ <span class="dropdown-text">MLPR Project 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/mlpr-2/mlpr2_index.qmd">
+ <span class="dropdown-text">MLPR Project 2</span></a>
+  </li>  
+        <li class="dropdown-header">— Data Science &amp; Mining —</li>
+        <li>
+    <a class="dropdown-item" href="../../projects/python-notebook/python_index.qmd">
+ <span class="dropdown-text">Python Analysis Lab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects/data-mining/mining_index.qmd">
+ <span class="dropdown-text">Data &amp; Network Mining</span></a>
+  </li>  
+        <li class="dropdown-header">— Others —</li>
+        <li>
+    <a class="dropdown-item" href="../../projects/statistics/stats_index.qmd">
+ <span class="dropdown-text">Statistical Analysis Q&amp;A</span></a>
   </li>  
     </ul>
   </li>
@@ -179,13 +232,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-flow-location-dimension" id="toc-data-flow-location-dimension" class="nav-link" data-scroll-target="#data-flow-location-dimension">2. Data Flow: Location Dimension</a></li>
   <li><a href="#data-flow-fact-table" id="toc-data-flow-fact-table" class="nav-link" data-scroll-target="#data-flow-fact-table">3. Data Flow: Fact Table</a></li>
   </ul></li>
-  <li><a href="#phase-3-operational-reporting-ssrs" id="toc-phase-3-operational-reporting-ssrs" class="nav-link" data-scroll-target="#phase-3-operational-reporting-ssrs">Phase 3: Operational Reporting (SSRS)</a></li>
-  <li><a href="#phase-4-visual-analytics-tableau" id="toc-phase-4-visual-analytics-tableau" class="nav-link" data-scroll-target="#phase-4-visual-analytics-tableau">Phase 4: Visual Analytics (Tableau)</a></li>
+  <li><a href="#phase-3-operational-reporting-ssrs" id="toc-phase-3-operational-reporting-ssrs" class="nav-link" data-scroll-target="#phase-3-operational-reporting-ssrs">Phase 3: Operational Reporting (SSRS)</a>
+  <ul class="collapse">
+  <li><a href="#interactive-drill-down-reports" id="toc-interactive-drill-down-reports" class="nav-link" data-scroll-target="#interactive-drill-down-reports">1. Interactive Drill-Down Reports</a></li>
+  <li><a href="#parameterized-filtering" id="toc-parameterized-filtering" class="nav-link" data-scroll-target="#parameterized-filtering">2. Parameterized Filtering</a></li>
+  <li><a href="#specialized-analytical-views" id="toc-specialized-analytical-views" class="nav-link" data-scroll-target="#specialized-analytical-views">3. Specialized Analytical Views</a></li>
+  </ul></li>
+  <li><a href="#phase-4-visual-analytics-tableau" id="toc-phase-4-visual-analytics-tableau" class="nav-link" data-scroll-target="#phase-4-visual-analytics-tableau">Phase 4: Visual Analytics (Tableau)</a>
+  <ul class="collapse">
+  <li><a href="#dashboard-preview" id="toc-dashboard-preview" class="nav-link" data-scroll-target="#dashboard-preview">Dashboard Preview</a></li>
+  <li><a href="#interactive-dashboard" id="toc-interactive-dashboard" class="nav-link" data-scroll-target="#interactive-dashboard">Interactive Dashboard</a></li>
+  <li><a href="#analytical-strategy-design" id="toc-analytical-strategy-design" class="nav-link" data-scroll-target="#analytical-strategy-design">Analytical Strategy &amp; Design</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
+  <li><a href="#technical-skills-demonstrated" id="toc-technical-skills-demonstrated" class="nav-link" data-scroll-target="#technical-skills-demonstrated">Technical Skills Demonstrated</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -345,7 +410,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The technical architecture and full SQL scripts are available below.</p>
 </div>
 </div>
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <p><a href="nyc_taxi_dw.sql" class="btn btn-outline-primary rounded-pill px-4">📥 Download SQL Scripts (.sql)</a></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="phase-2-automated-etl-pipeline-ssis" class="level2">
@@ -494,11 +565,202 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="phase-3-operational-reporting-ssrs" class="level2">
 <h2 class="anchored" data-anchor-id="phase-3-operational-reporting-ssrs">Phase 3: Operational Reporting (SSRS)</h2>
+<p>With the Data Warehouse populated, I developed a comprehensive suite of operational reports using <strong>SQL Server Reporting Services (SSRS)</strong>. This layer transforms complex data into interactive tools for the “Director of Recruitment,” focusing on usability and data accessibility across 2.8 million records.</p>
+<section id="interactive-drill-down-reports" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-drill-down-reports">1. Interactive Drill-Down Reports</h3>
+<p>I designed a 3-level hierarchical reporting system. This allows stakeholders to start with a high-level executive summary and navigate deep into specific performance metrics without leaving the report interface.</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DrillDownReport-Level1.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption><strong>Level 1:</strong> Executive Summary</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DrillDownReport-Level2.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption><strong>Level 2:</strong> Daily Breakdown</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DrillDownReport-Level3.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption><strong>Level 3:</strong> Hourly Detail</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="phase-4-visual-analytics-tableau" class="level2">
+<section id="parameterized-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="parameterized-filtering">2. Parameterized Filtering</h3>
+<p>To make the reports truly dynamic, I implemented advanced <strong>Parameters</strong>. Users can filter the entire dataset by Vendor, Date, or Location, ensuring they only see the data relevant to their specific query.</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Parameter1.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Dynamic Report Output 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Parameter2.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Dynamic Report Output 2</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Parameter-Options.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Parameter Options</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="specialized-analytical-views" class="level3">
+<h3 class="anchored" data-anchor-id="specialized-analytical-views">3. Specialized Analytical Views</h3>
+<p>Beyond standard tables, I utilized different SSRS data regions (Matrix and Sub-reports) to provide diverse perspectives on the taxi operations:</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MatrixReport.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Matrix Analysis View</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SubReport1.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Sub-Report Integration</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="TabularReport.JPG" class="border shadow img-fluid figure-img"></p>
+<figcaption>Tabular Detailed View</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Phase 3 Reporting Assets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The complete SSRS solution—including the report definitions (.rdl), shared data source (.rds), and the project solution (.sln)—is available in the project archive below.</p>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><a href="nyc_taxi_ssrs.zip" class="btn btn-outline-primary rounded-pill px-4">📥 Download SSRS Project Archive (.zip)</a></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="phase-4-visual-analytics-tableau" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="phase-4-visual-analytics-tableau">Phase 4: Visual Analytics (Tableau)</h2>
+<p>The final phase transforms the data warehouse into a strategic asset. While SSRS provided operational detail, this Tableau dashboard reveals geographic trends and demand cycles that inform long-term recruitment strategy.</p>
+<section id="dashboard-preview" class="level3">
+<h3 class="anchored" data-anchor-id="dashboard-preview">Dashboard Preview</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Dashboard.JPG" class="border shadow rounded img-fluid figure-img"></p>
+<figcaption>NYC Taxi Strategic Analytics Dashboard</figcaption>
+</figure>
+</div>
+</section>
+<section id="interactive-dashboard" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="interactive-dashboard">Interactive Dashboard</h3>
+<p>Explore the NYC taxi patterns directly below. Use the interactive filters to analyze specific borough performance and vendor trends.</p>
+<div class="column-page border shadow rounded p-3">
+<div id="viz1772716550272" class="tableauPlaceholder" style="position: relative">
+<p><noscript> <a href="#"> <img alt="NYC Dashboard" src="https://public.tableau.com/static/images/NY/NYC_Taxi_CA1/NYCDashboard/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="NYC_Taxi_CA1/NYCDashboard"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/NY/NYC_Taxi_CA1/NYCDashboard/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> </object></p>
+</div>
+<script type="text/javascript">
+  var divElement = document.getElementById('viz1772716550272');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) {
+    vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+  } else if (divElement.offsetWidth > 500) {
+    vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+  } else {
+    vizElement.style.width = '100%'; vizElement.style.height = '1427px';
+  }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+</div>
+</section>
+<section id="analytical-strategy-design" class="level3">
+<h3 class="anchored" data-anchor-id="analytical-strategy-design">Analytical Strategy &amp; Design</h3>
+<ul>
+<li><strong>Geographic Heat-mapping:</strong> Visualizing trip density to identify high-volume pickup zones, specifically highlighting airport activity.</li>
+<li><strong>Temporal Patterns:</strong> Analyzing demand by hour and day of the week to optimize driver shift scheduling.</li>
+<li><strong>Financial Distribution:</strong> Correlating trip distance with total fare to identify the most profitable routes.</li>
+</ul>
+</section>
+<section id="key-insights" class="level3">
+<h3 class="anchored" data-anchor-id="key-insights">Key Insights</h3>
+<ul>
+<li><strong>Peak Demand:</strong> Data confirms a 15% spike in demand during evening rush hours in Manhattan, suggesting a critical need for driver availability.</li>
+<li><strong>Airport Dynamics:</strong> JFK and LaGuardia represent the highest “Tip-to-Fare” ratios, making them primary recruitment targets for premium drivers.</li>
+<li><strong>Volume vs.&nbsp;Value:</strong> While Brooklyn shows high trip counts, Manhattan remains the revenue leader due to shorter, more frequent turnarounds.</li>
+</ul>
+</section>
+<section id="technical-skills-demonstrated" class="level3">
+<h3 class="anchored" data-anchor-id="technical-skills-demonstrated">Technical Skills Demonstrated</h3>
+<ul>
+<li><strong>Tool:</strong> Tableau.</li>
+<li><strong>Visualizations:</strong> Dual-Axis Maps, Tree Maps, and Scatter Plots.</li>
+<li><strong>Calculations:</strong> Used <span class="math inline">\(R^{2}\)</span> and trend lines to validate the correlation between trip duration and tip percentage.</li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Phase 4 Source Files &amp; Full Report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a deep dive into the methodology, business requirements, and full technical specifications, you can download the project files below.</p>
+</div>
+</div>
+<p><a href="nyc_taxi_dw.pdf" class="btn btn-outline-primary rounded-pill px-4">📄 Download Analysis Report (PDF)</a> <a href="nyc_taxi_analytics.twbx" class="btn btn-outline-primary rounded-pill px-4">📥 Download Tableau Workbook (.twbx)</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

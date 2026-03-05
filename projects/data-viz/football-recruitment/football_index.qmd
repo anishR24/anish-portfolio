@@ -18,6 +18,9 @@ This project involved acting as a Data Consultant for a Director of Recruitment,
 ### Tableau Implementation
 Tableau was utilized for its superior customization and "pixel-perfect" design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.
 
+### Dashboard Preview
+![Football Recruitment Dashboard - Tableau Interface](Tableau.png){.border .shadow .rounded}
+
 ::: {.column-page}
 <div class='tableauPlaceholder' id='viz1771937537024' style='position: relative'>
   <noscript>
