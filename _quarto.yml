@@ -36,4 +36,5 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    bootstrap-icons: true
     toc: true

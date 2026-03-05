@@ -13,10 +13,14 @@ resources:
 ## Project Overview
 This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both **Tableau** and **Power BI**. The goal was to conduct a "head-to-head" comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.
 
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm}
+
 ## The Dashboards
 
 ### Tableau Implementation
 Tableau was utilized for its superior customization and "pixel-perfect" design capabilities. Key features include dynamic multi-colored titles that act as pseudo-legends and precise manual sorting for squad depth analysis.
+
+[<i class="bi bi-bar-chart-line"></i> View on Tableau Public](https://public.tableau.com/app/profile/anish.rao/viz/Final_Draft_CA1/FinalDashboard){target="_blank" .btn .btn-outline-primary .btn-sm}
 
 ### Dashboard Preview
 ![Football Recruitment Dashboard - Tableau Interface](Tableau.png){.border .shadow .rounded}
@@ -77,6 +81,8 @@ Power BI excelled in data transformation and structured modeling. Using Power Qu
 
 ![Football Recruitment Dashboard - Power BI Interface](PowerBI.png){.border .shadow}
 
+[<i class="bi bi-lightning-charge"></i> View Power BI Report](https://app.powerbi.com/reportEmbed?reportId=6c45ced1-6473-4af4-b49a-9a8b1ef412ab&autoAuth=true&ctid=5d0aa6ea-6620-4863-9e21-9ecb140222bc){target="_blank" .btn .btn-outline-info .btn-sm}
+
 ::: {.column-page}
 ::: {.callout-important collapse="true"}
 ## Click to expand Live Interactive Dashboard
@@ -101,6 +107,6 @@ During development, several key differences between the platforms were identifie
 This project involved a detailed head-to-head evaluation of BI tools. You can download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.
 :::
 
-[📄 Download Comparative Report (PDF)](football_scouting.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau (.twbx)](football_scouting.twbx){.btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Power BI (.pbix)](football_scouting.pbix){.btn .btn-outline-primary .rounded-pill .px-4}
+[📄 Download Comparative Report (PDF)](football_scouting.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau (.twbx)](football_scouting.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Power BI (.pbix)](football_scouting.pbix){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

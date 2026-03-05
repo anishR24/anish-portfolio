@@ -12,11 +12,15 @@ resources:
 ## Project Overview
 This analysis explores the **Social Progress Index (SPI)**, evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world's most struggling nations.
 
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm}
+
 ## Dashboard Preview
 ![Social Progress Index Analysis Dashboard](Dashboard.png){.border .shadow .rounded}
 
 ## Interactive Dashboard
 Explore the global patterns directly below. Use the "Bottom N" filter to adjust the focal point of the analysis.
+
+[<i class="bi bi-bar-chart-line"></i> View on Tableau Public](https://public.tableau.com/app/profile/anish.rao/viz/B9DA106_CA1_Anish_20066423/FinalDashboard){target="_blank" .btn .btn-outline-primary .btn-sm}
 
 ::: {.column-page}
 <div class='tableauPlaceholder' id='viz1771936843172' style='position: relative'>
@@ -89,5 +93,5 @@ The analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan Afri
 For a deep dive into the methodology and full design justifications, you can download the complete project report and the original Tableau workbook below.
 :::
 
-[📄 Download Full Analysis Report (PDF)](social_progress_analysis.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau Workbook (.twbx)](social_progress_analysis.twbx){.btn .btn-outline-primary .rounded-pill .px-4}
+[📄 Download Full Analysis Report (PDF)](social_progress_analysis.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau Workbook (.twbx)](social_progress_analysis.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

@@ -15,6 +15,8 @@ resources:
 ## Project Overview
 This project demonstrates the full Business Intelligence lifecycle, transforming **2.8 million raw taxi records** into an optimized Data Warehouse. The goal was to provide a "Director of Recruitment" with actionable insights into driver performance and geographic demand using a robust SQL Server foundation.
 
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-storage-solutions-for-data-analytics/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm}
+
 ## Project Roadmap
 ::: {style="display: flex; flex-direction: column; gap: 10px; max-width: 400px;"}
 [**Phase 1:** Modeling](#phase-1-dimensional-modeling-ssms){.btn .btn-outline-primary .btn-sm .m-1}
@@ -135,7 +137,7 @@ INCLUDE (TotalAmount, TripDistance);
 The technical architecture and full SQL scripts are available below.
 :::
 ::: {layout-ncol=1}
-[📥 Download SQL Scripts (.sql)](nyc_taxi_dw.sql){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download SQL Scripts (.sql)](nyc_taxi_dw.sql){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::
 
 ## Phase 2: Automated ETL Pipeline (SSIS)
@@ -260,7 +262,7 @@ The complete ETL logic, including the SSIS packages and supporting SQL initializ
 :::
 
 ::: {layout-ncol=1}
-[📥 Download SSIS Project Archive (.zip)](nyc_taxi_ssis.zip){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download SSIS Project Archive (.zip)](nyc_taxi_ssis.zip){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::
 
 ---
@@ -310,7 +312,7 @@ The complete SSRS solution—including the report definitions (.rdl), shared dat
 :::
 
 ::: {layout-ncol=1}
-[📥 Download SSRS Project Archive (.zip)](nyc_taxi_ssrs.zip){.btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download SSRS Project Archive (.zip)](nyc_taxi_ssrs.zip){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::
 
 ---
@@ -325,6 +327,8 @@ The final phase transforms the data warehouse into a strategic asset. While SSRS
 
 ### Interactive Dashboard
 Explore the NYC taxi patterns directly below. Use the interactive filters to analyze specific borough performance and vendor trends.
+
+[<i class="bi bi-bar-chart-line"></i> View on Tableau Public](https://public.tableau.com/app/profile/anish.rao/viz/NYC_Taxi_CA1/NYCDashboard){target="_blank" .btn .btn-outline-primary .btn-sm}
 
 ::: {.column-page .border .shadow .rounded .p-3}
 <div class='tableauPlaceholder' id='viz1772716550272' style='position: relative'>
@@ -387,5 +391,5 @@ Explore the NYC taxi patterns directly below. Use the interactive filters to ana
 For a deep dive into the methodology, business requirements, and full technical specifications, you can download the project files below.
 :::
 
-[📄 Download Analysis Report (PDF)](nyc_taxi_dw.pdf){.btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau Workbook (.twbx)](nyc_taxi_analytics.twbx){.btn .btn-outline-primary .rounded-pill .px-4}
+[📄 Download Analysis Report (PDF)](nyc_taxi_dw.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[📥 Download Tableau Workbook (.twbx)](nyc_taxi_analytics.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

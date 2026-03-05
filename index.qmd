@@ -10,12 +10,15 @@ about:
         - icon: github
           text: GitHub
           href: https://github.com/anishR24
+          target: _blank
         - icon: linkedin
           text: LinkedIn
           href: https://www.linkedin.com/in/anishrao86
+          target: _blank
         - icon: file-pdf
           text: View CV
           href: /anish-portfolio/Anish_Rao_CV.pdf
+          target: _blank
 resources:
   - Anish_Rao_CV.pdf
 ---

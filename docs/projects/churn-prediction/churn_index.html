@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Customer Churn Prediction – Anish Rao</title>
+<title>Cross-Industry Churn Prediction – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,16 +149,36 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">1. Project Overview</a></li>
+  <li><a href="#research-methodology-data-pipeline" id="toc-research-methodology-data-pipeline" class="nav-link" data-scroll-target="#research-methodology-data-pipeline">2. Research Methodology &amp; Data Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#data-preprocessing-engineering" id="toc-data-preprocessing-engineering" class="nav-link" data-scroll-target="#data-preprocessing-engineering">Data Preprocessing &amp; Engineering</a></li>
+  </ul></li>
+  <li><a href="#comprehensive-model-performance" id="toc-comprehensive-model-performance" class="nav-link" data-scroll-target="#comprehensive-model-performance">3. Comprehensive Model Performance</a>
+  <ul class="collapse">
+  <li><a href="#comparative-results-table" id="toc-comparative-results-table" class="nav-link" data-scroll-target="#comparative-results-table">Comparative Results Table</a></li>
+  </ul></li>
+  <li><a href="#explainable-ai-shap-insights" id="toc-explainable-ai-shap-insights" class="nav-link" data-scroll-target="#explainable-ai-shap-insights">4. Explainable AI: SHAP Insights</a>
+  <ul class="collapse">
+  <li><a href="#key-industry-findings" id="toc-key-industry-findings" class="nav-link" data-scroll-target="#key-industry-findings">Key Industry Findings:</a></li>
+  </ul></li>
+  <li><a href="#web-application" id="toc-web-application" class="nav-link" data-scroll-target="#web-application">5. Web Application</a></li>
+  <li><a href="#business-impact-recommendations" id="toc-business-impact-recommendations" class="nav-link" data-scroll-target="#business-impact-recommendations">6. Business Impact &amp; Recommendations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Customer Churn Prediction</h1>
-<p class="subtitle lead">WORK IN PROGRESS</p>
+<h1 class="title">Cross-Industry Churn Prediction</h1>
+<p class="subtitle lead">M.Sc. Data Analytics Dissertation</p>
 </div>
 
 
@@ -175,8 +195,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
+<p>This research addresses the “Black Box” problem in predictive modeling. While high-performance algorithms like Gradient Boosting offer superior accuracy, their lack of transparency often hinders business adoption. This project develops an <strong>Explainable AI (XAI)</strong> framework to predict customer churn in two distinct sectors: <strong>Telecommunications</strong> and <strong>Insurance</strong>, providing both high predictive power and actionable insights.</p>
+<p>Beyond just training models, this project culminates in a <strong>Production-Ready Streamlit Application</strong>. This interactive tool allows non-technical stakeholders to upload customer data and receive not just a “Churn/No Churn” prediction, but a transparent breakdown of the specific factors (usage, demographics, or billing) driving that individual customer’s risk score.</p>
+<p><a href="https://github.com/anishR24/applied_research_project" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://anish-rao-churn-prediction.streamlit.app/" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-rocket-takeoff"></i> Launch Live App</a></p>
+</section>
+<section id="research-methodology-data-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="research-methodology-data-pipeline">2. Research Methodology &amp; Data Pipeline</h2>
+<p>The project followed a rigorous data science lifecycle to ensure the models were robust and generalized well to unseen data.</p>
+<section id="data-preprocessing-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="data-preprocessing-engineering">Data Preprocessing &amp; Engineering</h3>
+<ul>
+<li><strong>Handling Imbalance:</strong> Implemented <strong>SMOTE</strong> (Synthetic Minority Over-sampling Technique) to address the minority churn class.</li>
+<li><strong>Optimization:</strong> Utilized <strong>GridSearchCV</strong> for hyperparameter tuning across all six algorithms.</li>
+<li><strong>Feature Selection:</strong> Conducted Recursive Feature Elimination (RFE) to identify the most predictive variables for each industry.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="comprehensive-model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="comprehensive-model-performance">3. Comprehensive Model Performance</h2>
+<p>I evaluated six diverse algorithms to find the optimal balance between bias and variance. The results below highlight the superiority of Gradient Boosting methods for tabular data.</p>
+<section id="comparative-results-table" class="level3">
+<h3 class="anchored" data-anchor-id="comparative-results-table">Comparative Results Table</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Algorithm</th>
+<th style="text-align: left;">Industry</th>
+<th style="text-align: left;">Precision</th>
+<th style="text-align: left;">Recall</th>
+<th style="text-align: left;">F1-Score</th>
+<th style="text-align: left;">ROC-AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>CatBoost</strong></td>
+<td style="text-align: left;"><strong>Telecom</strong></td>
+<td style="text-align: left;"><strong>0.52</strong></td>
+<td style="text-align: left;"><strong>0.65</strong></td>
+<td style="text-align: left;"><strong>0.58</strong></td>
+<td style="text-align: left;"><strong>0.84</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XGBoost</td>
+<td style="text-align: left;">Telecom</td>
+<td style="text-align: left;">0.49</td>
+<td style="text-align: left;">0.64</td>
+<td style="text-align: left;">0.56</td>
+<td style="text-align: left;">0.83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">Telecom</td>
+<td style="text-align: left;">0.51</td>
+<td style="text-align: left;">0.58</td>
+<td style="text-align: left;">0.54</td>
+<td style="text-align: left;">0.81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SVM</td>
+<td style="text-align: left;">Telecom</td>
+<td style="text-align: left;">0.45</td>
+<td style="text-align: left;">0.55</td>
+<td style="text-align: left;">0.49</td>
+<td style="text-align: left;">0.78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KNN</td>
+<td style="text-align: left;">Telecom</td>
+<td style="text-align: left;">0.42</td>
+<td style="text-align: left;">0.52</td>
+<td style="text-align: left;">0.46</td>
+<td style="text-align: left;">0.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Logistic Regression</td>
+<td style="text-align: left;">Telecom</td>
+<td style="text-align: left;">0.48</td>
+<td style="text-align: left;">0.53</td>
+<td style="text-align: left;">0.50</td>
+<td style="text-align: left;">0.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>CatBoost</strong></td>
+<td style="text-align: left;"><strong>Insurance</strong></td>
+<td style="text-align: left;"><strong>0.41</strong></td>
+<td style="text-align: left;"><strong>0.48</strong></td>
+<td style="text-align: left;"><strong>0.44</strong></td>
+<td style="text-align: left;"><strong>0.79</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XGBoost</td>
+<td style="text-align: left;">Insurance</td>
+<td style="text-align: left;">0.39</td>
+<td style="text-align: left;">0.47</td>
+<td style="text-align: left;">0.43</td>
+<td style="text-align: left;">0.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">Insurance</td>
+<td style="text-align: left;">0.38</td>
+<td style="text-align: left;">0.45</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">0.76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Logistic Regression</td>
+<td style="text-align: left;">Insurance</td>
+<td style="text-align: left;">0.38</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">0.75</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Analysis:</strong> <strong>CatBoost</strong> consistently delivered the highest F1-Score and ROC-AUC across both industries. This is attributed to its sophisticated handling of categorical features and its ability to capture non-linear relationships without overfitting.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="explainable-ai-shap-insights" class="level2">
+<h2 class="anchored" data-anchor-id="explainable-ai-shap-insights">4. Explainable AI: SHAP Insights</h2>
+<p>A key finding of this research is that churn drivers are highly sector-dependent. Using <strong>SHAP (SHapley Additive exPlanations)</strong>, we can quantify the average impact of each feature on the model’s output.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="shap_bar_telecom.png" class="border shadow rounded img-fluid figure-img"></p>
+<figcaption>Telecom: Top 10 Drivers</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="shap_bar_insurance.png" class="border shadow rounded img-fluid figure-img"></p>
+<figcaption>Insurance: Top 15 Drivers</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<section id="key-industry-findings" class="level3">
+<h3 class="anchored" data-anchor-id="key-industry-findings">Key Industry Findings:</h3>
+<ul>
+<li><strong>Telecommunications:</strong> Churn is dominated by <strong>Operational Subscription Status</strong>. <code>Suspended_subscribers</code> and <code>AvgFIXRevenue</code> are the most critical predictors, suggesting that service interruptions and billing fluctuations are the primary “Red Flags.”</li>
+<li><strong>Insurance:</strong> Churn is heavily tied to <strong>Financial Logistics and Claims</strong>. The <code>Policy_PaymentMethodH</code> and <code>Claims1</code> history are the strongest indicators, showing that how a customer pays and their recent claim experience dictate their loyalty more than demographic factors like age.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="web-application" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="web-application">5. Web Application</h2>
+<p>To bridge the gap between academic research and business utility, the final models were deployed as a high-performance <strong>Streamlit</strong> web application. This tool serves as a sandbox for stakeholders to interact with the underlying machine learning logic.</p>
+<div class="column-page border shadow rounded p-3">
+<iframe src="https://anish-rao-churn-prediction.streamlit.app/?embed=true" style="height: 850px; width: 100%; border: none;">
+</iframe>
+</div>
+<hr>
+</section>
+<section id="business-impact-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="business-impact-recommendations">6. Business Impact &amp; Recommendations</h2>
+<ul>
+<li><strong>Precision-Targeting:</strong> By using the model’s risk scores, marketing teams can focus retention budgets on the top 10% of at-risk customers, potentially saving millions in lost revenue.</li>
+<li><strong>Proactive Engagement:</strong> Insurance providers can trigger a “Loyalty Review” for customers who fit the demographic profile of high-risk churners identified by the model.</li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research Assets &amp; Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the full 60-page dissertation and the complete project environment (including model weights and preprocessors) below.</p>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><a href="20066423_Anish_Rao_Report.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank">📄 Download Full Dissertation (PDF)</a> <a href="churn_project_files.zip" class="btn btn-outline-primary rounded-pill px-4" target="_blank">📥 Download Project Files (.zip)</a></p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
