@@ -5,6 +5,7 @@ project:
 website:
   title: "Anish Rao"
   favicon: favicon.png
+  back-to-top-navigation: true
   navbar:
     left:
       - href: index.qmd

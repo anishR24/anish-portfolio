@@ -12,14 +12,6 @@ This project applies the **CRISP-DM framework** to predict whether an individual
 [<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/advanced-data-and-network-mining/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm}
 [<i class="bi bi-database"></i> Dataset (UCI Repository)](https://doi.org/10.24432/C5XW20){target="_blank" .btn .btn-outline-info .btn-sm}
 
-## Project Overview
-This project predicts whether an individual's annual income exceeds \$50,000 using the Adult Census Income dataset. The study compares an automated workflow in **RapidMiner** against a manual pipeline in **Python** to determine which approach provides better predictive accuracy and business value.
-
-::: {.d-grid .gap-2 .d-md-flex .justify-content-md-start .mb-4}
-[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/advanced-data-mining/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} 
-[<i class="bi bi-database"></i> Dataset](https://archive.ics.uci.edu/dataset/2/adult){target="_blank" .btn .btn-outline-info .btn-sm}
-:::
-
 ---
 
 ## Methodology: The CRISP-DM Process
