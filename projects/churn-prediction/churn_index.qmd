@@ -153,6 +153,5 @@ View and Download the full 60-page dissertation and the complete project environ
 :::
 
 ::: {layout-ncol=2}
-[📄 View Full Dissertation (PDF)](20066423_Anish_Rao_Report.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Project Files (.zip)](churn_project_files.zip){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-pdf"></i> View Full Dissertation (PDF)](20066423_Anish_Rao_Report.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4} [ <i class="bi bi-file-earmark-code"></i> Download Project Files (.zip)](churn_project_files.zip){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::

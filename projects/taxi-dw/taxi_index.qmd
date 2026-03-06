@@ -391,5 +391,5 @@ Explore the NYC taxi patterns directly below. Use the interactive filters to ana
 For a deep dive into the methodology, business requirements, and full technical specifications, you can download the project files below.
 :::
 
-[📄 Download Analysis Report (PDF)](nyc_taxi_dw.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau Workbook (.twbx)](nyc_taxi_analytics.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-pdf"></i> View Analysis Report (PDF)](nyc_taxi_dw.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[ <i class="bi bi-file-earmark-code"></i> Download Tableau Workbook (.twbx)](nyc_taxi_analytics.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

@@ -111,6 +111,6 @@ During development, several key differences between the platforms were identifie
 This project involved a detailed head-to-head evaluation of BI tools. You can view and download the full technical report and the raw source files for both platforms below to inspect the data models and DAX measures.
 :::
 
-[📄 View Comparative Report (PDF)](football_scouting.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau (.twbx)](football_scouting.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Power BI (.pbix)](football_scouting.pbix){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-pdf"></i> View Comparative Report (PDF)](football_scouting.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-code"></i> Download Tableau (.twbx)](football_scouting.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-code"></i> Download Power BI (.pbix)](football_scouting.pbix){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

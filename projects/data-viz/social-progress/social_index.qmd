@@ -97,5 +97,5 @@ The analysis revealed that 8 out of the bottom 10 countries are Sub-Saharan Afri
 For a deep dive into the methodology and full design justifications, you can view and download the complete project report and the original Tableau workbook below.
 :::
 
-[📄 View Full Analysis Report (PDF)](social_progress_analysis.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
-[📥 Download Tableau Workbook (.twbx)](social_progress_analysis.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-pdf"></i> View Full Analysis Report (PDF)](social_progress_analysis.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-code"></i> Download Tableau Workbook (.twbx)](social_progress_analysis.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

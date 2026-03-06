@@ -150,7 +150,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
   <li><a href="#project-overview-1" id="toc-project-overview-1" class="nav-link" data-scroll-target="#project-overview-1">Project Overview</a></li>
   <li><a href="#methodology-the-crisp-dm-process" id="toc-methodology-the-crisp-dm-process" class="nav-link" data-scroll-target="#methodology-the-crisp-dm-process">Methodology: The CRISP-DM Process</a></li>
   <li><a href="#rapidminer-automodel-performance" id="toc-rapidminer-automodel-performance" class="nav-link" data-scroll-target="#rapidminer-automodel-performance">RapidMiner AutoModel Performance</a></li>
@@ -185,14 +184,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This project applies the <strong>CRISP-DM framework</strong> to predict whether an individual’s annual income exceeds $50,000 using the Adult Census Income dataset[cite: 3, 14]. [cite_start]By comparing automated workflows in <strong>RapidMiner</strong> with manual implementations in <strong>Python</strong>, the study identifies the most effective deployment strategy for financial and marketing risk assessment</p>
+<p>This project applies the <strong>CRISP-DM framework</strong> to predict whether an individual’s annual income exceeds $50,000 using the Adult Census Income dataset.By comparing automated workflows in <strong>RapidMiner</strong> with manual implementations in <strong>Python</strong>, the study identifies the most effective deployment strategy for financial and marketing risk assessment</p>
 <p><a href="https://github.com/anishR24/advanced-data-and-network-mining/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://doi.org/10.24432/C5XW20" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset (UCI Repository)</a></p>
-<p>Understood. I’ve removed the citations and academic references, keeping the focus entirely on your analysis, the results, and the technical implementation.</p>
-<p>Here is the clean, copy-paste ready Quarto code for your Income Prediction project.</p>
-</section>
-<section id="markdown" class="level2">
-<h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
-<p>title: “Income Prediction Analysis” subtitle: “Automated vs.&nbsp;Manual Machine Learning using RapidMiner &amp; Python” format: html: toc: true —</p>
 </section>
 <section id="project-overview-1" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview-1">Project Overview</h2>
@@ -223,7 +216,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="rapidminer-automodel-performance" class="level2">
 <h2 class="anchored" data-anchor-id="rapidminer-automodel-performance">RapidMiner AutoModel Performance</h2>
 <p>RapidMiner’s automated workflow focused on high-recall results, which is vital for identifying as many high-income candidates as possible.</p>
-<p>The RapidMiner implementation utilized <strong>AutoModel</strong> to accelerate the data science lifecycle. * <strong>Automated Preprocessing:</strong> The system automatically handled missing value replacement and data transformation. * <strong>Feature Selection:</strong> AutoModel performed automated correlation analysis to remove redundant or low-impact features. * <strong>Hyperparameter Tuning:</strong> Utilized built-in optimization to find the best configurations for XGBoost and Random Forest, prioritizing <strong>Recall</strong> to ensure high-income individuals weren’t missed.</p>
+<p>The RapidMiner implementation utilized <strong>AutoModel</strong> to accelerate the data science lifecycle.</p>
+<ul>
+<li><p><strong>Automated Preprocessing:</strong> The system automatically handled missing value replacement and data transformation.</p></li>
+<li><p><strong>Feature Selection:</strong> AutoModel performed automated correlation analysis to remove redundant or low-impact features.</p></li>
+<li><p><strong>Hyperparameter Tuning:</strong> Utilized built-in optimization to find the best configurations for XGBoost and Random Forest, prioritizing <strong>Recall</strong> to ensure high-income individuals weren’t missed.</p></li>
+</ul>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -283,7 +281,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-implementation-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="python-implementation-comparison">Python Implementation Comparison</h2>
-<p>The Python approach focused on granular control using the <code>scikit-learn</code> and <code>XGBoost</code> libraries. * <strong>Data Preparation:</strong> Manual cleaning involved identifying and removing “dirty” data points (like ‘?’ markers) and implementing specific scaling for linear models. * <strong>SMOTE Balancing:</strong> Used the <code>imbalanced-learn</code> library to synthesize new examples of the minority class, moving from a 76/24 split to a <strong>50:50 distribution</strong>. This significantly improved the model’s ability to learn “high income” patterns. * <strong>Encoding Strategy:</strong> Implemented <strong>Label Encoding</strong> for categorical variables, which proved more computationally efficient and effective for tree-based models compared to standard One-Hot encoding.</p>
+<p>The Python approach focused on granular control using the <code>scikit-learn</code> and <code>XGBoost</code> libraries.</p>
+<ul>
+<li><p><strong>Data Preparation:</strong> Manual cleaning involved identifying and removing “dirty” data points (like ‘?’ markers) and implementing specific scaling for linear models.</p></li>
+<li><p><strong>SMOTE Balancing:</strong> Used the <code>imbalanced-learn</code> library to synthesize new examples of the minority class, moving from a 76/24 split to a <strong>50:50 distribution</strong>. This significantly improved the model’s ability to learn “high income” patterns.</p></li>
+<li><p><strong>Encoding Strategy:</strong> Implemented <strong>Label Encoding</strong> for categorical variables, which proved more computationally efficient and effective for tree-based models compared to standard One-Hot encoding.</p></li>
+</ul>
 <table class="caption-top table">
 <thead>
 <tr class="header">

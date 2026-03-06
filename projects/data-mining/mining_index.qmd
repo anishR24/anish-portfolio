@@ -7,23 +7,10 @@ format:
 ---
 
 ## Project Overview
-This project applies the **CRISP-DM framework** to predict whether an individual's annual income exceeds \$50,000 using the Adult Census Income dataset[cite: 3, 14]. [cite_start]By comparing automated workflows in **RapidMiner** with manual implementations in **Python**, the study identifies the most effective deployment strategy for financial and marketing risk assessment
+This project applies the **CRISP-DM framework** to predict whether an individual's annual income exceeds \$50,000 using the Adult Census Income dataset.By comparing automated workflows in **RapidMiner** with manual implementations in **Python**, the study identifies the most effective deployment strategy for financial and marketing risk assessment
 
 [<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/advanced-data-and-network-mining/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm}
 [<i class="bi bi-database"></i> Dataset (UCI Repository)](https://doi.org/10.24432/C5XW20){target="_blank" .btn .btn-outline-info .btn-sm}
-
-Understood. I've removed the citations and academic references, keeping the focus entirely on your analysis, the results, and the technical implementation.
-
-Here is the clean, copy-paste ready Quarto code for your Income Prediction project.
-
-Markdown
----
-title: "Income Prediction Analysis"
-subtitle: "Automated vs. Manual Machine Learning using RapidMiner & Python"
-format:
-  html:
-    toc: true
----
 
 ## Project Overview
 This project predicts whether an individual's annual income exceeds \$50,000 using the Adult Census Income dataset. The study compares an automated workflow in **RapidMiner** against a manual pipeline in **Python** to determine which approach provides better predictive accuracy and business value.
@@ -52,8 +39,11 @@ The project followed the standard data mining lifecycle to ensure a structured a
 RapidMiner’s automated workflow focused on high-recall results, which is vital for identifying as many high-income candidates as possible.
 
 The RapidMiner implementation utilized **AutoModel** to accelerate the data science lifecycle. 
+
 * **Automated Preprocessing:** The system automatically handled missing value replacement and data transformation.
+
 * **Feature Selection:** AutoModel performed automated correlation analysis to remove redundant or low-impact features.
+
 * **Hyperparameter Tuning:** Utilized built-in optimization to find the best configurations for XGBoost and Random Forest, prioritizing **Recall** to ensure high-income individuals weren't missed.
 
 | Model Name | Accuracy | Precision | Recall | F1-Score |
@@ -72,8 +62,11 @@ The RapidMiner implementation utilized **AutoModel** to accelerate the data scie
 
 ## Python Implementation Comparison
 The Python approach focused on granular control using the `scikit-learn` and `XGBoost` libraries.
+
 * **Data Preparation:** Manual cleaning involved identifying and removing "dirty" data points (like '?' markers) and implementing specific scaling for linear models.
+
 * **SMOTE Balancing:** Used the `imbalanced-learn` library to synthesize new examples of the minority class, moving from a 76/24 split to a **50:50 distribution**. This significantly improved the model's ability to learn "high income" patterns.
+
 * **Encoding Strategy:** Implemented **Label Encoding** for categorical variables, which proved more computationally efficient and effective for tree-based models compared to standard One-Hot encoding.
 
 | Model Name | Accuracy | Precision | Recall | F1-Score |
