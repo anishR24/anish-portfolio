@@ -9,9 +9,9 @@ format:
 ## Project Overview
 This project explores a dataset of **50,000 IMDb movie reviews**, focusing on how user sentiment correlates with review length and linguistic style. By utilizing `TextBlob` for polarity and subjectivity, the analysis identifies the threshold where a review shifts from "emotional outburst" to "analytical critique."
 
-[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/programming-for-data-analysis/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} 
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/programming-for-data-analysis/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} 
 [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1T5Y68YAz2MWrdia0iPZ70jzqFE7d2E9S?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} 
-[<i class="bi bi-database"></i> Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews){target="_blank" .btn .btn-outline-info .btn-sm}
+[<i class="bi bi-database"></i> Dataset (Kaggle)](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ---
 
@@ -104,7 +104,7 @@ Based on the experimental results in the report and notebook:
 ---
 
 ## Complete Analysis Notebook
-To view the full Python implementation, data parsing logic, and execution logs, please visit the technical notebook page.
+To view the full Python implementation, complete methodology, and execution logs, please visit the technical notebook page.
 
 ::: {.d-grid .gap-2}
 [<i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook](sentiment_code.ipynb){.btn .btn-outline-primary .btn-lg role="button"}

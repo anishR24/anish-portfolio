@@ -15,7 +15,7 @@ resources:
 ## Project Overview
 This project demonstrates the full Business Intelligence lifecycle, transforming **2.8 million raw taxi records** into an optimized Data Warehouse. The goal was to provide a "Director of Recruitment" with actionable insights into driver performance and geographic demand using a robust SQL Server foundation.
 
-[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-storage-solutions-for-data-analytics/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-storage-solutions-for-data-analytics/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-database"></i> Dataset (NYC Yellow Taxi - Jan 2024)](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page#:~:text=January-,Yellow%20Taxi%20Trip%20Records,-(PARQUET)){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ## Project Roadmap
 ::: {style="display: flex; flex-direction: column; gap: 10px; max-width: 400px;"}

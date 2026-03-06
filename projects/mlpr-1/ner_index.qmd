@@ -11,7 +11,7 @@ format:
 
 This project focuses on identifying complex biomedical entities—specifically **Chemicals** and **Diseases**—from the BioCreative-V CDR Corpus. Using **spaCy**, I developed a pipeline that combines rule-based matching with statistical model training to automate the extraction of life-science insights from unstructured text.
 
-[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1jZwS7BOgqTvIzTqZh6f3x4iyR4-mKNLQ?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset](https://github.com/JHnlp/BioCreative-V-CDR-Corpus){target="_blank" .btn .btn-outline-info .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1jZwS7BOgqTvIzTqZh6f3x4iyR4-mKNLQ?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset (GitHub - BioCreative-V CDR Corpus)](https://github.com/JHnlp/BioCreative-V-CDR-Corpus){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ---
 

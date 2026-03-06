@@ -1,5 +1,5 @@
 ---
-title: "Time-Series Forecasting"
+title: "Anomaly Detection in Time-Series Data"
 subtitle: "Conformal LSTM for Anomaly Detection in Julia"
 format:
   html:
@@ -10,7 +10,7 @@ format:
 
 This project implements a high-performance **LSTM (Long Short-Term Memory)** network in **Julia** to detect anomalies in streaming time-series data. Utilizing the **Numenta Anomaly Benchmark (NAB)**, I developed a system that doesn't just predict values, but provides a statistically sound "safety margin" using **Conformal Prediction**.
 
-[<i class="bi bi-github"></i> View on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1E4ATUk2mBCizDGUXYAOVS_rvqgPPxbFe?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset](https://github.com/numenta/NAB){target="_blank" .btn .btn-outline-info .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/machine-learning-and-pattern-recognition/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-google"></i> Open in Colab](https://colab.research.google.com/drive/1E4ATUk2mBCizDGUXYAOVS_rvqgPPxbFe?usp=sharing){target="_blank" .btn .btn-outline-primary .btn-sm} [<i class="bi bi-database"></i> Dataset (GitHub - Numenta Anomaly Benchmark)](https://github.com/numenta/NAB){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ---
 

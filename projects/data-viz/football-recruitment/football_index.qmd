@@ -17,7 +17,7 @@ resources:
 ## Project Overview
 This project involved acting as a Data Consultant for a Director of Recruitment, building identical scouting dashboards in both **Tableau** and **Power BI**. The goal was to conduct a "head-to-head" comparison of how each tool handles complex data modeling, custom extensions, and user interactivity in a high-stakes sports analytics context.
 
-[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA2){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-database"></i> Dataset (Kaggle - male_players.csv)](https://www.kaggle.com/datasets/stefanoleone992/ea-sports-fc-24-complete-player-dataset?select=male_players.csv){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ## The Dashboards
 

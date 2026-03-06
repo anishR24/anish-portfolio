@@ -16,7 +16,7 @@ resources:
 ## Project Overview
 This analysis explores the **Social Progress Index (SPI)**, evaluating 169 countries across 12 variables. The goal was to look past economic wealth (GDP) to understand how effectively nations translate resources into improved quality of life, focusing specifically on the world's most struggling nations.
 
-[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/data-visualisation/tree/main/CA1){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-database"></i> Dataset (Kaggle)](https://www.kaggle.com/datasets/samithsachidanandan/social-progress-index-rankings/data){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ## Dashboard Preview
 ![Social Progress Index Analysis Dashboard](Dashboard.png){.border .shadow .rounded}

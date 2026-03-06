@@ -26,8 +26,8 @@ website:
           - text: "--- Data Science & Mining ---"
           - href: projects/sentiment-analysis/sentiment_index.qmd
             text: Sentiment Analysis
-          # - href: projects/data-mining/mining_index.qmd
-          #   text: Data & Network Mining
+          - href: projects/data-mining/mining_index.qmd
+            text: Data & Network Mining
           # - text: "--- Others ---"
           # - href: projects/statistics/stats_index.qmd
           #   text: Statistical Analysis Q&A

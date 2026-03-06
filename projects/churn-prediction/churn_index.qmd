@@ -14,7 +14,10 @@ This research addresses the "Black Box" problem in predictive modeling. While hi
 
 Beyond just training models, this project culminates in a **Production-Ready Streamlit Application**. This interactive tool allows non-technical stakeholders to upload customer data and receive not just a "Churn/No Churn" prediction, but a transparent breakdown of the specific factors (usage, demographics, or billing) driving that individual customer's risk score.
 
-[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/applied_research_project){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-rocket-takeoff"></i> Launch Live App](https://anish-rao-churn-prediction.streamlit.app/){target="_blank" .btn .btn-outline-primary .btn-sm}
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/applied_research_project){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-rocket-takeoff"></i> Launch Live App](https://anish-rao-churn-prediction.streamlit.app/){target="_blank" .btn .btn-outline-primary .btn-sm} 
+
+[<i class="bi bi-database"></i> Telecom Dataset](https://doi.org/10.17632/nrb55gr66h.1){target="_blank" .btn .btn-outline-info .btn-sm}
+[<i class="bi bi-database"></i> Insurance Dataset](https://doi.org/10.17632/vfchtm5y7j.1){target="_blank" .btn .btn-outline-info .btn-sm}
 
 ## 2. Research Methodology & Data Pipeline
 The project followed a rigorous data science lifecycle to ensure the models were robust and generalized well to unseen data.

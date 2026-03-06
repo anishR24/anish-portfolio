@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="11.0.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="11.0.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="11.0.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
+        <parameter key="csv_file" value="/Users/anishrao/Downloads/adult/adult_data.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="multiline_text" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value=""/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="Europe/Dublin"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="UTF-8"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="age.true.integer.attribute"/>
+          <parameter key="1" value="workclass.true.polynominal.attribute"/>
+          <parameter key="2" value="fnlwgt.true.integer.attribute"/>
+          <parameter key="3" value="education.true.polynominal.attribute"/>
+          <parameter key="4" value="education-num.true.integer.attribute"/>
+          <parameter key="5" value="marital-status.true.polynominal.attribute"/>
+          <parameter key="6" value="occupation.true.polynominal.attribute"/>
+          <parameter key="7" value="relationship.true.polynominal.attribute"/>
+          <parameter key="8" value="race.true.polynominal.attribute"/>
+          <parameter key="9" value="sex.true.polynominal.attribute"/>
+          <parameter key="10" value="capital-gain.true.integer.attribute"/>
+          <parameter key="11" value="capital-loss.true.integer.attribute"/>
+          <parameter key="12" value="hours-per-week.true.integer.attribute"/>
+          <parameter key="13" value="native-country.true.polynominal.attribute"/>
+          <parameter key="14" value="column.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="11.0.001" expanded="true" height="68" name="Read CSV (Main)" width="90" x="45" y="136">
+        <parameter key="csv_file" value="/Users/anishrao/Downloads/adult/adult_data.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="multiline_text" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value=""/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="Europe/Dublin"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="UTF-8"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="age.true.integer.attribute"/>
+          <parameter key="1" value="workclass.true.polynominal.attribute"/>
+          <parameter key="2" value="fnlwgt.true.integer.attribute"/>
+          <parameter key="3" value="education.true.polynominal.attribute"/>
+          <parameter key="4" value="education-num.true.integer.attribute"/>
+          <parameter key="5" value="marital-status.true.polynominal.attribute"/>
+          <parameter key="6" value="occupation.true.polynominal.attribute"/>
+          <parameter key="7" value="relationship.true.polynominal.attribute"/>
+          <parameter key="8" value="race.true.polynominal.attribute"/>
+          <parameter key="9" value="sex.true.polynominal.attribute"/>
+          <parameter key="10" value="capital-gain.true.integer.attribute"/>
+          <parameter key="11" value="capital-loss.true.integer.attribute"/>
+          <parameter key="12" value="hours-per-week.true.integer.attribute"/>
+          <parameter key="13" value="native-country.true.polynominal.attribute"/>
+          <parameter key="14" value="column.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:rename" compatibility="11.0.001" expanded="true" height="82" name="Rename" width="90" x="179" y="136">
+        <list key="rename attributes">
+          <parameter key="column" value="income"/>
+        </list>
+        <parameter key="from_attribute" value=""/>
+        <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="true" class="replace_missing_values" compatibility="11.0.001" expanded="true" height="103" name="Replace Missing Values" width="90" x="313" y="136">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="average"/>
+        <list key="columns"/>
+      </operator>
+      <operator activated="true" class="blending:set_role" compatibility="11.0.001" expanded="true" height="82" name="Set Role" width="90" x="447" y="136">
+        <list key="set_roles">
+          <parameter key="income" value="label"/>
+        </list>
+      </operator>
+      <operator activated="true" class="nominal_to_numerical" compatibility="11.0.001" expanded="true" height="103" name="One-hot Encode" width="90" x="581" y="136">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="nominal"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="file_path"/>
+        <parameter key="block_type" value="single_value"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="single_value"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="coding_type" value="dummy coding"/>
+        <parameter key="use_comparison_groups" value="false"/>
+        <list key="comparison_groups"/>
+        <parameter key="unexpected_value_handling" value="all 0 and warning"/>
+        <parameter key="use_underscore_in_name" value="false"/>
+      </operator>
+      <operator activated="true" class="normalize" compatibility="11.0.001" expanded="true" height="103" name="Z-scale Normalize" width="90" x="715" y="136">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="numeric"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="real"/>
+        <parameter key="block_type" value="value_series"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_series_end"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="method" value="Z-transformation"/>
+        <parameter key="min" value="0.0"/>
+        <parameter key="max" value="1.0"/>
+        <parameter key="allow_negative_values" value="false"/>
+      </operator>
+      <connect from_op="Read CSV (Main)" from_port="output" to_op="Rename" to_port="example set input"/>
+      <connect from_op="Rename" from_port="example set output" to_op="Replace Missing Values" to_port="example set input"/>
+      <connect from_op="Replace Missing Values" from_port="example set output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="One-hot Encode" to_port="example set input"/>
+      <connect from_op="One-hot Encode" from_port="example set output" to_op="Z-scale Normalize" to_port="example set input"/>
+      <connect from_op="Z-scale Normalize" from_port="example set output" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>

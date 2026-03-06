@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IMDb Movie Reviews Sentiment Analysis – Anish Rao</title>
+<title>Predictive Income Analytics – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,12 +150,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#the-nlp-pipeline" id="toc-the-nlp-pipeline" class="nav-link" data-scroll-target="#the-nlp-pipeline">The NLP Pipeline</a></li>
-  <li><a href="#sentiment-distribution" id="toc-sentiment-distribution" class="nav-link" data-scroll-target="#sentiment-distribution">1. Sentiment Distribution</a></li>
-  <li><a href="#visualizing-the-lexicon-word-clouds" id="toc-visualizing-the-lexicon-word-clouds" class="nav-link" data-scroll-target="#visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</a></li>
-  <li><a href="#the-brevity-paradox-review-length-vs.-sentiment-polarity" id="toc-the-brevity-paradox-review-length-vs.-sentiment-polarity" class="nav-link" data-scroll-target="#the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</a></li>
-  <li><a href="#sentiment-polarity-subjectivity-distributions" id="toc-sentiment-polarity-subjectivity-distributions" class="nav-link" data-scroll-target="#sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</a></li>
-  <li><a href="#final-conclusions" id="toc-final-conclusions" class="nav-link" data-scroll-target="#final-conclusions">5. Final Conclusions</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
+  <li><a href="#project-overview-1" id="toc-project-overview-1" class="nav-link" data-scroll-target="#project-overview-1">Project Overview</a></li>
+  <li><a href="#methodology-the-crisp-dm-process" id="toc-methodology-the-crisp-dm-process" class="nav-link" data-scroll-target="#methodology-the-crisp-dm-process">Methodology: The CRISP-DM Process</a></li>
+  <li><a href="#rapidminer-automodel-performance" id="toc-rapidminer-automodel-performance" class="nav-link" data-scroll-target="#rapidminer-automodel-performance">RapidMiner AutoModel Performance</a></li>
+  <li><a href="#python-implementation-comparison" id="toc-python-implementation-comparison" class="nav-link" data-scroll-target="#python-implementation-comparison">Python Implementation Comparison</a></li>
+  <li><a href="#final-conclusion" id="toc-final-conclusion" class="nav-link" data-scroll-target="#final-conclusion">Final Conclusion</a></li>
   <li><a href="#complete-analysis-notebook" id="toc-complete-analysis-notebook" class="nav-link" data-scroll-target="#complete-analysis-notebook">Complete Analysis Notebook</a></li>
   </ul>
 </nav>
@@ -165,8 +165,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IMDb Movie Reviews Sentiment Analysis</h1>
-<p class="subtitle lead">Exploratory Data Analysis and NLP Sentiment Analysis</p>
+<h1 class="title">Predictive Income Analytics</h1>
+<p class="subtitle lead">Automated vs.&nbsp;Manual Machine Learning using RapidMiner &amp; Python</p>
 </div>
 
 
@@ -185,143 +185,163 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This project explores a dataset of <strong>50,000 IMDb movie reviews</strong>, focusing on how user sentiment correlates with review length and linguistic style. By utilizing <code>TextBlob</code> for polarity and subjectivity, the analysis identifies the threshold where a review shifts from “emotional outburst” to “analytical critique.”</p>
-<p><a href="https://github.com/anishR24/programming-for-data-analysis/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://colab.research.google.com/drive/1T5Y68YAz2MWrdia0iPZ70jzqFE7d2E9S?usp=sharing" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-google"></i> Open in Colab</a> <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset (Kaggle)</a></p>
+<p>This project applies the <strong>CRISP-DM framework</strong> to predict whether an individual’s annual income exceeds $50,000 using the Adult Census Income dataset[cite: 3, 14]. [cite_start]By comparing automated workflows in <strong>RapidMiner</strong> with manual implementations in <strong>Python</strong>, the study identifies the most effective deployment strategy for financial and marketing risk assessment</p>
+<p><a href="https://github.com/anishR24/advanced-data-and-network-mining/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://doi.org/10.24432/C5XW20" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset (UCI Repository)</a></p>
+<p>Understood. I’ve removed the citations and academic references, keeping the focus entirely on your analysis, the results, and the technical implementation.</p>
+<p>Here is the clean, copy-paste ready Quarto code for your Income Prediction project.</p>
+</section>
+<section id="markdown" class="level2">
+<h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
+<p>title: “Income Prediction Analysis” subtitle: “Automated vs.&nbsp;Manual Machine Learning using RapidMiner &amp; Python” format: html: toc: true —</p>
+</section>
+<section id="project-overview-1" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview-1">Project Overview</h2>
+<p>This project predicts whether an individual’s annual income exceeds $50,000 using the Adult Census Income dataset. The study compares an automated workflow in <strong>RapidMiner</strong> against a manual pipeline in <strong>Python</strong> to determine which approach provides better predictive accuracy and business value.</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
+<p><a href="https://github.com/anishR24/advanced-data-mining/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View on GitHub</a> <a href="https://archive.ics.uci.edu/dataset/2/adult" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset</a></p>
+</div>
 <hr>
 </section>
-<section id="the-nlp-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-nlp-pipeline">The NLP Pipeline</h2>
-<p>The project follows a structured NLP pipeline to transform unstructured text into quantifiable metrics:</p>
+<section id="methodology-the-crisp-dm-process" class="level2">
+<h2 class="anchored" data-anchor-id="methodology-the-crisp-dm-process">Methodology: The CRISP-DM Process</h2>
+<p>The project followed the standard data mining lifecycle to ensure a structured approach:</p>
 <ol type="1">
-<li><strong>Data Acquisition:</strong> Utilization of the IMDb 50k dataset (Maas et al., 2011).</li>
-<li><strong>Text Preprocessing:</strong>
-<ul>
-<li><strong>Cleaning:</strong> Removal of HTML tags, punctuation, and special characters.</li>
-<li><strong>Normalization:</strong> Lowercasing text for consistency.</li>
-<li><strong>Tokenization &amp; Filtering:</strong> Segmenting text and removing “stopwords” (common fillers) to focus on high-impact keywords.</li>
-</ul></li>
-<li><strong>Exploratory Data Analysis (EDA):</strong> Statistical analysis of review lengths and word frequency distributions.</li>
-<li><strong>Sentiment Modeling:</strong> Implementing the <code>TextBlob</code> library to calculate Polarity and Subjectivity.</li>
-<li><strong>Correlation Analysis:</strong> Cross-referencing review length against polarity scores.</li>
+<li><strong>Business Understanding:</strong> Define the goal of predicting high-income individuals for targeted marketing.</li>
+<li><strong>Data Understanding:</strong> Analyzed 48,842 records with 14 demographic features like age, education, and occupation.</li>
+<li><strong>Data Preparation:</strong> Handled missing values (marked as ‘?’), implemented SMOTE to fix class imbalance, and applied feature scaling.</li>
+<li><strong>Modeling:</strong> Developed parallel models including XGBoost, Random Forest, and Decision Trees.</li>
+<li><strong>Evaluation:</strong> Measured performance using Accuracy, Precision, Recall, and F1-Score.</li>
 </ol>
-<hr>
-</section>
-<section id="sentiment-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="sentiment-distribution">1. Sentiment Distribution</h2>
-<p><strong>Insight:</strong> The dataset exhibits a balanced sentiment distribution with 25,000 positive and 25,000 negative reviews. This parity ensured that the analysis of word frequencies and emotional weights remained unbiased across both sentiment classes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="sentiment_dist.png" class="img-fluid figure-img"></p>
-<figcaption>Sentiment Distribution Bar Chart</figcaption>
+<p><img src="crisp_dm.png" class="img-fluid figure-img"></p>
+<figcaption>CRISP-DM Process Diagram</figcaption>
 </figure>
 </div>
 <hr>
 </section>
-<section id="visualizing-the-lexicon-word-clouds" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</h2>
-<p><strong>Insight:</strong> Frequency analysis through Word Clouds revealed distinct linguistic patterns.</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<section id="rapidminer-automodel-performance" class="level2">
+<h2 class="anchored" data-anchor-id="rapidminer-automodel-performance">RapidMiner AutoModel Performance</h2>
+<p>RapidMiner’s automated workflow focused on high-recall results, which is vital for identifying as many high-income candidates as possible.</p>
+<p>The RapidMiner implementation utilized <strong>AutoModel</strong> to accelerate the data science lifecycle. * <strong>Automated Preprocessing:</strong> The system automatically handled missing value replacement and data transformation. * <strong>Feature Selection:</strong> AutoModel performed automated correlation analysis to remove redundant or low-impact features. * <strong>Hyperparameter Tuning:</strong> Utilized built-in optimization to find the best configurations for XGBoost and Random Forest, prioritizing <strong>Recall</strong> to ensure high-income individuals weren’t missed.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model Name</th>
+<th>Accuracy</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1-Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>XGBoost</strong></td>
+<td><strong>83.5%</strong></td>
+<td><strong>84.8%</strong></td>
+<td><strong>95.3%</strong></td>
+<td><strong>89.8%</strong></td>
+</tr>
+<tr class="even">
+<td>Random Forest</td>
+<td>82.4%</td>
+<td>84.6%</td>
+<td>93.8%</td>
+<td>89.0%</td>
+</tr>
+<tr class="odd">
+<td>Decision Tree</td>
+<td>82.5%</td>
+<td>83.7%</td>
+<td>95.5%</td>
+<td>89.2%</td>
+</tr>
+<tr class="even">
+<td>Logistic Regression</td>
+<td>83.1%</td>
+<td>84.7%</td>
+<td>94.7%</td>
+<td>89.4%</td>
+</tr>
+<tr class="odd">
+<td>Naïve Bayes</td>
+<td>75.9%</td>
+<td>75.9%</td>
+<td>100.0%</td>
+<td>86.3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Insight:</strong> RapidMiner’s primary strength lies in its <strong>Recall</strong>. While the Naïve Bayes model achieved a perfect 100% recall, the <strong>XGBoost model</strong> provided the best overall balance for business deployment. Its remarkable <strong>95.3% Recall</strong> makes it the most effective tool for capturing the majority of high-income earners in the dataset without sacrificing too much precision.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="wordcloud_pos.png" class="img-fluid figure-img"></p>
-<figcaption>Positive Word Cloud</figcaption>
+<p><img src="rapidminer_workflow.png" class="img-fluid figure-img"></p>
+<figcaption>RapidMiner Workflow Screenshot</figcaption>
 </figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="wordcloud_neg.png" class="img-fluid figure-img"></p>
-<figcaption>Negative Word Cloud</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><strong>Positive reviews</strong> include the words <strong>“film,” “movie,” “great,” “story,”</strong> and <strong>“time,”</strong> suggesting that reviewers focus on the quality of the story and overall enjoyment.</p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><strong>Negative reviews</strong> also highlight <strong>“film”</strong> and <strong>“movie,”</strong> but words like <strong>“bad,” “even,”</strong> and <strong>“really,”</strong> indicating stronger dissatisfaction are also used a lot.</p>
-</div>
-</div>
-</div>
-<p><em>The common words suggests that although both sentiments discuss similar aspects, their tone and context significantly differ.</em></p>
-<hr>
-</section>
-<section id="the-brevity-paradox-review-length-vs.-sentiment-polarity" class="level2">
-<h2 class="anchored" data-anchor-id="the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</h2>
-<p><strong>Insight:</strong> This analysis explores the “Inverse Correlation” between how much a user writes and the emotional extremity of their review.</p>
-<ul>
-<li><strong>The Correlation:</strong> A weak negative correlation (<strong>-0.049</strong>) indicates that as review length increases, sentiment polarity slightly decreases. In short, longer reviews contain less extreme opinions.</li>
-<li><strong>Short Reviews (&lt;200 words):</strong> These frequently exhibit very high or very low polarity, demonstrating stronger, more impulsive emotions.</li>
-<li><strong>Long Reviews (&gt;500 words):</strong> These tend to cluster around a neutral sentiment. This suggests that users who write more are providing a <strong>detailed analysis</strong> rather than emotional extremes.</li>
-<li><strong>Key Discovery:</strong> Users who write brief reviews tend to express stronger emotions, while longer reviews are more balanced and focused on the movie’s details.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="polarity_scatter.png" class="img-fluid figure-img"></p>
-<figcaption>Review Length vs.&nbsp;Sentiment Polarity Scatter Plot</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="sentiment-polarity-subjectivity-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</h2>
-<p><strong>Insight:</strong> These histograms visualize the frequency of emotional scales and the “fact vs.&nbsp;opinion” nature of the 50,000 reviews.</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="polarity_hist.png" class="img-fluid figure-img"></p>
-<figcaption>Polarity Frequency Distribution</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="subjectivity_hist.png" class="img-fluid figure-img"></p>
-<figcaption>Subjectivity Frequency Distribution</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<section id="polarity-distribution-emotional-scale" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<h3 class="anchored" data-anchor-id="polarity-distribution-emotional-scale">Polarity Distribution (Emotional Scale)</h3>
-<ul>
-<li><strong>General Bias:</strong> <strong>74.7%</strong> of reviews are moderately positive (0 to 0.5), showing a general community bias toward positive sentiment.</li>
-<li><strong>Negative Sentiment:</strong> Moderately negative reviews (-0.5 to 0) make up <strong>24.1%</strong>, indicating that while negative reviews exist, they are less extreme.</li>
-<li><strong>The Extremes:</strong> Highly polarized reviews are rare; the dataset contains only 57 highly negative reviews compared to 471 highly positive ones.</li>
-</ul>
-</section>
-<section id="subjectivity-distribution-fact-vs.-opinion" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<h3 class="anchored" data-anchor-id="subjectivity-distribution-fact-vs.-opinion">Subjectivity Distribution (Fact vs.&nbsp;Opinion)</h3>
-<ul>
-<li><strong>The “Opinionated” Middle:</strong> <strong>59.8%</strong> of reviews are moderately subjective (0.5 to 0.7). This suggests users provide a mix of opinion and fact without being overly exaggerated.</li>
-<li><strong>The Rarity of Objectivity:</strong> Only <strong>0.88%</strong> of reviews are extremely objective. Purely factual reviews are exceptionally rare on IMDb.</li>
-<li><strong>Final Insight:</strong> Reviews tend to be opinionated but not overly extreme, with extremely subjective reviews (3.6%) also being uncommon.</li>
-</ul>
-</section>
-</div>
 </div>
 <hr>
 </section>
-<section id="final-conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="final-conclusions">5. Final Conclusions</h2>
-<p>Based on the experimental results in the report and notebook:</p>
+<section id="python-implementation-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="python-implementation-comparison">Python Implementation Comparison</h2>
+<p>The Python approach focused on granular control using the <code>scikit-learn</code> and <code>XGBoost</code> libraries. * <strong>Data Preparation:</strong> Manual cleaning involved identifying and removing “dirty” data points (like ‘?’ markers) and implementing specific scaling for linear models. * <strong>SMOTE Balancing:</strong> Used the <code>imbalanced-learn</code> library to synthesize new examples of the minority class, moving from a 76/24 split to a <strong>50:50 distribution</strong>. This significantly improved the model’s ability to learn “high income” patterns. * <strong>Encoding Strategy:</strong> Implemented <strong>Label Encoding</strong> for categorical variables, which proved more computationally efficient and effective for tree-based models compared to standard One-Hot encoding.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model Name</th>
+<th>Accuracy</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1-Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>XGBoost</strong></td>
+<td><strong>86.9%</strong></td>
+<td><strong>72.9%</strong></td>
+<td><strong>72.0%</strong></td>
+<td><strong>72.5%</strong></td>
+</tr>
+<tr class="even">
+<td>Random Forest</td>
+<td>84.9%</td>
+<td>66.9%</td>
+<td>72.9%</td>
+<td>69.8%</td>
+</tr>
+<tr class="odd">
+<td>Decision Tree</td>
+<td>83.5%</td>
+<td>64.0%</td>
+<td>71.0%</td>
+<td>67.3%</td>
+</tr>
+<tr class="even">
+<td>Logistic Regression</td>
+<td>81.0%</td>
+<td>57.0%</td>
+<td>83.2%</td>
+<td>67.7%</td>
+</tr>
+<tr class="odd">
+<td>Naïve Bayes</td>
+<td>53.6%</td>
+<td>33.5%</td>
+<td>95.2%</td>
+<td>49.6%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Insight:</strong> Python achieved the <strong>highest raw accuracy (86.9%)</strong> via XGBoost. The implementation of <strong>SMOTE balancing</strong> significantly improved the model’s ability to learn “high income” patterns by creating a 50:50 class distribution. Furthermore, utilizing <strong>Label Encoding</strong> for categorical variables proved more efficient than One-Hot encoding for tree-based models. These manual engineering choices allowed the model to reach a higher accuracy ceiling, though it struggled to match the high recall/precision balance seen in the RapidMiner automation.</p>
+<hr>
+</section>
+<section id="final-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="final-conclusion">Final Conclusion</h2>
+<p>The comparison between the two platforms led to these primary findings:</p>
 <ol type="1">
-<li><strong>Sentiment Trends:</strong> While the dataset is balanced, moderately positive reviews are the most common across the 50,000 samples.</li>
-<li><strong>Emotional Intensity:</strong> There is a clear inverse relationship between length and extremity; short reviews are brief and to the point with high emotional volatility.</li>
-<li><strong>Platform Behavior:</strong> The high subjectivity scores across the board establish IMDb as a platform driven by personal fan expression rather than objective, fact-based film theory.</li>
+<li><strong>Model Selection:</strong> The <strong>RapidMiner XGBoost</strong> model is the preferred choice for deployment. While Python was more accurate overall, the RapidMiner version provided a superior <strong>F1-Score (89.8%)</strong> and high sensitivity (<strong>95.3% Recall</strong>), ensuring that high-income individuals were not missed by the model—a critical requirement for premium financial targeting.</li>
+<li><strong>Platform Comparison:</strong> Python provides deeper customization and manual control for experimental research, allowing for higher raw accuracy. In contrast, RapidMiner offers a more robust, efficient, and automated pipeline that significantly reduces the time required for preprocessing and model selection, making it better suited for production-ready business logic.</li>
+<li><strong>Data Impact:</strong> Balancing the dataset was the single most important factor in the project’s success. Whether through manual <strong>SMOTE balancing</strong> in Python or automated tuning in RapidMiner, addressing the class imbalance was essential for moving from simple classification to a reliable predictive tool.</li>
 </ol>
 <hr>
 </section>
@@ -329,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="complete-analysis-notebook">Complete Analysis Notebook</h2>
 <p>To view the full Python implementation, complete methodology, and execution logs, please visit the technical notebook page.</p>
 <div class="d-grid gap-2">
-<p><a href="../../projects/sentiment-analysis/sentiment_code.html" class="btn btn-outline-primary btn-lg" role="button"><i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook</a></p>
+<p><a href="../../projects/data-mining/mining_code.html" class="btn btn-outline-primary btn-lg" role="button"><i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook</a></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -341,11 +361,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The complete methodology, data analysis, and insights are detailed in the full technical report.</p>
+<p>The complete methodology, including the comparative analysis of RapidMiner’s AutoModel and Python implementations, performance results, and deployment insights, is available in the full technical report.</p>
+<p>The RapidMiner .rmp file can be imported directly into RapidMiner Studio to replicate the automated pipeline and results.</p>
 </div>
 </div>
 <div class="d-grid gap-2 col-6 mx-auto">
-<p><a href="sentiment.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-file-earmark-pdf"></i> View Final Report</a></p>
+<p><a href="mining.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-file-earmark-pdf"></i> View Final Report</a> <a href="CRISP-DM_RapidMinerProcess.rmp" class="btn btn-outline-primary rounded-pill px-4" download="CRISP-DM_RapidMinerProcess.rmp"><i class="bi bi-file-earmark-code"></i> RapidMiner Process (.rmp)</a> <a href="../../projects/data-mining/mining_code.html" class="btn btn-outline-primary rounded-pill px-4" download="mining_code.ipynb"><i class="bi bi-file-earmark-code-fill"></i> Python Notebook (.ipynb)</a></p>
 </div>
 
 
