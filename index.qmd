@@ -17,7 +17,7 @@ about:
           target: _blank
         - icon: file-pdf
           text: View CV
-          href: Anish_Rao_CV.pdf
+          href: /anish-portfolio/Anish_Rao_CV.pdf
           target: _blank
 resources:
   - Anish_Rao_CV.pdf
