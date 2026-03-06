@@ -123,8 +123,8 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li class="dropdown-header">— Data Science &amp; Mining —</li>
         <li>
-    <a class="dropdown-item" href="./projects/python-notebook/python_index.qmd">
- <span class="dropdown-text">Python Analysis Lab</span></a>
+    <a class="dropdown-item" href="./projects/sentiment-analysis/sentiment_index.html">
+ <span class="dropdown-text">Sentiment Analysis</span></a>
   </li>  
     </ul>
   </li>
@@ -261,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/anishr24\.github\.io\/anish-portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

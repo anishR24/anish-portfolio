@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Visualization &amp; Business Intelligence – Anish Rao</title>
+<title>IMDb Movie Reviews Sentiment Analysis – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,8 +124,8 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li class="dropdown-header">— Data Science &amp; Mining —</li>
         <li>
-    <a class="dropdown-item" href="../../projects/python-notebook/python_index.qmd">
- <span class="dropdown-text">Python Analysis Lab</span></a>
+    <a class="dropdown-item" href="../../projects/sentiment-analysis/sentiment_index.html">
+ <span class="dropdown-text">Sentiment Analysis</span></a>
   </li>  
     </ul>
   </li>
@@ -145,11 +145,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a>
-  <ul class="collapse">
-  <li><a href="#football-recruitment-tableau-vs.-power-bi" id="toc-football-recruitment-tableau-vs.-power-bi" class="nav-link" data-scroll-target="#football-recruitment-tableau-vs.-power-bi">Football Recruitment: Tableau vs.&nbsp;Power BI</a></li>
-  <li><a href="#global-social-progress-analysis" id="toc-global-social-progress-analysis" class="nav-link" data-scroll-target="#global-social-progress-analysis">Global Social Progress Analysis</a></li>
-  </ul></li>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#the-nlp-pipeline" id="toc-the-nlp-pipeline" class="nav-link" data-scroll-target="#the-nlp-pipeline">The NLP Pipeline</a></li>
+  <li><a href="#sentiment-distribution" id="toc-sentiment-distribution" class="nav-link" data-scroll-target="#sentiment-distribution">1. Sentiment Distribution</a></li>
+  <li><a href="#visualizing-the-lexicon-word-clouds" id="toc-visualizing-the-lexicon-word-clouds" class="nav-link" data-scroll-target="#visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</a></li>
+  <li><a href="#the-brevity-paradox-review-length-vs.-sentiment-polarity" id="toc-the-brevity-paradox-review-length-vs.-sentiment-polarity" class="nav-link" data-scroll-target="#the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</a></li>
+  <li><a href="#sentiment-polarity-subjectivity-distributions" id="toc-sentiment-polarity-subjectivity-distributions" class="nav-link" data-scroll-target="#sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</a></li>
+  <li><a href="#final-conclusions" id="toc-final-conclusions" class="nav-link" data-scroll-target="#final-conclusions">5. Final Conclusions</a></li>
+  <li><a href="#complete-analysis-notebook" id="toc-complete-analysis-notebook" class="nav-link" data-scroll-target="#complete-analysis-notebook">Complete Analysis Notebook</a></li>
   </ul>
 </nav>
     </div>
@@ -158,8 +161,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Visualization &amp; Business Intelligence</h1>
-<p class="subtitle lead">Evidence-based storytelling using Tableau and Power BI</p>
+<h1 class="title">IMDb Movie Reviews Sentiment Analysis</h1>
+<p class="subtitle lead">Exploratory Data Analysis and NLP Sentiment Analysis</p>
 </div>
 
 
@@ -176,30 +179,172 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="projects" class="level2">
-<h2 class="anchored" data-anchor-id="projects">Projects</h2>
-<section id="football-recruitment-tableau-vs.-power-bi" class="level3">
-<h3 class="anchored" data-anchor-id="football-recruitment-tableau-vs.-power-bi">Football Recruitment: Tableau vs.&nbsp;Power BI</h3>
-<p><strong>The Challenge:</strong> Build identical recruitment dashboards in both tools to evaluate which platform provides better support for a Director of Recruitment.</p>
-<ul>
-<li><strong>Key Insight:</strong> Tableau offered superior customization for “pixel-perfect” needs like multi-colored dynamic titles, while Power BI excelled at complex data modeling via Power Query.</li>
-<li><strong>Tech used:</strong> Tableau Public, Power BI Desktop, DAX, Power Query.</li>
-</ul>
-<p><a href="../../projects/data-viz/football-recruitment/football_index.html" class="btn btn-outline-primary btn-sm">View Case Study &amp; Comparison</a></p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>This project explores a dataset of <strong>50,000 IMDb movie reviews</strong>, focusing on how user sentiment correlates with review length and linguistic style. By utilizing <code>TextBlob</code> for polarity and subjectivity, the analysis identifies the threshold where a review shifts from “emotional outburst” to “analytical critique.”</p>
+<p><a href="https://github.com/anishR24/programming-for-data-analysis/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View on GitHub</a> <a href="https://colab.research.google.com/drive/1T5Y68YAz2MWrdia0iPZ70jzqFE7d2E9S?usp=sharing" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-google"></i> Open in Colab</a> <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset</a></p>
 <hr>
 </section>
-<section id="global-social-progress-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="global-social-progress-analysis">Global Social Progress Analysis</h3>
-<p><strong>The Challenge:</strong> Moving beyond GDP to analyze how 169 countries translate wealth into quality of life, focusing specifically on the world’s most struggling nations.</p>
+<section id="the-nlp-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-nlp-pipeline">The NLP Pipeline</h2>
+<p>The project follows a structured NLP pipeline to transform unstructured text into quantifiable metrics:</p>
+<ol type="1">
+<li><strong>Data Acquisition:</strong> Utilization of the IMDb 50k dataset (Maas et al., 2011).</li>
+<li><strong>Text Preprocessing:</strong>
 <ul>
-<li><strong>Key Insight:</strong> Analysis revealed that “Social Inclusion” (gender, religion, ethnicity) is the most common weakness in the bottom 10 countries, often outweighing basic needs like food or water.</li>
-<li><strong>Design Choice:</strong> Utilized a “monochromatic green” palette to focus on growth potential and avoid the judgmental bias of “red = bad”.</li>
-<li><strong>Tech used:</strong> Tableau, Box Plots, Scatter Plot Distributions.</li>
-</ul>
-<p><a href="../../projects/data-viz/social-progress/social_index.html" class="btn btn-outline-primary btn-sm">View Deep Dive</a></p>
-
-
+<li><strong>Cleaning:</strong> Removal of HTML tags, punctuation, and special characters.</li>
+<li><strong>Normalization:</strong> Lowercasing text for consistency.</li>
+<li><strong>Tokenization &amp; Filtering:</strong> Segmenting text and removing “stopwords” (common fillers) to focus on high-impact keywords.</li>
+</ul></li>
+<li><strong>Exploratory Data Analysis (EDA):</strong> Statistical analysis of review lengths and word frequency distributions.</li>
+<li><strong>Sentiment Modeling:</strong> Implementing the <code>TextBlob</code> library to calculate Polarity and Subjectivity.</li>
+<li><strong>Correlation Analysis:</strong> Cross-referencing review length against polarity scores.</li>
+</ol>
+<hr>
 </section>
+<section id="sentiment-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-distribution">1. Sentiment Distribution</h2>
+<p><strong>Insight:</strong> The dataset exhibits a balanced sentiment distribution with 25,000 positive and 25,000 negative reviews. This parity ensured that the analysis of word frequencies and emotional weights remained unbiased across both sentiment classes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="sentiment_dist.png" class="img-fluid figure-img"></p>
+<figcaption>Sentiment Distribution Bar Chart</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="visualizing-the-lexicon-word-clouds" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</h2>
+<p><strong>Insight:</strong> Frequency analysis through Word Clouds revealed distinct linguistic patterns.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="wordcloud_pos.png" class="img-fluid figure-img"></p>
+<figcaption>Positive Word Cloud</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="wordcloud_neg.png" class="img-fluid figure-img"></p>
+<figcaption>Negative Word Cloud</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Positive reviews</strong> include the words <strong>“film,” “movie,” “great,” “story,”</strong> and <strong>“time,”</strong> suggesting that reviewers focus on the quality of the story and overall enjoyment.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Negative reviews</strong> also highlight <strong>“film”</strong> and <strong>“movie,”</strong> but words like <strong>“bad,” “even,”</strong> and <strong>“really,”</strong> indicating stronger dissatisfaction are also used a lot.</p>
+</div>
+</div>
+</div>
+<p><em>The common words suggests that although both sentiments discuss similar aspects, their tone and context significantly differ.</em></p>
+<hr>
+</section>
+<section id="the-brevity-paradox-review-length-vs.-sentiment-polarity" class="level2">
+<h2 class="anchored" data-anchor-id="the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</h2>
+<p><strong>Insight:</strong> This analysis explores the “Inverse Correlation” between how much a user writes and the emotional extremity of their review.</p>
+<ul>
+<li><strong>The Correlation:</strong> A weak negative correlation (<strong>-0.049</strong>) indicates that as review length increases, sentiment polarity slightly decreases. In short, longer reviews contain less extreme opinions.</li>
+<li><strong>Short Reviews (&lt;200 words):</strong> These frequently exhibit very high or very low polarity, demonstrating stronger, more impulsive emotions.</li>
+<li><strong>Long Reviews (&gt;500 words):</strong> These tend to cluster around a neutral sentiment. This suggests that users who write more are providing a <strong>detailed analysis</strong> rather than emotional extremes.</li>
+<li><strong>Key Discovery:</strong> Users who write brief reviews tend to express stronger emotions, while longer reviews are more balanced and focused on the movie’s details.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="polarity_scatter.png" class="img-fluid figure-img"></p>
+<figcaption>Review Length vs.&nbsp;Sentiment Polarity Scatter Plot</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="sentiment-polarity-subjectivity-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</h2>
+<p><strong>Insight:</strong> These histograms visualize the frequency of emotional scales and the “fact vs.&nbsp;opinion” nature of the 50,000 reviews.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="polarity_hist.png" class="img-fluid figure-img"></p>
+<figcaption>Polarity Frequency Distribution</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="subjectivity_hist.png" class="img-fluid figure-img"></p>
+<figcaption>Subjectivity Frequency Distribution</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="polarity-distribution-emotional-scale" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h3 class="anchored" data-anchor-id="polarity-distribution-emotional-scale">Polarity Distribution (Emotional Scale)</h3>
+<ul>
+<li><strong>General Bias:</strong> <strong>74.7%</strong> of reviews are moderately positive (0 to 0.5), showing a general community bias toward positive sentiment.</li>
+<li><strong>Negative Sentiment:</strong> Moderately negative reviews (-0.5 to 0) make up <strong>24.1%</strong>, indicating that while negative reviews exist, they are less extreme.</li>
+<li><strong>The Extremes:</strong> Highly polarized reviews are rare; the dataset contains only 57 highly negative reviews compared to 471 highly positive ones.</li>
+</ul>
+</section>
+<section id="subjectivity-distribution-fact-vs.-opinion" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h3 class="anchored" data-anchor-id="subjectivity-distribution-fact-vs.-opinion">Subjectivity Distribution (Fact vs.&nbsp;Opinion)</h3>
+<ul>
+<li><strong>The “Opinionated” Middle:</strong> <strong>59.8%</strong> of reviews are moderately subjective (0.5 to 0.7). This suggests users provide a mix of opinion and fact without being overly exaggerated.</li>
+<li><strong>The Rarity of Objectivity:</strong> Only <strong>0.88%</strong> of reviews are extremely objective. Purely factual reviews are exceptionally rare on IMDb.</li>
+<li><strong>Final Insight:</strong> Reviews tend to be opinionated but not overly extreme, with extremely subjective reviews (3.6%) also being uncommon.</li>
+</ul>
+</section>
+</div>
+</div>
+<hr>
+</section>
+<section id="final-conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="final-conclusions">5. Final Conclusions</h2>
+<p>Based on the experimental results in the report and notebook:</p>
+<ol type="1">
+<li><strong>Sentiment Trends:</strong> While the dataset is balanced, moderately positive reviews are the most common across the 50,000 samples.</li>
+<li><strong>Emotional Intensity:</strong> There is a clear inverse relationship between length and extremity; short reviews are brief and to the point with high emotional volatility.</li>
+<li><strong>Platform Behavior:</strong> The high subjectivity scores across the board establish IMDb as a platform driven by personal fan expression rather than objective, fact-based film theory.</li>
+</ol>
+<hr>
+</section>
+<section id="complete-analysis-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="complete-analysis-notebook">Complete Analysis Notebook</h2>
+<p>To view the full Python implementation, data parsing logic, and execution logs, please visit the technical notebook page.</p>
+<div class="d-grid gap-2">
+<p><a href="../../projects/sentiment-analysis/sentiment_code.html" class="btn btn-outline-primary btn-lg" role="button"><i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook</a></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Project Documentation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The complete methodology, data analysis, and insights are detailed in the full technical report.</p>
+</div>
+</div>
+<div class="d-grid gap-2 col-6 mx-auto">
+<p><a href="sentiment.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-file-earmark-pdf"></i> View Final Report</a></p>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
