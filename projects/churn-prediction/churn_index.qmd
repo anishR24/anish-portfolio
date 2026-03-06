@@ -31,19 +31,82 @@ The project followed a rigorous data science lifecycle to ensure the models were
 ## 3. Comprehensive Model Performance
 I evaluated six diverse algorithms to find the optimal balance between bias and variance. The results below highlight the superiority of Gradient Boosting methods for tabular data.
 
-### Comparative Results Table
-| Algorithm | Industry | Precision | Recall | F1-Score | ROC-AUC |
-|:----------|:---------|:----------|:-------|:---------|:--------|
-| **CatBoost** | **Telecom** | **0.52** | **0.65** | **0.58** | **0.84** |
-| XGBoost | Telecom | 0.49 | 0.64 | 0.56 | 0.83 |
-| Random Forest | Telecom | 0.51 | 0.58 | 0.54 | 0.81 |
-| SVM | Telecom | 0.45 | 0.55 | 0.49 | 0.78 |
-| KNN | Telecom | 0.42 | 0.52 | 0.46 | 0.75 |
-| Logistic Regression | Telecom | 0.48 | 0.53 | 0.50 | 0.79 |
-| **CatBoost** | **Insurance** | **0.41** | **0.48** | **0.44** | **0.79** |
-| XGBoost | Insurance | 0.39 | 0.47 | 0.43 | 0.77 |
-| Random Forest | Insurance | 0.38 | 0.45 | 0.41 | 0.76 |
-| Logistic Regression | Insurance | 0.38 | 0.44 | 0.41 | 0.75 |
+### Model Performance Comparison
+
+The following tables summarize the performance of all 6 algorithms across both datasets. Use the tabs to switch between the Telecom and Insurance results.
+
+::: {.panel-tabset}
+
+### Telecom Dataset
+```{ojs}
+//| echo: false
+data_telecom = FileAttachment("metrics_grid_telecom.csv").csv({ typed: true })
+
+Inputs.table(data_telecom, {
+  rows: 10,
+  sort: "f1_score",
+  reverse: true,
+  layout: "auto",
+  columns: [
+    "algorithm", "accuracy", "precision", "recall", "f1_score", "roc_auc"
+  ],
+  header: {
+    algorithm: "Algorithm",
+    accuracy: "Accuracy (%)",
+    precision: "Precision (%)",
+    recall: "Recall (%)",
+    f1_score: "F1 Score (%)",
+    roc_auc: "ROC AUC"
+  },
+  format: {
+    accuracy: d => (d * 100).toFixed(2),
+    precision: d => (d * 100).toFixed(2),
+    recall: d => (d * 100).toFixed(2),
+    f1_score: d => (d * 100).toFixed(2),
+    roc_auc: d => d.toFixed(3)
+  },
+  width: {
+    algorithm: 200
+  }
+})
+```
+
+###  Insurance Dataset
+``` {ojs}
+//| echo: false
+data_insurance = FileAttachment("metrics_grid_insurance.csv").csv({ typed: true })
+
+// 2. Display the table
+Inputs.table(data_insurance, {
+  rows: 10,
+  sort: "f1_score",
+  reverse: true,
+  layout: "auto",
+  columns: [
+    "algorithm", "accuracy", "precision", "recall", "f1_score", "roc_auc"
+  ],
+  header: {
+    algorithm: "Algorithm",
+    accuracy: "Accuracy (%)",
+    precision: "Precision (%)",
+    recall: "Recall (%)",
+    f1_score: "F1 Score (%)",
+    roc_auc: "ROC AUC"
+  },
+  format: {
+    accuracy: d => (d * 100).toFixed(2),
+    precision: d => (d * 100).toFixed(2),
+    recall: d => (d * 100).toFixed(2),
+    f1_score: d => (d * 100).toFixed(2),
+    roc_auc: d => d.toFixed(3)
+  },
+  width: {
+    algorithm: 200
+  }
+})
+```
+
+:::
 
 > **Analysis:** **CatBoost** consistently delivered the highest F1-Score and ROC-AUC across both industries. This is attributed to its sophisticated handling of categorical features and its ability to capture non-linear relationships without overfitting.
 
@@ -83,10 +146,10 @@ To bridge the gap between academic research and business utility, the final mode
 
 ::: {.callout-tip}
 ## Research Assets & Code
-Download the full 60-page dissertation and the complete project environment (including model weights and preprocessors) below.
+View and Download the full 60-page dissertation and the complete project environment (including model weights and preprocessors) below.
 :::
 
 ::: {layout-ncol=2}
-[📄 Download Full Dissertation (PDF)](20066423_Anish_Rao_Report.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[📄 View Full Dissertation (PDF)](20066423_Anish_Rao_Report.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 [📥 Download Project Files (.zip)](churn_project_files.zip){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::

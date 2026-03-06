@@ -23,9 +23,9 @@ website:
             text: Medical Named Entity Recognition
           - href: projects/mlpr-2/anomaly_index.qmd
             text: Anomaly Detection in Time Series
-          # - text: "--- Data Science & Mining ---"
-          # - href: projects/python-notebook/python_index.qmd
-          #   text: Python Analysis Lab
+          - text: "--- Data Science & Mining ---"
+          - href: projects/python-notebook/python_index.qmd
+            text: Python Analysis Lab
           # - href: projects/data-mining/mining_index.qmd
           #   text: Data & Network Mining
           # - text: "--- Others ---"

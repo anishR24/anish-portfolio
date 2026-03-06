@@ -62,5 +62,5 @@ The complete methodology, data analysis, and model performance metrics are detai
 :::
 
 ::: {.d-grid .gap-2 .col-6 .mx-auto}
-[<i class="bi bi-file-earmark-pdf"></i> Download Final Report](ner.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-pdf"></i> View Final Report](ner.pdf){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
 :::
