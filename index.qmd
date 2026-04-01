@@ -23,7 +23,7 @@ resources:
   - Anish_Rao_CV.pdf
 ---
 
-Hello! I am a Data-driven Business Analyst with an M.Sc. in Data Analytics and 2.5+ years of experience in Software Engineering. I specialize in bridging the gap between technical code and business strategy, using data storytelling to drive informed decision-making.
+Hello! I am a Data and Business Analyst with an M.Sc. in Data Analytics and 3 years of industry experience. I specialize in bridging the gap between technical code and business strategy, using data storytelling to drive informed decision-making.
 
 <!-- [📄 Click here to view my full CV](Anish_Rao_CV.pdf){.btn .btn-primary} -->
 
