@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IMDb Movie Reviews Sentiment Analysis – Anish Rao</title>
+<title>Tekken 8 Interactive Roster – Anish Rao</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,23 +155,26 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#the-nlp-pipeline" id="toc-the-nlp-pipeline" class="nav-link" data-scroll-target="#the-nlp-pipeline">The NLP Pipeline</a></li>
-  <li><a href="#sentiment-distribution" id="toc-sentiment-distribution" class="nav-link" data-scroll-target="#sentiment-distribution">1. Sentiment Distribution</a></li>
-  <li><a href="#visualizing-the-lexicon-word-clouds" id="toc-visualizing-the-lexicon-word-clouds" class="nav-link" data-scroll-target="#visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</a></li>
-  <li><a href="#the-brevity-paradox-review-length-vs.-sentiment-polarity" id="toc-the-brevity-paradox-review-length-vs.-sentiment-polarity" class="nav-link" data-scroll-target="#the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</a></li>
-  <li><a href="#sentiment-polarity-subjectivity-distributions" id="toc-sentiment-polarity-subjectivity-distributions" class="nav-link" data-scroll-target="#sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</a></li>
-  <li><a href="#final-conclusions" id="toc-final-conclusions" class="nav-link" data-scroll-target="#final-conclusions">5. Final Conclusions</a></li>
-  <li><a href="#complete-analysis-notebook" id="toc-complete-analysis-notebook" class="nav-link" data-scroll-target="#complete-analysis-notebook">Complete Analysis Notebook</a></li>
+  <li><a href="#dashboard-preview" id="toc-dashboard-preview" class="nav-link" data-scroll-target="#dashboard-preview">Dashboard Preview</a></li>
+  <li><a href="#interactive-dashboard" id="toc-interactive-dashboard" class="nav-link" data-scroll-target="#interactive-dashboard">Interactive Dashboard</a></li>
+  <li><a href="#analytical-strategy-design" id="toc-analytical-strategy-design" class="nav-link" data-scroll-target="#analytical-strategy-design">Analytical Strategy &amp; Design</a></li>
+  <li><a href="#key-uiux-technical-insights" id="toc-key-uiux-technical-insights" class="nav-link" data-scroll-target="#key-uiux-technical-insights">Key UI/UX &amp; Technical Insights</a>
+  <ul class="collapse">
+  <li><a href="#the-dynamic-empty-state-engine" id="toc-the-dynamic-empty-state-engine" class="nav-link" data-scroll-target="#the-dynamic-empty-state-engine">1. The Dynamic “Empty State” Engine</a></li>
+  <li><a href="#hud-style-vitals-processing" id="toc-hud-style-vitals-processing" class="nav-link" data-scroll-target="#hud-style-vitals-processing">2. HUD-Style Vitals Processing</a></li>
+  <li><a href="#layer-management-image-bleed-prevention" id="toc-layer-management-image-bleed-prevention" class="nav-link" data-scroll-target="#layer-management-image-bleed-prevention">3. Layer Management &amp; Image Bleed Prevention</a></li>
+  </ul></li>
+  <li><a href="#technical-skills-demonstrated" id="toc-technical-skills-demonstrated" class="nav-link" data-scroll-target="#technical-skills-demonstrated">Technical Skills Demonstrated</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IMDb Movie Reviews Sentiment Analysis</h1>
-<p class="subtitle lead">Exploratory Data Analysis and NLP Sentiment Analysis</p>
+<h1 class="title">Tekken 8 Interactive Roster</h1>
+<p class="subtitle lead">Pushing Tableau Beyond Business Templates Into High-Fidelity UI Design</p>
 </div>
 
 
@@ -190,168 +193,92 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This project explores a dataset of <strong>50,000 IMDb movie reviews</strong>, focusing on how user sentiment correlates with review length and linguistic style. By utilizing <code>TextBlob</code> for polarity and subjectivity, the analysis identifies the threshold where a review shifts from “emotional outburst” to “analytical critique.”</p>
-<p><a href="https://github.com/anishR24/programming-for-data-analysis/tree/main/CA2" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://colab.research.google.com/drive/1T5Y68YAz2MWrdia0iPZ70jzqFE7d2E9S?usp=sharing" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-google"></i> Open in Colab</a> <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset (Kaggle)</a></p>
-<hr>
+<p>This project re-imagines what is possible within data visualization platforms by completely stepping away from standard corporate grid structures. The goal was to build an immersive, high-fidelity interactive character selector that perfectly mirrors the premium UI/UX of modern fighting game selection screens.</p>
+<p>By extracting flat rows of character metadata and combat statistics and translating them into a highly responsive asset, this design pushes Tableau’s layout engine, container stacking, and variable visibility to its maximum potential.</p>
+<p><a href="https://github.com/anishR24/tekken-dashboard" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> View Project on GitHub</a> <a href="https://github.com/anishR24/tekken-dashboard" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-database"></i> Dataset Repository</a></p>
 </section>
-<section id="the-nlp-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-nlp-pipeline">The NLP Pipeline</h2>
-<p>The project follows a structured NLP pipeline to transform unstructured text into quantifiable metrics:</p>
-<ol type="1">
-<li><strong>Data Acquisition:</strong> Utilization of the IMDb 50k dataset (Maas et al., 2011).</li>
-<li><strong>Text Preprocessing:</strong>
+<section id="dashboard-preview" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-preview">Dashboard Preview</h2>
+<div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+<div style="width: 100%; max-width: 800px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #dee2e6;">
+<p><video autoplay="" loop="" muted="" playsinline="" style="width: 100%; display: block; margin: 0 auto;"> <source src="tekken.mov" type="video/mp4"> Your browser does not support the video tag. </video></p>
+</div>
+</div>
+</section>
+<section id="interactive-dashboard" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="interactive-dashboard">Interactive Dashboard</h2>
+<p>Explore the roster interactions directly below. Click on any fighter icon inside the main grid matrix to pull real-time bio data into the active HUD frame.</p>
+<p><a href="https://public.tableau.com/app/profile/anish.rao/viz/Tekken_Dashboard/CharacterSelection" class="btn btn-outline-primary btn-sm" target="_blank"><i class="bi bi-bar-chart-line"></i> View on Tableau Public</a></p>
+<div class="column-page">
+<div id="viz1779200979785" class="tableauPlaceholder" style="position: relative">
+<p><noscript> <a href="#"> <img alt="Character Selection " src="https://public.tableau.com/static/images/Te/Tekken_Dashboard/CharacterSelection/1_rss.png" style="border: none"> </a> </noscript> <object class="tableauViz" style="display:none;"> <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""> <param name="name" value="Tekken_Dashboard/CharacterSelection"> <param name="tabs" value="no"> <param name="toolbar" value="yes"> <param name="static_image" value="https://public.tableau.com/static/images/Te/Tekken_Dashboard/CharacterSelection/1.png"> <param name="animate_transition" value="yes"> <param name="display_static_image" value="yes"> <param name="display_spinner" value="yes"> <param name="display_overlay" value="yes"> <param name="display_count" value="yes"> <param name="language" value="en-US"> <param name="filter" value="publish=yes"> </object></p>
+</div>
+<script type="text/javascript">                    
+  var divElement = document.getElementById('viz1779200979785');                    
+  var vizElement = divElement.getElementsByTagName('object')[0];                    
+  if ( divElement.offsetWidth > 800 ) { 
+    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+  } else if ( divElement.offsetWidth > 500 ) { 
+    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+  } else { 
+    vizElement.style.width='100%';vizElement.style.height='1827px';
+  }                     
+  var scriptElement = document.createElement('script');                    
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+</script>
+</div>
+</section>
+<section id="analytical-strategy-design" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-strategy-design">Analytical Strategy &amp; Design</h2>
+<p>To transform standard data tracking tables into an arcade interface experience, I integrated tailored visual hierarchy rules and custom engineering steps:</p>
 <ul>
-<li><strong>Cleaning:</strong> Removal of HTML tags, punctuation, and special characters.</li>
-<li><strong>Normalization:</strong> Lowercasing text for consistency.</li>
-<li><strong>Tokenization &amp; Filtering:</strong> Segmenting text and removing “stopwords” (common fillers) to focus on high-impact keywords.</li>
-</ul></li>
-<li><strong>Exploratory Data Analysis (EDA):</strong> Statistical analysis of review lengths and word frequency distributions.</li>
-<li><strong>Sentiment Modeling:</strong> Implementing the <code>TextBlob</code> library to calculate Polarity and Subjectivity.</li>
-<li><strong>Correlation Analysis:</strong> Cross-referencing review length against polarity scores.</li>
-</ol>
-<hr>
-</section>
-<section id="sentiment-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="sentiment-distribution">1. Sentiment Distribution</h2>
-<p><strong>Insight:</strong> The dataset exhibits a balanced sentiment distribution with 25,000 positive and 25,000 negative reviews. This parity ensured that the analysis of word frequencies and emotional weights remained unbiased across both sentiment classes.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="sentiment_dist.png" class="img-fluid figure-img"></p>
-<figcaption>Sentiment Distribution Bar Chart</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="visualizing-the-lexicon-word-clouds" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-the-lexicon-word-clouds">2. Visualizing the Lexicon (Word Clouds)</h2>
-<p><strong>Insight:</strong> Frequency analysis through Word Clouds revealed distinct linguistic patterns.</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="wordcloud_pos.png" class="img-fluid figure-img"></p>
-<figcaption>Positive Word Cloud</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="wordcloud_neg.png" class="img-fluid figure-img"></p>
-<figcaption>Negative Word Cloud</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><strong>Positive reviews</strong> include the words <strong>“film,” “movie,” “great,” “story,”</strong> and <strong>“time,”</strong> suggesting that reviewers focus on the quality of the story and overall enjoyment.</p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><strong>Negative reviews</strong> also highlight <strong>“film”</strong> and <strong>“movie,”</strong> but words like <strong>“bad,” “even,”</strong> and <strong>“really,”</strong> indicating stronger dissatisfaction are also used a lot.</p>
-</div>
-</div>
-</div>
-<p><em>The common words suggests that although both sentiments discuss similar aspects, their tone and context significantly differ.</em></p>
-<hr>
-</section>
-<section id="the-brevity-paradox-review-length-vs.-sentiment-polarity" class="level2">
-<h2 class="anchored" data-anchor-id="the-brevity-paradox-review-length-vs.-sentiment-polarity">3. The Brevity Paradox: Review Length vs.&nbsp;Sentiment Polarity</h2>
-<p><strong>Insight:</strong> This analysis explores the “Inverse Correlation” between how much a user writes and the emotional extremity of their review.</p>
-<ul>
-<li><strong>The Correlation:</strong> A weak negative correlation (<strong>-0.049</strong>) indicates that as review length increases, sentiment polarity slightly decreases. In short, longer reviews contain less extreme opinions.</li>
-<li><strong>Short Reviews (&lt;200 words):</strong> These frequently exhibit very high or very low polarity, demonstrating stronger, more impulsive emotions.</li>
-<li><strong>Long Reviews (&gt;500 words):</strong> These tend to cluster around a neutral sentiment. This suggests that users who write more are providing a <strong>detailed analysis</strong> rather than emotional extremes.</li>
-<li><strong>Key Discovery:</strong> Users who write brief reviews tend to express stronger emotions, while longer reviews are more balanced and focused on the movie’s details.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="polarity_scatter.png" class="img-fluid figure-img"></p>
-<figcaption>Review Length vs.&nbsp;Sentiment Polarity Scatter Plot</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="sentiment-polarity-subjectivity-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="sentiment-polarity-subjectivity-distributions">4. Sentiment Polarity &amp; Subjectivity Distributions</h2>
-<p><strong>Insight:</strong> These histograms visualize the frequency of emotional scales and the “fact vs.&nbsp;opinion” nature of the 50,000 reviews.</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="polarity_hist.png" class="img-fluid figure-img"></p>
-<figcaption>Polarity Frequency Distribution</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="subjectivity_hist.png" class="img-fluid figure-img"></p>
-<figcaption>Subjectivity Frequency Distribution</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<section id="polarity-distribution-emotional-scale" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<h3 class="anchored" data-anchor-id="polarity-distribution-emotional-scale">Polarity Distribution (Emotional Scale)</h3>
-<ul>
-<li><strong>General Bias:</strong> <strong>74.7%</strong> of reviews are moderately positive (0 to 0.5), showing a general community bias toward positive sentiment.</li>
-<li><strong>Negative Sentiment:</strong> Moderately negative reviews (-0.5 to 0) make up <strong>24.1%</strong>, indicating that while negative reviews exist, they are less extreme.</li>
-<li><strong>The Extremes:</strong> Highly polarized reviews are rare; the dataset contains only 57 highly negative reviews compared to 471 highly positive ones.</li>
+<li><strong>Automated Data Scraping Pipeline:</strong> Because no consolidated dataset existed for the game’s launch roster, a custom Python ETL script was built using <code>BeautifulSoup</code> and <code>Requests</code>. Structural lore properties and fighter graphics were compiled from the <a href="https://bandainamcoent.eu/tekken/tekken-8/characters">Official Bandai Namco Tekken 8 Portal</a>, while granular character attributes (such as official ages, blood types, heights, and titles) were parsed dynamically from the community-driven <a href="https://tekken.fandom.com/wiki/Tekken_8#Characters">Tekken Fandom Wiki</a> to create a clean, relational master schema.</li>
+<li><strong>Custom Repository &amp; Shape Mapping:</strong> To construct the selection grid matrix, character image assets fetched during scraping were formatted, downscaled, and injected into a custom sub-directory inside the local <code>My Tableau Repository/Shapes/</code> directory. By changing the marks card type to <strong>Shape</strong>, discrete character fields were mapped directly to their corresponding image transparent tokens, engineering a dynamic visual grid from tabular data points.</li>
+<li><strong>Custom Brand Integration &amp; Typography:</strong> Leveraged high-impact gaming display layouts using specialized web-safe display fonts (<em>Bebas Neue Pro</em> paired with clean secondary sans-serif descriptive blocks) to directly mirror Tekken 8’s fierce design system.</li>
+<li><strong>Arcade Selection Grid Matrix:</strong> Arranged an intuitive portrait selector panel. Selecting individual cells isolates fighter visual assets while instantly updating adjacent calculation frameworks.</li>
+<li><strong>Simulated Single-Select Logic:</strong> Implemented rigid dashboard execution constraints and customized background sheet filters to completely eliminate default cross-highlight clutter, anchoring focus onto precisely one target profile at a time.</li>
 </ul>
 </section>
-<section id="subjectivity-distribution-fact-vs.-opinion" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<h3 class="anchored" data-anchor-id="subjectivity-distribution-fact-vs.-opinion">Subjectivity Distribution (Fact vs.&nbsp;Opinion)</h3>
+<section id="key-uiux-technical-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-uiux-technical-insights">Key UI/UX &amp; Technical Insights</h2>
+<section id="the-dynamic-empty-state-engine" class="level3">
+<h3 class="anchored" data-anchor-id="the-dynamic-empty-state-engine">1. The Dynamic “Empty State” Engine</h3>
+<p>To establish a premium application feel, the landing view utilizes layered visibility states. When zero active selections are filtered, the system cleanly isolates the core Tekken 8 brand splash and a localized <em>“Select Your Fighter”</em> callout. Triggering any individual node immediately trades this out behind a clean character overlay wrapper, dropping any ambient visual bleeding or text ghosting.</p>
+</section>
+<section id="hud-style-vitals-processing" class="level3">
+<h3 class="anchored" data-anchor-id="hud-style-vitals-processing">2. HUD-Style Vitals Processing</h3>
+<p>Fighter dimensions (Age, Height, Weight, Blood Type) bypass standard linear rows. Instead, they pass through layout-mapped calculations that distribute text strings cleanly inside independent structural coordinates—simulating a real-time game Heads-Up Display (HUD) menu.</p>
+</section>
+<section id="layer-management-image-bleed-prevention" class="level3">
+<h3 class="anchored" data-anchor-id="layer-management-image-bleed-prevention">3. Layer Management &amp; Image Bleed Prevention</h3>
+<p>A major priority during final optimization was mastering spatial hierarchy. Because fighting game assets rely heavily on transparent, overlapping character artwork, layout blocks had to be rigidly contained. Fine-tuning the container background opacity and floating element order ensured that character profile artwork renders with clean edges and zero background asset collisions.</p>
+</section>
+</section>
+<section id="technical-skills-demonstrated" class="level2">
+<h2 class="anchored" data-anchor-id="technical-skills-demonstrated">Technical Skills Demonstrated</h2>
 <ul>
-<li><strong>The “Opinionated” Middle:</strong> <strong>59.8%</strong> of reviews are moderately subjective (0.5 to 0.7). This suggests users provide a mix of opinion and fact without being overly exaggerated.</li>
-<li><strong>The Rarity of Objectivity:</strong> Only <strong>0.88%</strong> of reviews are extremely objective. Purely factual reviews are exceptionally rare on IMDb.</li>
-<li><strong>Final Insight:</strong> Reviews tend to be opinionated but not overly extreme, with extremely subjective reviews (3.6%) also being uncommon.</li>
+<li><strong>Tool Frameworks:</strong> Tableau Desktop, Python (BeautifulSoup, Requests, Pandas).</li>
+<li><strong>Data Engineering:</strong> Web scraping, string parsing, regex cleaning, and data consolidation across disparate web models.</li>
+<li><strong>Asset Integration:</strong> Custom repository configuration, image palette asset mapping, and granular image asset alignment.</li>
+<li><strong>Layout Management:</strong> Advanced container nesting logic, relative floating asset placement, and strict Z-index ordering.</li>
+<li><strong>Interactions:</strong> Parameter actions, Dynamic Zone Visibility mapping, and custom layout object toggles.</li>
 </ul>
-</section>
-</div>
-</div>
 <hr>
-</section>
-<section id="final-conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="final-conclusions">5. Final Conclusions</h2>
-<p>Based on the experimental results in the report and notebook:</p>
-<ol type="1">
-<li><strong>Sentiment Trends:</strong> While the dataset is balanced, moderately positive reviews are the most common across the 50,000 samples.</li>
-<li><strong>Emotional Intensity:</strong> There is a clear inverse relationship between length and extremity; short reviews are brief and to the point with high emotional volatility.</li>
-<li><strong>Platform Behavior:</strong> The high subjectivity scores across the board establish IMDb as a platform driven by personal fan expression rather than objective, fact-based film theory.</li>
-</ol>
-<hr>
-</section>
-<section id="complete-analysis-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="complete-analysis-notebook">Complete Analysis Notebook</h2>
-<p>To view the full Python implementation, complete methodology, and execution logs, please visit the technical notebook page.</p>
-<div class="d-grid gap-2">
-<p><a href="../../projects/sentiment-analysis/sentiment_code.html" class="btn btn-outline-primary btn-lg" role="button"><i class="bi bi-code-square"></i> View Technical Implementation - Python Notebook</a></p>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Project Documentation
+<span class="screen-reader-only">Tip</span>Full Report &amp; Source Files
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The complete methodology, data analysis, and insights are detailed in the full technical report.</p>
+<p>You can view or download the complete work assets to review the scraped dataset, layout container paths, parameter triggers, and image file asset bindings directly.</p>
 </div>
 </div>
-<div class="d-grid gap-2 col-6 mx-auto">
-<p><a href="sentiment.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-file-earmark-pdf"></i> View Final Report</a></p>
-</div>
+<p><a href="tekken_combined_data.xlsx" class="btn btn-outline-primary rounded-pill px-4" download="tekken_combined_data.xlsx"><i class="bi bi-database"></i> Download Scraped Dataset (.xlsx)</a> <a href="https://github.com/anishR24/tekken-dashboard/tree/main/Images" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-images"></i> Browse Image Assets (GitHub)</a> <a href="Tekken_Dashboard.twbx" class="btn btn-outline-primary rounded-pill px-4" target="_blank"><i class="bi bi-file-earmark-code"></i> Download Tableau Workbook (.twbx)</a></p>
 
 
 </section>

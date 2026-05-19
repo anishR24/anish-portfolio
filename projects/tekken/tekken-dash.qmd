@@ -1,0 +1,113 @@
+---
+title: "Tekken 8 Interactive Roster"
+subtitle: "Pushing Tableau Beyond Business Templates Into High-Fidelity UI Design"
+format:
+  html:
+    toc: true
+    code-fold: true
+resources:
+  - Tekken_Dashboard.twbx
+  - tekken_combined_data.csv
+---
+
+## Project Overview
+This project re-imagines what is possible within data visualization platforms by completely stepping away from standard corporate grid structures. The goal was to build an immersive, high-fidelity interactive character selector that perfectly mirrors the premium UI/UX of modern fighting game selection screens. 
+
+By extracting flat rows of character metadata and combat statistics and translating them into a highly responsive asset, this design pushes Tableau’s layout engine, container stacking, and variable visibility to its maximum potential.
+
+[<i class="bi bi-github"></i> View Project on GitHub](https://github.com/anishR24/tekken-dashboard){target="_blank" .btn .btn-outline-dark .btn-sm} [<i class="bi bi-database"></i> Dataset Repository](https://github.com/anishR24/tekken-dashboard){target="_blank" .btn .btn-outline-info .btn-sm}
+
+## Dashboard Preview
+::: {style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;"}
+<div style="width: 100%; max-width: 800px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #dee2e6;">
+  <video autoplay loop muted playsinline style="width: 100%; display: block; margin: 0 auto;">
+    <source src="tekken.mov" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+:::
+
+## Interactive Dashboard
+Explore the roster interactions directly below. Click on any fighter icon inside the main grid matrix to pull real-time bio data into the active HUD frame.
+
+[<i class="bi bi-bar-chart-line"></i> View on Tableau Public](https://public.tableau.com/app/profile/anish.rao/viz/Tekken_Dashboard/CharacterSelection){target="_blank" .btn .btn-outline-primary .btn-sm}
+
+::: {.column-page}
+<div class='tableauPlaceholder' id='viz1779200979785' style='position: relative'>
+  <noscript>
+    <a href='#'>
+      <img alt='Character Selection ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Tekken_Dashboard&#47;CharacterSelection&#47;1_rss.png' style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz' style='display:none;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+    <param name='embed_code_version' value='3' /> 
+    <param name='site_root' value='' />
+    <param name='name' value='Tekken_Dashboard&#47;CharacterSelection' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Tekken_Dashboard&#47;CharacterSelection&#47;1.png' /> 
+    <param name='animate_transition' value='yes' />
+    <param name='display_static_image' value='yes' />
+    <param name='display_spinner' value='yes' />
+    <param name='display_overlay' value='yes' />
+    <param name='display_count' value='yes' />
+    <param name='language' value='en-US' />
+    <param name='filter' value='publish=yes' />
+  </object>
+</div>                
+<script type='text/javascript'>                    
+  var divElement = document.getElementById('viz1779200979785');                    
+  var vizElement = divElement.getElementsByTagName('object')[0];                    
+  if ( divElement.offsetWidth > 800 ) { 
+    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+  } else if ( divElement.offsetWidth > 500 ) { 
+    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+  } else { 
+    vizElement.style.width='100%';vizElement.style.height='1827px';
+  }                     
+  var scriptElement = document.createElement('script');                    
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+</script>
+:::
+
+## Analytical Strategy & Design
+To transform standard data tracking tables into an arcade interface experience, I integrated tailored visual hierarchy rules and custom engineering steps:
+
+* **Automated Data Scraping Pipeline:** Because no consolidated dataset existed for the game's launch roster, a custom Python ETL script was built using `BeautifulSoup` and `Requests`. Structural lore properties and fighter graphics were compiled from the [Official Bandai Namco Tekken 8 Portal](https://bandainamcoent.eu/tekken/tekken-8/characters), while granular character attributes (such as official ages, blood types, heights, and titles) were parsed dynamically from the community-driven [Tekken Fandom Wiki](https://tekken.fandom.com/wiki/Tekken_8#Characters) to create a clean, relational master schema.
+* **Custom Repository & Shape Mapping:** To construct the selection grid matrix, character image assets fetched during scraping were formatted, downscaled, and injected into a custom sub-directory inside the local `My Tableau Repository/Shapes/` directory. By changing the marks card type to **Shape**, discrete character fields were mapped directly to their corresponding image transparent tokens, engineering a dynamic visual grid from tabular data points.
+* **Custom Brand Integration & Typography:** Leveraged high-impact gaming display layouts using specialized web-safe display fonts (*Bebas Neue Pro* paired with clean secondary sans-serif descriptive blocks) to directly mirror Tekken 8’s fierce design system.
+* **Arcade Selection Grid Matrix:** Arranged an intuitive portrait selector panel. Selecting individual cells isolates fighter visual assets while instantly updating adjacent calculation frameworks.
+* **Simulated Single-Select Logic:** Implemented rigid dashboard execution constraints and customized background sheet filters to completely eliminate default cross-highlight clutter, anchoring focus onto precisely one target profile at a time.
+
+## Key UI/UX & Technical Insights
+
+### 1. The Dynamic "Empty State" Engine
+To establish a premium application feel, the landing view utilizes layered visibility states. When zero active selections are filtered, the system cleanly isolates the core Tekken 8 brand splash and a localized *"Select Your Fighter"* callout. Triggering any individual node immediately trades this out behind a clean character overlay wrapper, dropping any ambient visual bleeding or text ghosting.
+
+### 2. HUD-Style Vitals Processing
+Fighter dimensions (Age, Height, Weight, Blood Type) bypass standard linear rows. Instead, they pass through layout-mapped calculations that distribute text strings cleanly inside independent structural coordinates—simulating a real-time game Heads-Up Display (HUD) menu.
+
+### 3. Layer Management & Image Bleed Prevention
+A major priority during final optimization was mastering spatial hierarchy. Because fighting game assets rely heavily on transparent, overlapping character artwork, layout blocks had to be rigidly contained. Fine-tuning the container background opacity and floating element order ensured that character profile artwork renders with clean edges and zero background asset collisions.
+
+
+
+## Technical Skills Demonstrated
+* **Tool Frameworks:** Tableau Desktop, Python (BeautifulSoup, Requests, Pandas).
+* **Data Engineering:** Web scraping, string parsing, regex cleaning, and data consolidation across disparate web models.
+* **Asset Integration:** Custom repository configuration, image palette asset mapping, and granular image asset alignment.
+* **Layout Management:** Advanced container nesting logic, relative floating asset placement, and strict Z-index ordering.
+* **Interactions:** Parameter actions, Dynamic Zone Visibility mapping, and custom layout object toggles.
+
+---
+
+::: {.callout-tip}
+## Full Report & Source Files
+You can view or download the complete work assets to review the scraped dataset, layout container paths, parameter triggers, and image file asset bindings directly.
+:::
+
+[<i class="bi bi-database"></i> Download Scraped Dataset (.xlsx)](tekken_combined_data.xlsx){download="tekken_combined_data.xlsx" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-images"></i> Browse Image Assets (GitHub)](https://github.com/anishR24/tekken-dashboard/tree/main/Images){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}
+[<i class="bi bi-file-earmark-code"></i> Download Tableau Workbook (.twbx)](Tekken_Dashboard.twbx){target="_blank" .btn .btn-outline-primary .rounded-pill .px-4}

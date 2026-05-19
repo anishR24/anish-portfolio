@@ -33,4 +33,30 @@ Hello! I am a Data and Business Analyst with an M.Sc. in Data Analytics and 3 ye
 
 * **FIFA Player Analytics (Data Viz):** A comprehensive **Tableau & Power BI** dashboard suite analyzing global player statistics to identify high-value talent. [View Dashboard](./projects/data-viz/football-recruitment/football_index.qmd)
 
+* **Tekken 8 Interactive Roster (UI/UX App Design):** An immersive game roster selector built by scraping web-portal data via **Python**, pushed beyond corporate BI templates into a high-fidelity gaming interface inside **Tableau**. [View Dashboard](./projects/tekken/tekken-dash.qmd)
+
 * **NYC Taxi Operational Intelligence (Data Storage):** A full-scale **Data Warehouse** proof-of-concept using a Star Schema, SQL Server, and Neo4j to derive business intelligence from complex urban transport data. [View Case Study](./projects/taxi-dw/taxi_index.qmd)
+
+<div class="dropdown mt-4">
+  <button class="btn btn-primary shadow-lg dropdown-toggle rounded-pill px-3" type="button" id="homepageProjectsMenu" data-bs-toggle="dropdown" aria-expanded="false">
+    Explore All Projects
+  </button>
+  <ul class="dropdown-menu shadow" aria-labelledby="homepageProjectsMenu" style="min-width: 280px; font-size: 14px; max-height: 300px; overflow-y: auto;">
+    
+    <li><h6 class="dropdown-header text-uppercase fw-bold text-muted small pt-2">--- Business Intelligence ---</h6></li>
+    <li><a class="dropdown-item py-2" href="./projects/data-viz/viz_index.qmd"><i class="bi bi-bar-chart-line me-2"></i>BI & Data Visualization</a></li>
+    <li><a class="dropdown-item py-2" href="./projects/taxi-dw/taxi_index.qmd"><i class="bi bi-database me-2"></i>NYC Taxi Data Warehouse</a></li>
+    
+    <li><h6 class="dropdown-header text-uppercase fw-bold text-muted small">--- Machine Learning & AI ---</h6></li>
+    <li><a class="dropdown-item py-2" href="./projects/churn-prediction/churn_index.qmd"><i class="bi bi-pie-chart me-2"></i>Customer Churn (Explainable AI)</a></li>
+    <li><a class="dropdown-item py-2" href="./projects/mlpr-1/ner_index.qmd"><i class="bi bi-tags me-2"></i>Medical Named Entity Recognition</a></li>
+    <li><a class="dropdown-item py-2" href="./projects/mlpr-2/anomaly_index.qmd"><i class="bi bi-activity me-2"></i>Anomaly Detection in Time Series</a></li>
+    
+    <li><h6 class="dropdown-header text-uppercase fw-bold text-muted small">--- Fun Projects ---</h6></li>
+    <li><a class="dropdown-item py-2" href="./projects/tekken/tekken-dash.qmd"><i class="bi bi-controller me-2"></i>Tekken 8 UI Dashboard</a></li>
+    
+    <li><h6 class="dropdown-header text-uppercase fw-bold text-muted small">--- Data Science & Mining ---</h6></li>
+    <li><a class="dropdown-item py-2" href="./projects/sentiment-analysis/sentiment_index.qmd"><i class="bi bi-chat-square-text me-2"></i>Sentiment Analysis</a></li>
+    <li><a class="dropdown-item py-2" href="./projects/data-mining/mining_index.qmd"><i class="bi bi-cpu me-2"></i>Data & Network Mining</a></li> 
+  </ul>
+</div>
