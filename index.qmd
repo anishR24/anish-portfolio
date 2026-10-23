@@ -6,7 +6,10 @@ about:
     links:
         - icon: envelope
           text: Email
-          href: mailto:rao.anish.ie.com
+          href: mailto:rao.anish.ie@gmail.com
+        - icon: envelope-at
+          text: Email (alt)
+          href: mailto:anish.rao888@gmail.com
         - icon: github
           text: GitHub
           href: https://github.com/anishR24
